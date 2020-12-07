@@ -103,7 +103,6 @@ namespace zeynerp.BL
                     user.CompanyName = searchEmployeeAdmin.CompanyName;
                 }
                 Repository<Employee> repo = new Repository<Employee>(user.CompanyName);
-                Repository<Deneme> repo1 = new Repository<Deneme>(user.CompanyName);
                 string scryptPassword = scryptEncoder.Encode(user.Password);
 
                 if(repo.List().Count > 0)
@@ -137,11 +136,6 @@ namespace zeynerp.BL
                         CompanyName = user.CompanyName,
                         CompanyId = user.CompanyId,
                         Guid = Guid.NewGuid()
-                    });
-
-                    repo1.Insert(new Deneme()
-                    {
-                        Name = "Sefa"
                     });
                 }
             }

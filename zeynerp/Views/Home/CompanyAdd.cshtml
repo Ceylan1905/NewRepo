@@ -9,18 +9,24 @@
     <header class="page-header">
         <h2>Cari Detay</h2>
 
-        <div class="right-wrapper text-right">
+        <div class="right-wrapper text-right mr-3">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="index.html">
+                    <a href="/panel">
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Pages</span></li>
-                <li><span>User Profile</span></li>
+                <li>
+                    <a href="/Home/CompanyList">
+                        <span>Cariler</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Cari Ekleme</span>
+                </li>
             </ol>
 
-            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+            @*<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>*@
         </div>
     </header>
 
@@ -31,12 +37,12 @@
             <div class="col">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-2-5 col-xl-1-5">
+                        @*<div class="col-lg-2-5 col-xl-1-5">
                             <i class="card-big-info-icon bx bx-dollar-circle"></i>
                             <h2 class="card-big-info-title">Billing Info</h2>
                             <p class="card-big-info-desc">Add here the.</p>
-                        </div>
-                        <div class="col-lg-3-5 col-xl-4-5">
+                        </div>*@
+                        <div class="col-lg-3-5 col-xl-4-5 offset-lg-2">
                             @* <div class="form-group row align-items-center">
                                     <div class="form-group row align-items-center">
                                         @Html.CheckBoxFor(x => x.Kind, new { @class = "form-control form-control-lg", name = "Musteri" })
