@@ -16,7 +16,7 @@ namespace zeynerp.Controllers
     {
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
-       // private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
+        private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
         private PaymentManager payment = new PaymentManager();
         public ActionResult Index()
         {
@@ -167,15 +167,22 @@ namespace zeynerp.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult CompanyAdd(Company company)
-        //{
-        //    Employee employee = Session["employee"] as Employee;
-        //    BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, company);
+        [HttpPost]
+        public ActionResult CompanyAdd(Company companyModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, companyModel);
 
-        //    return View();
-        //}
-      
+            return View();
+        }
+
+        public ActionResult CompanyList()
+        {
+            Employee employee = Session["employee"] as Employee;
+            List<Company> companies = companyProcess.GetCompany(employee);
+            return View(companies);
+        }
+
         public ActionResult Logout()
         {
             Session.RemoveAll();

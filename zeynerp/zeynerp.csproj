@@ -2422,6 +2422,8 @@
     <Content Include="Views\Home\Activation.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\Authorization.cshtml" />
+    <Content Include="Views\Home\CompanyAdd.cshtml" />
+    <Content Include="Views\Home\CompanyList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

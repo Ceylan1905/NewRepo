@@ -1,4 +1,5 @@
 ﻿@using zeynerp.Entities
+@model Company
 @{
     ViewBag.Title = "CompanyAdd";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,37 +25,102 @@
     </header>
 
     <!-- start: page -->
-    <form class="ecommerce-form action-buttons-fixed" action="#" method="post">
+    @using (Html.BeginForm("CompanyAdd", "Home", FormMethod.Post))
+    {
         <div class="row">
             <div class="col">
-                <section class="card card-modern card-big-info">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-2-5 col-xl-1-5">
-                                <i class="card-big-info-icon bx bx-dollar-circle"></i>
-                                <h2 class="card-big-info-title">Billing Info</h2>
-                                <p class="card-big-info-desc">Add here the.</p>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2-5 col-xl-1-5">
+                            <i class="card-big-info-icon bx bx-dollar-circle"></i>
+                            <h2 class="card-big-info-title">Billing Info</h2>
+                            <p class="card-big-info-desc">Add here the.</p>
+                        </div>
+                        <div class="col-lg-3-5 col-xl-4-5">
+                            @* <div class="form-group row align-items-center">
+                                    <div class="form-group row align-items-center">
+                                        @Html.CheckBoxFor(x => x.Kind, new { @class = "form-control form-control-lg", name = "Musteri" })
+                                    </div>
+                                </div> *@
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Adı</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", name = "companyName", type = "text" })
+                                </div>
                             </div>
-                            <div class="col-lg-3-5 col-xl-4-5">
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Kısa Adı</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingFirstName" value="" required />
-                                    </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Kısa Adı</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.ShortName, new { @class = "form-control form-control-lg", name = "companyShortName", type = "text" })
                                 </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Adı</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingLastName" value="" required />
-                                    </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Telefonu </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control form-control-lg", name = "companyPhone", type = "text" })
                                 </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Telefonu </label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingCompany" value="" />
-                                    </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Fax </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.Fax, new { @class = "form-control form-control-lg", name = "companyFax", type = "text" })
                                 </div>
-                                <!--<div class="form-group row align-items-center">
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari E-Posta </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.Eposta, new { @class = "form-control form-control-lg", name = "companyEposta", type = "text" })
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Vergi Dairesi </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.TaxAdministration, new { @class = "form-control form-control-lg", name = "companyTaxAdministration", type = "text" })
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Vergi No </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.TaxNumber, new { @class = "form-control form-control-lg", name = "companyTaxNumber", type = "text" })
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Fatura Adresi </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.BillingAddress, new { @class = "form-control form-control-lg", name = "companyBillingAddress", type = "text" })
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Onay Durumu </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.DropDownListFor(m => m.Confirmation, new SelectList(Enum.GetValues(typeof(YesNo))), "-Seç-", new { @class = "form-control form-control-modern", @name = "companyCorfirmation" })
+                                    @*   @Html.DropDownListFor(x=>x.MedeniDurum,new List<SelectListItem> {
+                                            new SelectListItem() {Text="Bekar",Value="0" },
+                                            new SelectListItem() {Text="Evli",Value="1" },
+                                        }) *@
+                                </div>
+                            </div>
+
+                            <div class="row action-buttons" style="margin-left:35%">
+                                <div class="col-12 col-md-auto">
+                                    @Html.ActionLink("Yeni", "CompanyAdd", "Home", new { @class = "btn btn-primary btn-lg " })
+                                </div>
+                                <div class="col-12 col-md-auto">
+                                    <button type="submit" class="btn btn-primary btn-lg">Kaydet</button>
+                                </div>
+                                <div class="col-12 col-md-auto">
+                                    @Html.ActionLink("Liste", "CompanyList", "Home", new { @class = "btn btn-primary btn-lg " })
+                                </div>
+                                <!-- <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
+                                    <a href="ecommerce-customers-list.html" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
+                                </div>
+                                <div class="col-12 col-md-auto ml-md-auto mt-3 mt-md-0">
+                                    <a href="#" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
+                                        <i class="bx bx-trash text-4 mr-2"></i> Delete Customer
+                                    </a>
+                                </div>-->
+                            </div>
+                            @*<div class="form-group row align-items-center">
                                     <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Postcode / ZIP</label>
                                     <div class="col-lg-7 col-xl-6">
                                         <input type="text" class="form-control form-control-modern" name="customerBillingPostCodeZip" value="" required />
@@ -89,70 +155,11 @@
                                     <div class="col-lg-7 col-xl-6">
                                         <input type="text" class="form-control form-control-modern" name="customerBillingPhone" value="" />
                                     </div>
-                                </div>-->
-                            </div>
+                                </div>*@
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <section class="card card-modern card-big-info">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-2-5 col-xl-1-5">
-                                <i class="card-big-info-icon bx bx-mail-send"></i>
-                                <h2 class="card-big-info-title">Shipping Info</h2>
-                                <p class="card-big-info-desc">Add here the </p>
-                            </div>
-                            <!--<div class="col-lg-3-5 col-xl-4-5">
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <div class="checkbox">
-                                            <label class="my-2">
-                                                <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
-                                                Check this box to use same information as billing for shipping.
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <section class="card card-modern card-big-info">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-2-5 col-xl-1-5">
-                                <i class="card-big-info-icon bx bx-user-circle"></i>
-                                <h2 class="card-big-info-title">Account Info</h2>
-                                <p class="card-big-info-desc">Add here the </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <div class="row action-buttons">
-            <div class="col-12 col-md-auto">
-                <button type="submit" class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
-                    <i class="bx bx-save text-4 mr-2"></i> Save Customer
-                </button>
-            </div>
-            <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
-                <a href="ecommerce-customers-list.html" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
-            </div>
-            <div class="col-12 col-md-auto ml-md-auto mt-3 mt-md-0">
-                <a href="#" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-                    <i class="bx bx-trash text-4 mr-2"></i> Delete Customer
-                </a>
-            </div>
-        </div>
-    </form>
+    }
 </section>
