@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="Deneme.cs" />
+    <Compile Include="Company.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="GrupModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,26 +11,25 @@ using zeynerp.Entities;
 using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
-{
-  
+{ 
     public class HomeController : Controller
     {
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
-       // private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
+        private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
         private PaymentManager payment = new PaymentManager();
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("Uyelik")]
+        [Route("uyelik")]
         public ActionResult SignUp()
         {
             return View();
         }
 
-        [Route("Uyelik")]
+        [Route("uyelik")]
         [HttpPost]
         public ActionResult SignUp(RegisterViewModel registerViewModel)
         {
@@ -56,7 +55,7 @@ namespace zeynerp.Controllers
                 if (formData != "")
                 {
                     manager_employee.ManagePassword(employee, formData);
-                    return Json(new { status=true, message = "Şifreniz değiştirildi!",url="/Home/Dashboard" });
+                    return Json(new { status=true, message = "Şifreniz değiştirildi!",url="/panel" });
                    
                 }
              
@@ -76,14 +75,14 @@ namespace zeynerp.Controllers
         }
 
       
-        [Route("Giris")]
+        [Route("giris")]
         public ActionResult SignIn()
         {
             return View();
         }
 
        
-        [Route("Giris")]
+        [Route("giris")]
         [HttpPost]
       
         public ActionResult SignIn(LoginViewModel loginViewModel)
@@ -105,12 +104,13 @@ namespace zeynerp.Controllers
                     var remainder = payment.GetRemainder(bl_Result.Result);
                     Session["remainder"] = remainder;
                     Session["password"] = loginViewModel.Password;
-                    return View("Dashboard");
+                    return RedirectToAction("Dashboard");
                 }
             }
             return View();
         }
 
+        [Route("panel")]
         [Authorize]
         public ActionResult Dashboard()
         {
@@ -150,7 +150,7 @@ namespace zeynerp.Controllers
         public ActionResult Authorization()
         {
             Employee employee = Session["employee"] as Employee;
-      if(employee!=null)
+            if(employee!=null)
             {
                 List<Employee> employees = manager_employee.GetCustomer(employee);
 
@@ -167,15 +167,22 @@ namespace zeynerp.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult CompanyAdd(Company company)
-        //{
-        //    Employee employee = Session["employee"] as Employee;
-        //    BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, company);
+        [HttpPost]
+        public ActionResult CompanyAdd(Company companyModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, companyModel);
 
-        //    return View();
-        //}
-      
+            return View();
+        }
+
+        public ActionResult CompanyList()
+        {
+            Employee employee = Session["employee"] as Employee;
+            List<Company> companies = companyProcess.GetCompany(employee);
+            return View(companies);
+        }
+
         public ActionResult Logout()
         {
             Session.RemoveAll();
