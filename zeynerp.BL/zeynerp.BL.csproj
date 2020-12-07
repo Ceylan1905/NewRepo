@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL_Result.cs" />
+    <Compile Include="CompanyProcess.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="PaymentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
