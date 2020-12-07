@@ -1,0 +1,106 @@
+﻿@using zeynerp.Entities
+@model IEnumerable<zeynerp.Entities.Employee>
+@{
+    ViewBag.Title = "Authorization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ @{var company = Session["employee"] as Employee; }
+
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>@company.CompanyName</h2>
+
+        <div class="right-wrapper text-right pr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="@Url.Content("Dashboard")">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Kullanıcı İşlemleri</span></li>
+            </ol>
+
+            @*<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>*@
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @if (Session["employee"] != null && company.IsAdmin == true)
+    {
+        <div class="row">
+            <div class="col">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                            <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                            <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                        </div>
+
+                        <h2 class="card-title">Modül Seç</h2>
+                    </header>
+                    <div class="card-body">
+                        <table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th> Modül </th>
+                                    <th> Yıllık Fiyat </th>
+                                    @foreach (var item in Model)
+                                    {
+                                        <th>@item.Name</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div id="checkboxlist">
+                                    <tr id="deneme" no="@ViewBag.Remainder">
+                                        <td> </td>
+                                        <td> 2.007,5 ₺ </td>
+                                        @for (var i = 0; i < Model.Count(); i++)
+                                        {
+                                            <td> <div><input type="checkbox" value="11" class="chk" no="2007.5"> </div> </td>
+                                        }
+                                    </tr>
+                                    <tr id="" no="2">
+                                        <td></td>
+                                        <td>24.090 ₺ </td>
+                                        @for (var i = 0; i < Model.Count(); i++)
+                                        {
+                                            <td> <div><input type="checkbox" value="21" class="chk" no="24000.09"> </div> </td>
+                                        }
+
+
+
+                                    </tr>
+                                </div>
+
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="tutar" class="tutar" val="">
+                                        Tutar:
+                                        <div id="tutar1" class="">
+
+                                        </div>
+
+                                        <div id="aciklama">
+
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    }
+    </section>
+
+}

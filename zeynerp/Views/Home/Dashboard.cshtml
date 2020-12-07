@@ -1,0 +1,28 @@
+﻿@using zeynerp.Entities
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section role="main" class="content-body">
+    <header class="page-header">
+        @if (Session["employee"] != null)
+        {
+            var company = Session["employee"] as Employee;
+            <h2>@company.CompanyName</h2>
+        }
+       <div class="right-wrapper text-right mr-3">
+           <ol class="breadcrumbs">
+               <li>
+                   <a href="/Home/Dashboard">
+                       <i class="fas fa-home"></i>
+                   </a>
+               </li>
+               @*<li><span>Layouts</span></li>
+               <li><span>Default</span></li>*@
+           </ol>
+
+           @*<a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>*@
+       </div>
+    </header>
+</section>
+
