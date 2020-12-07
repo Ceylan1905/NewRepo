@@ -20,7 +20,6 @@ namespace zeynerp.DAL
         public DbSet<Employee> Employees { get; set; }
         public DbSet<GrupModule> GrupModules { get; set; }
         public DbSet<Remainder> Remainders { get; set; }
-        public DbSet<Deneme> Denemes { get; set; }
         public DbSet<Company> Companies{ get; set; }
     }
 
