@@ -3,6 +3,7 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <section role="main" class="content-body">
     <header class="page-header">
         @if (Session["employee"] != null)
@@ -13,7 +14,7 @@
        <div class="right-wrapper text-right mr-3">
            <ol class="breadcrumbs">
                <li>
-                   <a href="/Home/Dashboard">
+                   <a href="/panel">
                        <i class="fas fa-home"></i>
                    </a>
                </li>

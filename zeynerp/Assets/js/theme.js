@@ -1598,7 +1598,7 @@ window.theme.fn = {
 
 			// always search in case something is changed through ajax
 			$info    = $( '#userbox' );
-			
+			picture = $info.find('.profile-picture img').attr('data-lock-picture');
 			name     = $info.find( '.profile-info' ).attr( 'data-lock-name' );
 			email    = $info.find( '.profile-info' ).attr( 'data-lock-email' );
 
@@ -1617,7 +1617,6 @@ window.theme.fn = {
 				'<div class="card-body">',
 				'<form >',
 				'<div class="current-user text-center" style="margin-top:0px;">',
-
 				'<h2 id="LockUserName" class="user-name text-dark m-0">{{username}}</h2>',
 				'<p  id="LockUserEmail" class="user-email m-0">{{email}}</p>',
 				'</div>',
