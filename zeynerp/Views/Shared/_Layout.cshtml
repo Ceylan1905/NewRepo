@@ -6,7 +6,7 @@
     <!-- Basic -->
     <meta charset="UTF-8">
 
-    <title>Default Layout | Porto Admin - Responsive HTML5 Template</title>
+    <title>Panel | zeynerp</title>
     <meta name="keywords" content="HTML5 Admin Template" />
     <meta name="description" content="Porto Admin - Responsive HTML5 Template">
     <meta name="author" content="okler.net">
@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.theme.css" />
     <link rel="stylesheet" href="~/Assets/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
     <link rel="stylesheet" href="~/Assets/vendor/morris/morris.css" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/Assets/vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/datatables/media/css/dataTables.bootstrap4.css" />
 
     <!--(remove-empty-lines-end)-->
     <!-- Theme CSS -->
@@ -59,7 +64,7 @@
         <!-- start: header -->
         <header class="header">
             <div class="logo-container">
-                <a href="@Url.Action("Dashboard")" class="logo">
+                <a href="/panel" class="logo">
                     <img src="~/Assets/img/logo.png" width="75" height="35" alt="Porto Admin" />
                 </a>
                 <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
@@ -83,21 +88,14 @@
 
                             }
                             @remainder  ₺
-
-
-
-
                         </b>
-
-
                     </div>
                 }
                 <span class="separator"></span>
                 <div id="userbox" class="userbox">
                     <a href="#" data-toggle="dropdown">
-                        @*<figure class="profile-picture">
-
-                                <img src="~/Assets/img/!happy-face.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="img/!logged-user.jpg" />
+                        @*<figure class="profile-picture" style="display: none">
+                                   <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
                             </figure>*@
 
                         <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]">
@@ -138,9 +136,9 @@
             <aside id="sidebar-left" class="sidebar-left">
 
                 <div class="sidebar-header">
-                    @*<div class="sidebar-title">
-                            Menü
-                        </div>*@
+                    <div class="sidebar-title">
+                        Menü
+                    </div>
                     <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
                         <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
                     </div>
@@ -171,6 +169,19 @@
                                         <i class="fas fa-compact-disc" aria-hidden="true"></i>
                                         <span> Cariler </span>
                                     </a>
+                                </li>
+                                <li class="nav-parent">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                        <span>İnsan Kaynakları</span>
+                                    </a>
+                                    <ul class="nav nav-children">
+                                        <li>
+                                            <a class="nav-link" href="/insan-kaynaklari/personel-listesi">
+                                                Personel Listesi
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 @*<li class="nav-parent">
                                                     <a class="nav-link" href="#">
@@ -1027,6 +1038,18 @@
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
+    <!-- Specific Page Vendor -->
+    <script src="~/Assets/vendor/select2/js/select2.js"></script>
+    <script src="~/Assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script src="~/Assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+
 
     <!--(remove-empty-lines-end)-->
     <!-- Theme Base, Components and Settings -->
@@ -1040,6 +1063,9 @@
 
     <!-- Examples -->
     <script src="~/Assets/js/examples/examples.dashboard.js"></script>
-
+    <script src="~/Assets/js/examples/examples.datatables.default.js"></script>
+    <script src="~/Assets/js/examples/examples.datatables.row.with.details.js"></script>
+    <script src="~/Assets/js/examples/examples.datatables.tabletools.js"></script>
+    <script src="~/Assets/js/examples/examples.modals.js"></script>
 </body>
 </html>

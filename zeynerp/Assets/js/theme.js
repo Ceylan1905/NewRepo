@@ -630,7 +630,7 @@ window.theme.fn = {
 
 		$.extend(true, $.fn.dataTable.defaults, {
 			oLanguage: {
-				sLengthMenu: '_MENU_ records per page',
+				sLengthMenu: '_MENU_ Sayfa baþýna kayýt',
 				sProcessing: '<i class="fas fa-spinner fa-spin"></i> Loading',
 				sSearch: ''
 			},
@@ -650,7 +650,7 @@ window.theme.fn = {
 
 				$search
 					.attr({
-						placeholder: typeof options.searchPlaceholder !== 'undefined' ? options.searchPlaceholder : 'Search...'
+						placeholder: typeof options.searchPlaceholder !== 'undefined' ? options.searchPlaceholder : 'Arama...'
 					})
 					.removeClass('form-control-sm').addClass('form-control pull-right');
 
@@ -1480,21 +1480,24 @@ window.theme.fn = {
 
 		events: function() {
 			var _self = this;
-
+			
 			this.$body.find( '[data-lock-screen="true"]' ).on( 'click', function( e ) {
 				e.preventDefault();
 
 				_self.show();
+				
+				
 			});
-
+			
 			return this;
 		},
 
 		formEvents: function( $form ) {
 			var _self = this;
-
+			
 			$form.on('submit', function (e) {
 				e.preventDefault();
+				
 				var data = {
 					pwdSifre: $('#Sifre').val(),
 					pwdYeni: $('#YeniSifre').val(),
@@ -1598,7 +1601,7 @@ window.theme.fn = {
 
 			// always search in case something is changed through ajax
 			$info    = $( '#userbox' );
-			
+			picture = $info.find('.profile-picture img').attr('data-lock-picture');
 			name     = $info.find( '.profile-info' ).attr( 'data-lock-name' );
 			email    = $info.find( '.profile-info' ).attr( 'data-lock-email' );
 
@@ -1617,7 +1620,6 @@ window.theme.fn = {
 				'<div class="card-body">',
 				'<form >',
 				'<div class="current-user text-center" style="margin-top:0px;">',
-
 				'<h2 id="LockUserName" class="user-name text-dark m-0">{{username}}</h2>',
 				'<p  id="LockUserEmail" class="user-email m-0">{{email}}</p>',
 				'</div>',
@@ -1659,8 +1661,11 @@ window.theme.fn = {
 	$(function() {
 		LockScreen.initialize();
 	});
-
+	$('#LockScreenInline').click(function () {
+		alert("ceylan");
+	});
 }).apply(this, [jQuery]);
+
 
 // Map Builder
 (function( theme, $ ) {
