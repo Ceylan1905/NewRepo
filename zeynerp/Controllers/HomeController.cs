@@ -45,7 +45,6 @@ namespace zeynerp.Controllers
         }
 
         [HttpPost]
-
         public JsonResult ChangePassword(string formData)
         {
             
@@ -62,6 +61,7 @@ namespace zeynerp.Controllers
             }
             return Json(new { status = false, message = "Hata var!" });
         }
+
         public ActionResult Activation(Guid id)
         {
             ViewBag.Message = "Invalid Activation code.";
@@ -80,11 +80,9 @@ namespace zeynerp.Controllers
         {
             return View();
         }
-
-       
-        [Route("giris")]
-        [HttpPost]
       
+        [Route("giris")]
+        [HttpPost]    
         public ActionResult SignIn(LoginViewModel loginViewModel)
         {
 
@@ -146,6 +144,7 @@ namespace zeynerp.Controllers
 
             return View();
         }
+
         [Authorize]
         public ActionResult Authorization()
         {
@@ -181,6 +180,20 @@ namespace zeynerp.Controllers
             Employee employee = Session["employee"] as Employee;
             List<Company> companies = companyProcess.GetCompany(employee);
             return View(companies);
+        }
+
+        [Route("insan-kaynaklari/personel-listesi")]
+        [Authorize]
+        public ActionResult Employees()
+        {
+            Employee employee = Session["employee"] as Employee;
+            List<Employee> employees = manager_employee.GetCustomer(employee);
+            return View(employees);
+        }
+
+        public ActionResult Deneme(int id)
+        {
+            return View();
         }
 
         public ActionResult Logout()

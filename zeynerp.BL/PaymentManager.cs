@@ -17,7 +17,7 @@ namespace zeynerp.BL
             {
                 Repository<Remainder> repo = new Repository<Remainder>(employee.CompanyName);
 
-                if(repo.List().Count>0)
+                if(repo.List().Count > 0)
                 {
                     float? remainder = repo.GetRemainder();
                     return remainder;

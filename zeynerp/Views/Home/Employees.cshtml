@@ -1,0 +1,141 @@
+﻿@using zeynerp.Entities
+@model List<Employee>
+@{
+    ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Personel Listesi</h2>
+
+        <div class="right-wrapper text-right pr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>İnsan Kaynakları</span></li>
+                <li><span>Personel Listesi</span></li>
+            </ol>
+        </div>
+    </header>
+
+    <!-- start: page -->
+
+    <div class="row">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                        <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                    </div>
+
+                    <h2 class="card-title">Personel Listesi</h2>
+                </header>
+                <div class="card-body">
+                    <a class="modal-with-form btn btn-primary mb-3" href="#modalForm">Ekle <i class="fas fa-plus"></i></a>
+                    <a class="btn btn-default float-right">PDF</a>
+
+                    <!-- Modal Form -->
+                    <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+                        <section class="card">
+                            <header class="card-header">
+                                <h2 class="card-title d-inline">Registration Form</h2>
+                            </header>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputAd4">Ad</label>
+                                            <input type="text" class="form-control" id="inputAd4" placeholder="Ad">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3 mb-lg-0">
+                                            <label for="inputSoyad4">Soyad</label>
+                                            <input type="text" class="form-control" id="inputSoyad4" placeholder="Soyad">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputAd4">Doğum Yeri</label>
+                                            <select>
+                                                <option value="value">text</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3 mb-lg-0">
+                                            <label for="inputDate">Doğum Tarihi</label>
+                                            <input type="date" class="form-control" id="inputDate">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCity">City</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">State</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">Zip</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <footer class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <button class="btn btn-primary modal-confirm">Kaydet</button>
+                                        <button class="btn btn-default modal-dismiss">Kapat</button>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                    </div>
+
+
+                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>Adı Soyadı</th>
+                                <th>Doğum Yeri</th>
+                                <th>Doğum Tarihi</th>
+                                <th>Telefon</th>
+                                <th>Firma</th>
+                                <th>Sorumluluk Merkezi</th>
+                                <th>Pozisyon</th>
+                                <th>İşe Giriş Çıkış Tarihi</th>
+                                <th>Çalışma Süresi</th>
+                                <th>Yıllık izin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Employee employee in Model)
+                            {
+                                <tr>
+                                    <td>@Html.ActionLink(@employee.Name, "Deneme", "Home", new { id = employee.Id }, new { @class = "text-decoration-none text-dark" })</td>
+                                    @*@Html.ActionLink(@employee.Name, "Deneme", "Home", new { area = employee.Id }, new { @class = "text-decoration-none text-dark" })*@
+                                    <td>Yalova</td>
+                                    <td>04-10-1993</td>
+                                    <td>(545) 212-93-77</td>
+                                    <td>Kadro</td>
+                                    <td>S-Mak</td>
+                                    <td>Software Developer</td>
+                                    <td>01-01-2020 / 01-01-2020</td>
+                                    <td>1 Yıl</td>
+                                    <td>10</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+

@@ -69,7 +69,7 @@ namespace zeynerp.BL
 
                 string body = "Hello " + result_user.Result.Name + ",";
                 body += "<br /><br />Please click the following link to activate your account";
-                body += "<br /><a href = '" + string.Format("{0}://{1}/Home/Activation/{2}", "https", "localhost:44394", result_user.Result.Guid) + "'>Click here to activate your account.</a>";
+                body += "<br /><a href = '" + string.Format("{0}://{1}/Home/Activation/{2}", "https", "zeynerp.com", result_user.Result.Guid) + "'>Click here to activate your account.</a>";
                 body += "<br /><br />Thanks";
 
                 MailHelper mailHelper = new MailHelper();
@@ -144,7 +144,7 @@ namespace zeynerp.BL
         public List<Employee> GetCustomer(Employee employeeModel)
         {
             Repository<Employee> repo = new Repository<Employee>(employeeModel.CompanyName);
-            var list=repo.List();
+            var list = repo.List();
             return list;
         }
         public BL_Result<Employee> Login(LoginViewModel loginViewModel)
