@@ -173,15 +173,15 @@ namespace zeynerp.BL
 
         public BL_Result<Employee> EditProfile(Employee employeeModel)
         {
-            Repository<Employee> repo = new Repository<Employee>(employeeModel.CompanyName);
-            Employee employee = repo.Find(x => x.Id == employeeModel.Id);
-            if (employee != null)
-            {
-                employee.ProfileImage = employeeModel.ProfileImage;
-                repo.Update(employee);
+            //Repository<Employee> repo = new Repository<Employee>(employeeModel.CompanyName);
+            //Employee employee = repo.Find(x => x.Id == employeeModel.Id);
+            //if (employee != null)
+            //{
+            //    employee.ProfileImage = employeeModel.ProfileImage;
+            //    repo.Update(employee);
 
-                result_employee.Result = repo.Find(x => x.Id == employee.Id);
-            }
+            //    result_employee.Result = repo.Find(x => x.Id == employee.Id);
+            //}
             return result_employee;
         }
     }

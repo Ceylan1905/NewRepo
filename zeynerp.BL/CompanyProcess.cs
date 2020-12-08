@@ -34,11 +34,25 @@ namespace zeynerp.BL
             return result_company;
         }
 
-        public List<Company> GetCompany(Employee employeeModel)
+        public List<Company> GetCompanyList(Employee employeeModel)
         {
             Repository<Company> companyList = new Repository<Company>(employeeModel.CompanyName);
             var list = companyList.List();
             return list;
+        }
+
+        public Company GetCompany(Employee employeeModel, int id)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            Company company = comp.Find(x => x.Id == id );
+        //    if (employee != null)
+        //    {
+        //        employee.ProfileImage = employeeModel.ProfileImage;
+        //        repo.Update(employee);
+
+        //        result_employee.Result = repo.Find(x => x.Id == employee.Id);
+        //    }
+            return company;
         }
     }
 }

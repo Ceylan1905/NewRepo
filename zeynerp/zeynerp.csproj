@@ -2424,6 +2424,7 @@
     <Content Include="Views\Home\Authorization.cshtml" />
     <Content Include="Views\Home\CompanyAdd.cshtml" />
     <Content Include="Views\Home\CompanyList.cshtml" />
+    <Content Include="Views\Home\CompanyDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
