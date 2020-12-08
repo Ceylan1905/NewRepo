@@ -1480,21 +1480,24 @@ window.theme.fn = {
 
 		events: function() {
 			var _self = this;
-
+			
 			this.$body.find( '[data-lock-screen="true"]' ).on( 'click', function( e ) {
 				e.preventDefault();
 
 				_self.show();
+				
+				
 			});
-
+			
 			return this;
 		},
 
 		formEvents: function( $form ) {
 			var _self = this;
-
+			
 			$form.on('submit', function (e) {
 				e.preventDefault();
+				
 				var data = {
 					pwdSifre: $('#Sifre').val(),
 					pwdYeni: $('#YeniSifre').val(),
@@ -1658,8 +1661,11 @@ window.theme.fn = {
 	$(function() {
 		LockScreen.initialize();
 	});
-
+	$('#LockScreenInline').click(function () {
+		alert("ceylan");
+	});
 }).apply(this, [jQuery]);
+
 
 // Map Builder
 (function( theme, $ ) {
