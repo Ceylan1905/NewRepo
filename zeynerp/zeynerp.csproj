@@ -4344,6 +4344,7 @@
     <Content Include="Views\Home\CompanyAdd.cshtml" />
     <Content Include="Views\Home\CompanyList.cshtml" />
     <Content Include="Views\Home\Employees.cshtml" />
+    <Content Include="Views\Home\CompanyDetail.cshtml" />
     <Content Include="Views\Home\Deneme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -11,7 +11,8 @@ using zeynerp.Entities;
 using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
-{ 
+{
+
     public class HomeController : Controller
     {
         private Manager<User> manager_user = new Manager<User>();
@@ -36,7 +37,7 @@ namespace zeynerp.Controllers
             if (ModelState.IsValid)
             {
                 BL_Result<User> bl_Result = manager_user.Register(registerViewModel);
-                if(bl_Result.Messages.Count > 0)
+                if (bl_Result.Messages.Count > 0)
                 {
                     bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
                 }
@@ -47,17 +48,17 @@ namespace zeynerp.Controllers
         [HttpPost]
         public JsonResult ChangePassword(string formData)
         {
-            
-                var employee = Session["employee"] as Employee;
-                if(employee!=null)
-                {
+
+            var employee = Session["employee"] as Employee;
+            if (employee != null)
+            {
                 if (formData != "")
                 {
                     manager_employee.ManagePassword(employee, formData);
                     return Json(new { status=true, message = "Şifreniz değiştirildi!",url="/panel" });
                    
                 }
-             
+
             }
             return Json(new { status = false, message = "Hata var!" });
         }
@@ -90,7 +91,7 @@ namespace zeynerp.Controllers
             {
                 BL_Result<Employee> bl_Result = manager_employee.Login(loginViewModel);
 
-                if(bl_Result.Messages.Count > 0)
+                if (bl_Result.Messages.Count > 0)
                 {
                     bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
                     return View();
@@ -157,7 +158,7 @@ namespace zeynerp.Controllers
                 ViewBag.Remainder = remainder;
                 return View(employees);
             }
-           return  RedirectToAction("SignIn");
+            return RedirectToAction("SignIn");
         }
 
         [Authorize]
@@ -178,9 +179,19 @@ namespace zeynerp.Controllers
         public ActionResult CompanyList()
         {
             Employee employee = Session["employee"] as Employee;
-            List<Company> companies = companyProcess.GetCompany(employee);
+            List<Company> companies = companyProcess.GetCompanyList(employee);
             return View(companies);
         }
+        
+        
+        public ActionResult CompanyDetail(int id)
+        {
+            
+            Employee employee = Session["employee"] as Employee;
+            Company comp = companyProcess.GetCompany(employee, id);
+            return View(comp);
+        }
+
 
         [Route("insan-kaynaklari/personel-listesi")]
         [Authorize]
