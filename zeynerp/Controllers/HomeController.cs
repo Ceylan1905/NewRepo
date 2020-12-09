@@ -191,7 +191,7 @@ namespace zeynerp.Controllers
             return View(employees);
         }
 
-        public ActionResult Deneme(int id)
+        public ActionResult Deneme()
         {
             return View();
         }
