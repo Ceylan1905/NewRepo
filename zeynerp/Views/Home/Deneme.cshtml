@@ -29,7 +29,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-2-5 col-xl-1-5">
-                                @*<i class="card-big-info-icon bx bx-dollar-circle"></i>*@
                                 <div class="thumb-info mb-3">
                                     <img src="~/Assets/img/!logged-user.jpg" class="rounded img-fluid" alt="John Doe">
                                     <div class="thumb-info-edit">
@@ -39,85 +38,132 @@
                                         <input id="file-input" type="file" name="imageFile" onchange="this.form.submit()" style="display: none;" />
                                     </div>
                                 </div>
-                                @*<h2 class="card-big-info-title">Billing Info</h2>
-                                <p class="card-big-info-desc">Add here the customer billing info with all details and necessary information.</p>*@
                             </div>
                             <div class="col-lg-3-5 col-xl-4-5">
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-4 col-xl-2 control-label text-lg-right mb-0 invisible">Ad</label>
-                                    <div class="col-lg-5 col-xl-4">
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Ad</label>
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingFirstName" value="" id="inputFirstName" required />
+                                        <input id="inputFirstName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
                                     </div>
-                                    <div class="col-lg-5 col-xl-4">
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">Soyad</label>
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingFirstName" value="" id="inputLastName" required />
+                                        <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Last Name</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingLastName" value="" required />
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Doğum Yeri</label>
+                                        <select data-plugin-selectTwo class="form-control populate">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">Doğum Tarihi</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </span>
+                                            </span>
+                                            <input id="date" data-plugin-masked-input data-input-mask="99/99/9999" placeholder="__/__/____" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Company</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingCompany" value="" />
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Vatandaşlık Numarası</label>
+                                        <input id="inputFirstName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                    </div>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">SGK Numarası</label>
+                                        <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Address Line 1</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingAddressLine1" value="" required />
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Askerlik Durumu</label>
+                                        <select data-plugin-selectTwo class="form-control populate">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Address Line 2</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingAddressLine2" value="" />
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">City</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingCity" value="" required />
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Postcode / ZIP</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingPostCodeZip" value="" required />
-                                    </div>
-                                </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Country / Region</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <select class="form-control form-control-modern" name="customerBillingCountryRegion">
-                                            <option value="">Select a country / region</option>
-                                            <option value="country1">Country 1</option>
-                                            <option value="country2">Country 2</option>
-                                            <option value="country3">Country 3</option>
-                                            <option value="country4">Country 4</option>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">Medeni Hal</label>
+                                        <select data-plugin-selectTwo class="form-control populate">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">State / Country</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <select class="form-control form-control-modern" name="customerBillingStateCountry">
-                                            <option value="">Select a State</option>
-                                            <option value="state1">State 1</option>
-                                            <option value="state2">State 2</option>
-                                            <option value="state3">State 3</option>
-                                            <option value="state4">State 4</option>
-                                        </select>
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Telefon</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-phone"></i>
+                                                </span>
+                                            </span>
+                                            <input id="phone" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-5 row mr-auto p-0 m-0">
+                                        <div class="col-lg-4 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Araç</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <label for="inputLastName">Yakını</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Phone</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="customerBillingPhone" value="" />
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 row ml-auto p-0 m-0">
+                                        <div class="col-lg-6 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Yakını</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="inputLastName">Yakını</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">Yakını Telefon</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-phone"></i>
+                                                </span>
+                                            </span>
+                                            <input id="phone" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
+                                    <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                        <label for="inputFirstName">Adres</label>
+                                        <textarea class="form-control" rows="3" data-plugin-maxlength maxlength="140"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -132,93 +178,78 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-2-5 col-xl-1-5">
-                                <i class="card-big-info-icon bx bxs-briefcase"></i>
-                                <h2 class="card-big-info-title">İş Bilgileri</h2>
-                                @*<p class="card-big-info-desc">Add here the customer shipping info with all details and necessary information.</p>*@
+                                <i class="card-big-info-icon bx bx-mail-send"></i>
+                                <h2 class="card-big-info-title">İş Bilgileri - İcon eklenecek</h2>
+                                <p class="card-big-info-desc">Add here the customer shipping info with all details and necessary information.</p>
                             </div>
                             <div class="col-lg-3-5 col-xl-4-5">
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <div class="checkbox">
-                                            <label class="my-2">
-                                                <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
-                                                Check this box to use same information as billing for shipping.
-                                            </label>
-                                        </div>
+                                <!-- <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <div class="checkbox">
+                                        <label class="my-2">
+                                            <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
+                                            Check this box to use same information as billing for shipping.
+                                        </label>
                                     </div>
                                 </div>
+                            </div> -->
                                 <div class="shipping-fields-wrapper collapse show">
                                     <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingFirstName" value="" required />
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Firma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Last Name</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingLastName" value="" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Company</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingCompany" value="" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Address Line 1</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingAddressLine1" value="" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Address Line 2</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingAddressLine2" value="" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">City</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingCity" value="" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Postcode / ZIP</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingPostCodeZip" value="" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Country / Region</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <select class="form-control form-control-modern" name="customerShippingCountryRegion">
-                                                <option value="">Select a country / region</option>
-                                                <option value="country1">Country 1</option>
-                                                <option value="country2">Country 2</option>
-                                                <option value="country3">Country 3</option>
-                                                <option value="country4">Country 4</option>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Sorumluluk Merkezi</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">State / Country</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <select class="form-control form-control-modern" name="customerShippingStateCountry">
-                                                <option value="">Select a State</option>
-                                                <option value="state1">State 1</option>
-                                                <option value="state2">State 2</option>
-                                                <option value="state3">State 3</option>
-                                                <option value="state4">State 4</option>
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Amir</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Pozisyon</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
-                                        <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Phone</label>
-                                        <div class="col-lg-7 col-xl-6">
-                                            <input type="text" class="form-control form-control-modern" name="customerShippingPhone" value="" />
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Başlangıç Tarihi</label>
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-calendar-alt"></i>
+                                                    </span>
+                                                </span>
+                                                <input id="date" data-plugin-masked-input data-input-mask="99/99/9999" placeholder="__/__/____" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Maaş</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
                                         </div>
                                     </div>
                                 </div>
@@ -234,27 +265,264 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-2-5 col-xl-1-5">
-                                <i class="card-big-info-icon bx bx-plus-medical"></i>
-                                <h2 class="card-big-info-title">Sağlık Durumu</h2>
-                                @*<p class="card-big-info-desc">Add here the customer account info with all details and necessary information.</p>*@
+                                <i class="card-big-info-icon bx bx-mail-send"></i>
+                                <h2 class="card-big-info-title">Dil Bilgisi - İcon eklenecek</h2>
+                                <p class="card-big-info-desc">Add here the customer shipping info with all details and necessary information.</p>
                             </div>
                             <div class="col-lg-3-5 col-xl-4-5">
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Email / Username</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="email" class="form-control form-control-modern" name="customerEmailUsername" value="" required />
+                                <!-- <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <div class="checkbox">
+                                        <label class="my-2">
+                                            <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
+                                            Check this box to use same information as billing for shipping.
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Password</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="password" class="form-control form-control-modern" name="customerPassword" value="" required />
+                            </div> -->
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">İngilizce Konuşma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">İngilizce Yazma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">İngilizce Okuma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">Almanca Konuşma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Almanca Yazma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">Almanca Okuma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">Fransızca Konuşma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Fransızca Yazma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">Fransızca Okuma</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-9 col-xl-9 offset-lg-1">
+                                            <label for="inputFirstName">Diğer</label>
+                                            <textarea class="form-control" rows="3" data-plugin-maxlength maxlength="140"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Password Confirm</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="password" class="form-control form-control-modern" name="customerPasswordConfirm" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-mail-send"></i>
+                                <h2 class="card-big-info-title">Eğitim Bilgileri - İcon eklenecek</h2>
+                                <p class="card-big-info-desc">Add here the customer shipping info with all details and necessary information.</p>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <!-- <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <div class="checkbox">
+                                        <label class="my-2">
+                                            <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
+                                            Check this box to use same information as billing for shipping.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                            <label for="inputFirstName">Okul Adı</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                            <label for="inputFirstName">Bölümü</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Mezuniyet Tarihi</label>
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-calendar-alt"></i>
+                                                    </span>
+                                                </span>
+                                                <input id="date" data-plugin-masked-input data-input-mask="99/99/9999" placeholder="__/__/____" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Not Ortalaması</label>
+                                            <input id="inputLastName" type="text" class="form-control" name="customerBillingFirstName" value="" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-mail-send"></i>
+                                <h2 class="card-big-info-title">Diğer Bilgiler - İcon eklenecek</h2>
+                                <p class="card-big-info-desc">Add here the customer shipping info with all details and necessary information.</p>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <!-- <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">Same as billing</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <div class="checkbox">
+                                        <label class="my-2">
+                                            <input name="customerShippingSameAsBilling" type="checkbox" value="" data-toggle="collapse" data-target=".shipping-fields-wrapper">
+                                            Check this box to use same information as billing for shipping.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Geçirmiş olduğunuz önemli hastalıklar var mı?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Sağlık durumunuzda belirtmeniz gereken özel bir durum var mı?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Otomobil ehliyetiniz var mı?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Mesaiye kalır mısınız?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Sigara içiyor musunuz?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Alkol kullanıyor musunuz?</label>
+                                            <select data-plugin-selectTwo class="form-control populate">
+                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="HI">Hawaii</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
