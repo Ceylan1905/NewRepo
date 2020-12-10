@@ -1,5 +1,18 @@
 ﻿/* Add here all your JS customizations */
+function getSelected() {
+    var sList = "";
+    $('input[type=checkbox]').each(function () {
+        if (this.checked) {
+            sList += this.value + ", ";
 
+        }
+    });
+    $("#CompanyKind").val(sList);
+    alert(sList);
+}
+
+
+$(document).ready(function () {
     $("#companycheck").click(function () {
         if ($(this).is(":checked")) {
             $("#sirketAdi").hide();

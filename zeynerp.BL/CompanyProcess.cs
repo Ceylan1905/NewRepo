@@ -20,6 +20,7 @@ namespace zeynerp.BL
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
                 //Kind = companyModel.Kind,
+                Kind = companyModel.Kind,
                 Phone = companyModel.Phone,
                 Fax = companyModel.Fax,
                 Eposta = companyModel.Eposta,
@@ -30,15 +31,29 @@ namespace zeynerp.BL
                 Confirmation = companyModel.Confirmation
 
 
-            });
+            }) ; 
             return result_company;
         }
 
-        public List<Company> GetCompany(Employee employeeModel)
+        public List<Company> GetCompanyList(Employee employeeModel)
         {
             Repository<Company> companyList = new Repository<Company>(employeeModel.CompanyName);
             var list = companyList.List();
             return list;
+        }
+
+        public Company GetCompany(Employee employeeModel, int id)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            Company company = comp.Find(x => x.Id == id );
+            return company;
+        }
+        
+        public int CompanyUpdate(Employee employeeModel, Company companyModel)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            int updateResult=comp.UpdateCompany(companyModel);
+            return updateResult;
         }
     }
 }
