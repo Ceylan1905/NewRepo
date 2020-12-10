@@ -178,5 +178,12 @@ namespace zeynerp.BL
             //}
             return result_employee;
         }
+
+        public Employee getCustomerId(Employee employeeModel, int id)
+        {
+            Repository<Employee> repo = new Repository<Employee>(employeeModel.CompanyName);
+            Employee employee = repo.Find(x => x.Id == id);
+            return employee;
+        }
     }
 }
