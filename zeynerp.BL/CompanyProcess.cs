@@ -20,6 +20,7 @@ namespace zeynerp.BL
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
                 //Kind = companyModel.Kind,
+                Kind = companyModel.Kind,
                 Phone = companyModel.Phone,
                 Fax = companyModel.Fax,
                 Eposta = companyModel.Eposta,
@@ -30,7 +31,7 @@ namespace zeynerp.BL
                 Confirmation = companyModel.Confirmation
 
 
-            });
+            }) ; 
             return result_company;
         }
 
@@ -45,14 +46,14 @@ namespace zeynerp.BL
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
             Company company = comp.Find(x => x.Id == id );
-        //    if (employee != null)
-        //    {
-        //        employee.ProfileImage = employeeModel.ProfileImage;
-        //        repo.Update(employee);
-
-        //        result_employee.Result = repo.Find(x => x.Id == employee.Id);
-        //    }
             return company;
+        }
+        
+        public int CompanyUpdate(Employee employeeModel, Company companyModel)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            int updateResult=comp.UpdateCompany(companyModel);
+            return updateResult;
         }
     }
 }

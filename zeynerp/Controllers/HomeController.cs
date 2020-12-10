@@ -15,6 +15,7 @@ namespace zeynerp.Controllers
 
     public class HomeController : Controller
     {
+        
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
         private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
@@ -162,6 +163,7 @@ namespace zeynerp.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult CompanyAdd()
         {
             return View();
@@ -172,7 +174,6 @@ namespace zeynerp.Controllers
         {
             Employee employee = Session["employee"] as Employee;
             BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, companyModel);
-
             return View();
         }
 
@@ -190,6 +191,14 @@ namespace zeynerp.Controllers
             Employee employee = Session["employee"] as Employee;
             Company comp = companyProcess.GetCompany(employee, id);
             return View(comp);
+        }
+
+        [HttpPost]
+        public ActionResult CompanyDetail(Company companyModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            int deneme=companyProcess.CompanyUpdate(employee, companyModel);
+            return View();
         }
 
 
