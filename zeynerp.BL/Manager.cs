@@ -1,6 +1,7 @@
 ﻿using Scrypt;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,13 +38,14 @@ namespace zeynerp.BL
                 {
                     repo_user.Insert(new User()
                     {
-                        Name = registerViewModel.Name,
+                        Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(registerViewModel.Name) ,
+                        Surname = registerViewModel.Surname.ToUpper(),
                         Email = registerViewModel.Email,
                         Password = scryptPassword,
                         Repassword = scryptPassword,
                         IsAdmin = false,
                         IsActive = false,
-                        CompanyName = registerViewModel.CompanyName,
+                        CompanyName = registerViewModel.CompanyName.ToUpper(),
                         CompanyId = companyId,
                         Birthday = DateTime.Now,
                         Guid = Guid.NewGuid()
@@ -53,7 +55,8 @@ namespace zeynerp.BL
                 {
                     repo_user.Insert(new User()
                     {
-                        Name = registerViewModel.Name,
+                        Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(registerViewModel.Name),
+                        Surname = registerViewModel.Surname.ToUpper(),
                         Email = registerViewModel.Email,
                         Password = scryptPassword,
                         Repassword = scryptPassword,
@@ -112,7 +115,8 @@ namespace zeynerp.BL
 
                     repo.Insert(new Employee()
                     {
-                        Name = user.Name,
+                        Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase( user.Name),
+                        Surname=user.Surname.ToUpper(),
                         Email = user.Email,
                         Password = scryptPassword,
                         Repassword = scryptPassword,
@@ -127,7 +131,8 @@ namespace zeynerp.BL
                 {
                     repo.Insert(new Employee()
                     {
-                        Name = user.Name,
+                        Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(user.Name),
+                        Surname = user.Surname.ToUpper(),
                         Email = user.Email,
                         Password = scryptPassword,
                         Repassword = scryptPassword,

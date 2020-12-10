@@ -15,7 +15,7 @@ namespace zeynerp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-          
+            Database.SetInitializer<DatabaseContext>(null);  
         }
 
       

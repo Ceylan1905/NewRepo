@@ -18,10 +18,13 @@
     {
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group mb-3">
-            <label>İsim Soyisim</label>
+            <label>İsim</label>
             @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", name = "name", type = "text" })
         </div>
-
+        <div class="form-group mb-3">
+            <label>Soyisim</label>
+            @Html.TextBoxFor(model => model.Surname, new { @class = "form-control form-control-lg", name = "surname", type = "text" })
+        </div>
         <div class="form-group mb-3">
             <label>E-mail Adres</label>
             @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg", name = "email", type = "email" })

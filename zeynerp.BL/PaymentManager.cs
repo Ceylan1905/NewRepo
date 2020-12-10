@@ -28,5 +28,18 @@ namespace zeynerp.BL
             }
             return null;
         }
+
+        public int UpdateRemainder(Employee employee,float remainder)
+        {
+            Repository<Remainder> repo = new Repository<Remainder>(employee.CompanyName);
+            int result=repo.UpdateRemainder(employee, remainder);
+            if (result>0)
+                return result;
+            else
+            {
+                 return 0;
+            }
+           
+        }
     }
 }

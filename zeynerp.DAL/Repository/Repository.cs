@@ -62,6 +62,17 @@ namespace zeynerp.DAL.Repository
             return Save();
 
         }
+
+        public int UpdateRemainder(Employee employee,float remainder)
+        {
+            Remainder _remainder=new Remainder{ 
+            remainder=remainder,
+            paymentDate=DateTime.Now,
+            };
+            databaseContext.Remainders.Add(_remainder);
+            return databaseContext.SaveChanges() ;
+
+        }
         public List<T> List()
         {
             return contextObj.ToList();

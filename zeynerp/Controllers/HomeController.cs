@@ -183,8 +183,23 @@ namespace zeynerp.Controllers
             return View(companies);
         }
 
+    
+        public ActionResult guncelleBakiye(float bakiye)
+        {
+            Employee employee = Session["employee"] as Employee;
+            int updateResult = payment.UpdateRemainder(employee, bakiye);
+            if(updateResult>0)
+            {
+
+                Session["remainder"] = bakiye;
+
+                return RedirectToAction("Authorization");
+            }
+            return View();
+        }
         public ActionResult Logout()
         {
+            Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
         }

@@ -1452,6 +1452,7 @@ window.theme.fn = {
 (function($) {
 
 	'use strict';
+	
 
 	var LockScreen = {
 
@@ -1483,12 +1484,9 @@ window.theme.fn = {
 			
 			this.$body.find( '[data-lock-screen="true"]' ).on( 'click', function( e ) {
 				e.preventDefault();
-
 				_self.show();
-				
-				
 			});
-			
+
 			return this;
 		},
 
@@ -1562,18 +1560,23 @@ window.theme.fn = {
 			
 				
 			});
+
+			$form.click(function () {
+
+				history.go(-1);
+			});
 		},
 
 		show: function() {
 			var _self = this,
 				userinfo = this.getUserInfo();
-
-			this.$userPicture.attr( 'src', userinfo.picture );
-			this.$userName.text( userinfo.username );
+			
+			this.$userPicture.attr('src', userinfo.picture);
+			this.$userName.text(userinfo.username + userinfo.surname);
 			this.$userEmail.text( userinfo.email );
 
 			this.$body.addClass( 'show-lock-screen' );
-
+			
 			$.magnificPopup.open({
 				items: {
 					src: this.lockHTML,
@@ -1583,32 +1586,41 @@ window.theme.fn = {
 				mainClass: 'mfp-lock-screen',
 				callbacks: {
 					change: function() {
-						_self.formEvents( this.content.find( 'form' ) );
+						_self.formEvents(this.content.find('form'));
+
+						
 					}
 				}
 			});
+			
 		},
+		
 
-		hide: function() {
+		hide: function () {
+			
+		
 			$.magnificPopup.close();
+			
 		},
 
 		getUserInfo: function() {
 			var $info,
 				picture,
 				name,
-				email;
+				email,
+				surname;
 
 			// always search in case something is changed through ajax
 			$info    = $( '#userbox' );
 			picture = $info.find('.profile-picture img').attr('data-lock-picture');
 			name     = $info.find( '.profile-info' ).attr( 'data-lock-name' );
 			email    = $info.find( '.profile-info' ).attr( 'data-lock-email' );
-
+			surname = $info.find('.profile-info').attr('data-lock-surname');
 			return {
 				
-				username: name,
-				email: email
+				username: name+" "+surname,
+				email: email,
+				
 			};
 		},
 
@@ -1650,8 +1662,10 @@ window.theme.fn = {
 				]
 				.join( '' )
 				.replace( /\{\{picture\}\}/, userinfo.picture )
-				.replace( /\{\{username\}\}/, userinfo.username )
-				.replace( /\{\{email\}\}/, userinfo.email );
+				.replace(/\{\{username\}\}/, userinfo.username)
+				.replace(/\{\{email\}\}/, userinfo.email);
+
+
 		}
 
 	};
@@ -1661,9 +1675,9 @@ window.theme.fn = {
 	$(function() {
 		LockScreen.initialize();
 	});
-	$('#LockScreenInline').click(function () {
-		alert("ceylan");
-	});
+
+	
+	
 }).apply(this, [jQuery]);
 
 

@@ -178,6 +178,7 @@
     <Content Include="Assets\img\widget-twitter-profile.jpg" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\examples\examples.dashboard.js" />
+    <Content Include="Assets\js\examples\examples.modals.js" />
     <Content Include="Assets\js\theme.admin.extension.js" />
     <Content Include="Assets\js\theme.init.js" />
     <Content Include="Assets\js\theme.js" />
