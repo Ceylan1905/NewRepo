@@ -42,6 +42,7 @@ namespace zeynerp.BL
             return list;
         }
 
+
         public Company GetCompany(Employee employeeModel, int id)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
