@@ -171,9 +171,8 @@ namespace zeynerp.Controllers
         public ActionResult CompanyAdd(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            BL_Result<Company> company_result = companyProcess.CompanyAdd(employee, companyModel);
-
-            return View();
+            int Id = companyProcess.CompanyAdd(employee, companyModel);
+            return RedirectToAction("CompanyDetail", new {Id});
         }
 
         public ActionResult CompanyList()
@@ -181,6 +180,36 @@ namespace zeynerp.Controllers
             Employee employee = Session["employee"] as Employee;
             List<Company> companies = companyProcess.GetCompany(employee);
             return View(companies);
+        }
+        
+        
+        public ActionResult CompanyDetail(int id)
+        {
+            Employee employee = Session["employee"] as Employee;
+            Company comp = companyProcess.GetCompany(employee, id);
+            return View(comp);
+        }
+
+        [HttpPost]
+        public ActionResult CompanyDetail(Company companyModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            int deneme=companyProcess.CompanyUpdate(employee, companyModel);
+            return View(companyModel);
+        }
+
+        [Route("insan-kaynaklari/personel-listesi")]
+        [Authorize]
+        public ActionResult Employees()
+        {
+            Employee employee = Session["employee"] as Employee;
+            List<Employee> employees = manager_employee.GetCustomer(employee);
+            return View(employees);
+        }
+
+        public ActionResult Deneme()
+        {
+            return View();
         }
 
     

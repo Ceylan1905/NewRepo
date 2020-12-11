@@ -19,7 +19,7 @@ namespace zeynerp.BL
             {
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
-                //Kind = companyModel.Kind,
+                Kind = companyModel.Kind,
                 Phone = companyModel.Phone,
                 Fax = companyModel.Fax,
                 Eposta = companyModel.Eposta,
@@ -28,10 +28,9 @@ namespace zeynerp.BL
                 BillingAddress = companyModel.BillingAddress,
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
-
-
-            });
-            return result_company;
+            }) ;
+            int sonKayitId = comp.deneme();
+            return sonKayitId;
         }
 
         public List<Company> GetCompany(Employee employeeModel)
