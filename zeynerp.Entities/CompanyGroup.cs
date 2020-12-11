@@ -12,4 +12,5 @@ namespace zeynerp.Entities
         public string Name { get; set; }
         public YesNo Confirmation { get; set; }
     }
+
 }
