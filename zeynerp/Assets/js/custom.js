@@ -12,7 +12,7 @@ function getSelected() {
 }
 
 
-$(document).ready(function () {
+
     $("#companycheck").click(function () {
         if ($(this).is(":checked")) {
             $("#sirketAdi").hide();
@@ -42,7 +42,7 @@ $(document).ready(function () {
     }
 
     var tutar = 0;
-var bakiye = 0;
+    var bakiye = 0;
     $(".chk").change(function () {
         getValueUsingClass();
         var topla = 0;
@@ -58,7 +58,7 @@ var bakiye = 0;
             $("#tutar").show();
             tutar = 0;
             topla += parseFloat($(this).attr("no") / 365);
-         
+
         });
         tutar = (topla * tarihFarki).toFixed(2);
 
@@ -69,33 +69,33 @@ var bakiye = 0;
 
         bakiye = $("#deneme").attr("no").toString();
         bakiye = parseFloat(bakiye.replace(/,/g, '.'));
-       // bakiye = 637.5;
+        // bakiye = 637.5;
         var aciklama = "";
         var lastDayOfNextMonth = new Date(today.getFullYear(), today.getMonth() + 2, 0);
         var sonrakiAyTutari = (topla * lastDayOfNextMonth.getDate()).toFixed(2);
-       
-        if (bakiye >= tutar && tutar!=0) {
+
+        if (bakiye >= tutar && tutar != 0) {
 
             aciklama = "Belirttiğiniz seçeneklere göre " + d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " tarihinden " + lastDayOfMonth.getDate() + "." + (lastDayOfMonth.getMonth() + 1) + "." + lastDayOfMonth.getFullYear() + " tarihine kadar kullanabilirsiniz." +
                 " <br> Bir sonraki ay programı kullanmaya devam etmek için en az " + sonrakiAyTutari + "₺ ödeme yapmanız gerekir.";
 
-        } 
-       
+        }
+
         else {
-            if(bakiye==0 || bakiye<tutar)
-            aciklama = "Bakiyeniz yetersiz olduğu için işleminiz gerçekleştirilemedi.";
+            if (bakiye == 0 || bakiye < tutar)
+                aciklama = "Bakiyeniz yetersiz olduğu için işleminiz gerçekleştirilemedi.";
         }
         $("#tutar1").html(tutar + "₺");
         $("#aciklama").html(aciklama);
-      
+
 
         if (tutar == 0) {
             $("#aciklama").html("");
         }
-     
-            });
+
+    });
     $('#odemeYap').click(function () {
-       
+
         if (bakiye >= 0 && tutar == 0) {
             $("#modalPayment").html("Ödeme yapmak için en az bir modül seçiniz.");
         }
@@ -103,20 +103,20 @@ var bakiye = 0;
             $("#modalPayment").html("Bakiyeniz yetersiz olduğu için işleminiz gerçekleştirilemedi.");
 
         }
-           
+
 
         else {
-            $("#modalPayment").html("Ödenecek Tutar:" + tutar +"₺ <br>Belirttiğiniz seçeneklere göre ödeme yapmak istediğinizden emin misiniz?");
+            $("#modalPayment").html("Ödenecek Tutar:" + tutar + "₺ <br>Belirttiğiniz seçeneklere göre ödeme yapmak istediğinizden emin misiniz?");
         }
     });
 
-   
+
     function myfunc() {
-       
-        if (bakiye >= tutar && tutar!=0) {
-          
+
+        if (bakiye >= tutar && tutar != 0) {
+
             bakiye = bakiye - tutar;
-            window.location.href = "/Home/guncelleBakiye?bakiye="+bakiye;
+            window.location.href = "/Home/guncelleBakiye?bakiye=" + bakiye;
             $("#tutar").hide();
             $(".chk:checked").each(function () {
                 $(this).prop("checked", false);
