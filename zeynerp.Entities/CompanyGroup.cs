@@ -10,6 +10,11 @@ namespace zeynerp.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public YesNo Confirmation { get; set; }
+        public Active Confirmation { get; set; }
+    }
+    public enum Active
+    {
+        Pasif,
+        Aktif
     }
 }
