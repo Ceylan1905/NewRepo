@@ -103,12 +103,8 @@ namespace zeynerp.DAL.Repository
 
         public int UpdateCompany(Company Comp)
         { 
-            Company company = new Company();
-            company=databaseContext.Companies.Find(Comp.Id);
-            databaseContext.Companies.Attach(company);
-            databaseContext.Entry(company).State = EntityState.Modified;
+            databaseContext.Entry(Comp).State = EntityState.Modified;
             return databaseContext.SaveChanges();
-
         }
 
     }

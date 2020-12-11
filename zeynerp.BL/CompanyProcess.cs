@@ -12,10 +12,10 @@ namespace zeynerp.BL
     {
         private BL_Result<Employee> result_employee = new BL_Result<Employee>();
         private BL_Result<Company> result_company = new BL_Result<Company>();
-        public BL_Result<Company> CompanyAdd(Employee employeeModel, Company companyModel)
+        public int CompanyAdd(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            comp.Insert(new Company()
+            int x=comp.Insert(new Company()
             {
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
@@ -29,10 +29,8 @@ namespace zeynerp.BL
                 BillingAddress = companyModel.BillingAddress,
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
-
-
-            }) ; 
-            return result_company;
+            }) ;
+            return x;
         }
 
         public List<Company> GetCompanyList(Employee employeeModel)
