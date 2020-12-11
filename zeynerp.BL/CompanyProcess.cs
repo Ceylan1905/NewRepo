@@ -12,7 +12,7 @@ namespace zeynerp.BL
     {
         private BL_Result<Employee> result_employee = new BL_Result<Employee>();
         private BL_Result<Company> result_company = new BL_Result<Company>();
-        public BL_Result<Company> CompanyAdd(Employee employeeModel, Company companyModel)
+        public int CompanyAdd(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
             comp.Insert(new Company()
@@ -28,16 +28,31 @@ namespace zeynerp.BL
                 BillingAddress = companyModel.BillingAddress,
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
-            }) ;
+            });
             int sonKayitId = comp.deneme();
             return sonKayitId;
         }
 
-        public List<Company> GetCompany(Employee employeeModel)
+        public List<Company> GetCompanyList(Employee employeeModel)
         {
             Repository<Company> companyList = new Repository<Company>(employeeModel.CompanyName);
             var list = companyList.List();
             return list;
+        }
+
+
+        public Company GetCompany(Employee employeeModel, int id)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            Company company = comp.Find(x => x.Id == id);
+            return company;
+        }
+
+        public int CompanyUpdate(Employee employeeModel, Company companyModel)
+        {
+            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
+            int updateResult = comp.UpdateCompany(companyModel);
+            return updateResult;
         }
     }
 }

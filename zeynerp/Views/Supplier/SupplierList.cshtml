@@ -78,26 +78,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @{int totalNumberOfCompanyGroups = 0;}
-                                if()
-                                @foreach (var item in Model)
-                                {
-                                    totalNumberOfCompanyGroups++;
-                                    <tr>
-                                        <td> @totalNumberOfCompanyGroups </td>
-                                        <td><a href=""> @item.Id </a></td>
-                                        <td> <strong> @item.Name </strong> </td>
-                                        @if (@item.Confirmation == YesNo.Onaysız)
-                                        {
-                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
-                                        }
-                                        else
-                                        {
-                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
-                                        }
-                                        <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
-                                    </tr>
-                                }
+                                
                             </tbody>
                         </table>
                         <hr class="solid mt-5 opacity-4">
