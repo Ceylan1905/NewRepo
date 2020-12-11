@@ -1,10 +1,6 @@
 ﻿/* Add here all your JS customizations */
-function getSelected() {   //CompanyDetail ve CompanyAdd sayfalarinda checkbox secilmesi ile ilgili islemler
-    var sList = "";
-    $('input[type=checkbox]').each(function () {
-        if (this.checked) {
-            sList += this.value + ", ";
 
+<<<<<<< HEAD
         }
     });
     $("#CompanyKind").val(sList);
@@ -12,7 +8,9 @@ function getSelected() {   //CompanyDetail ve CompanyAdd sayfalarinda checkbox s
 }
 
 
-$(document).ready(function () {
+
+=======
+>>>>>>> 649f0c60ec51ccb9060b5a3f53f37c1bee7f39b2
     $("#companycheck").click(function () {
         if ($(this).is(":checked")) {
             $("#sirketAdi").hide();
@@ -126,7 +124,7 @@ $(document).ready(function () {
 
 
 
-});
+
   
 
 

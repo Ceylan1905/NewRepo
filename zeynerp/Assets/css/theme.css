@@ -10970,7 +10970,7 @@ select.select-style-1:focus {
 	font-weight: normal;
 }
 
-/*.form-group:after {
+.form-group:after {
 	content: ".";
 	display: block;
 	clear: both;
@@ -10983,7 +10983,7 @@ select.select-style-1:focus {
 	border-top: 1px solid #f3f3f3;
 	padding-top: 16px;
 	padding-top: 1rem;
-}*/
+}
 
 .form-control {
 	height: auto;

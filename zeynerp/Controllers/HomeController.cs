@@ -11,11 +11,9 @@ using zeynerp.Entities;
 using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
-{
-
+{ 
     public class HomeController : Controller
     {
-        
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
         private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
@@ -38,7 +36,7 @@ namespace zeynerp.Controllers
             if (ModelState.IsValid)
             {
                 BL_Result<User> bl_Result = manager_user.Register(registerViewModel);
-                if (bl_Result.Messages.Count > 0)
+                if(bl_Result.Messages.Count > 0)
                 {
                     bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
                 }
@@ -47,23 +45,23 @@ namespace zeynerp.Controllers
         }
 
         [HttpPost]
+
         public JsonResult ChangePassword(string formData)
         {
-
-            var employee = Session["employee"] as Employee;
-            if (employee != null)
-            {
+            
+                var employee = Session["employee"] as Employee;
+                if(employee!=null)
+                {
                 if (formData != "")
                 {
                     manager_employee.ManagePassword(employee, formData);
                     return Json(new { status=true, message = "Şifreniz değiştirildi!",url="/panel" });
                    
                 }
-
+             
             }
             return Json(new { status = false, message = "Hata var!" });
         }
-
         public ActionResult Activation(Guid id)
         {
             ViewBag.Message = "Invalid Activation code.";
@@ -82,9 +80,11 @@ namespace zeynerp.Controllers
         {
             return View();
         }
-      
+
+       
         [Route("giris")]
-        [HttpPost]    
+        [HttpPost]
+      
         public ActionResult SignIn(LoginViewModel loginViewModel)
         {
 
@@ -92,7 +92,7 @@ namespace zeynerp.Controllers
             {
                 BL_Result<Employee> bl_Result = manager_employee.Login(loginViewModel);
 
-                if (bl_Result.Messages.Count > 0)
+                if(bl_Result.Messages.Count > 0)
                 {
                     bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
                     return View();
@@ -146,7 +146,6 @@ namespace zeynerp.Controllers
 
             return View();
         }
-
         [Authorize]
         public ActionResult Authorization()
         {
@@ -159,7 +158,7 @@ namespace zeynerp.Controllers
                 ViewBag.Remainder = remainder;
                 return View(employees);
             }
-            return RedirectToAction("SignIn");
+           return  RedirectToAction("SignIn");
         }
 
         [Authorize]
@@ -174,7 +173,7 @@ namespace zeynerp.Controllers
         {
             Employee employee = Session["employee"] as Employee;
             int Id = companyProcess.CompanyAdd(employee, companyModel);
-            return RedirectToAction("CompanyDetail", new {Id});
+            return RedirectToAction("CompanyDetail", new { Id });
         }
 
         public ActionResult CompanyList()
@@ -183,8 +182,8 @@ namespace zeynerp.Controllers
             List<Company> companies = companyProcess.GetCompanyList(employee);
             return View(companies);
         }
-        
-        
+
+
         public ActionResult CompanyDetail(int id)
         {
             Employee employee = Session["employee"] as Employee;
@@ -196,7 +195,7 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            int deneme=companyProcess.CompanyUpdate(employee, companyModel);
+            int deneme = companyProcess.CompanyUpdate(employee, companyModel);
             return View(companyModel);
         }
 

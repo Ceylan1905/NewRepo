@@ -87,7 +87,7 @@
                                         <td> @totalNumberOfCompanyGroups </td>
                                         <td><a href=""> @item.Id </a></td>
                                         <td> <strong> @item.Name </strong> </td>
-                                        @if (@item.Confirmation == Active.Aktif)
+                                        @if (@item.Confirmation == YesNo.Onaysız)
                                         {
                                             <td style="color:green"> <strong> @item.Confirmation </strong> </td>
                                         }
@@ -95,7 +95,7 @@
                                         {
                                             <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                         }
-                                        <td> <a href="@Url.Action("SupplierDetail","Supplier", new { id=item.Id})"> Detay </a>  </td>
+                                        <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
                                     </tr>
                                 }
                             </tbody>

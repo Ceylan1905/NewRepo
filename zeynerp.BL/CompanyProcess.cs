@@ -28,7 +28,7 @@ namespace zeynerp.BL
                 BillingAddress = companyModel.BillingAddress,
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
-            }) ;
+            });
             int sonKayitId = comp.deneme();
             return sonKayitId;
         }
@@ -44,14 +44,14 @@ namespace zeynerp.BL
         public Company GetCompany(Employee employeeModel, int id)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            Company company = comp.Find(x => x.Id == id );
+            Company company = comp.Find(x => x.Id == id);
             return company;
         }
-        
+
         public int CompanyUpdate(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            int updateResult=comp.UpdateCompany(companyModel);
+            int updateResult = comp.UpdateCompany(companyModel);
             return updateResult;
         }
     }

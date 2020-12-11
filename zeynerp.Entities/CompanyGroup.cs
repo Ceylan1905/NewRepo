@@ -17,4 +17,5 @@ namespace zeynerp.Entities
         Pasif,
         Aktif
     }
+
 }
