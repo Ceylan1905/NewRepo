@@ -57,7 +57,7 @@
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
     </script>
-   
+
 </head>
 <body>
     <section class="body">
@@ -165,11 +165,27 @@
                                         </a>
                                     }
                                 </li>
-                                <li>
-                                    <a class="nav-link" href="@Url.Action("CompanyList","Home")">
-                                        <i class="fas fa-compact-disc" aria-hidden="true"></i>
-                                        <span> Cariler </span>
+                                <li class="nav-parent">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-plus" aria-hidden="true"></i>
+                                        <span>Tanımlamalar</span>
                                     </a>
+                                    <ul class="nav nav-children">
+                                        <li>
+                                            <a class="nav-link" href="@Url.Action("CompanyList","Home")">
+                                                <i class="fas fa-building" aria-hidden="true"></i>
+                                                <span> Cariler </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-children">
+                                        <li>
+                                            <a class="nav-link" href="@Url.Action("SupplierList","Supplier")">
+                                                <i class="fas fa-compact-disc" aria-hidden="true"></i>
+                                                <span> Tedarikçi Grup </span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nav-parent">
                                     <a class="nav-link" href="#">
@@ -1075,5 +1091,5 @@
 
 
 
-   
+
 </script>

@@ -173,8 +173,8 @@ namespace zeynerp.Controllers
         public ActionResult CompanyAdd(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            int x = companyProcess.CompanyAdd(employee, companyModel);
-            return RedirectToAction("CompanyDetail", new {companyModel.Id});
+            int Id = companyProcess.CompanyAdd(employee, companyModel);
+            return RedirectToAction("CompanyDetail", new {Id});
         }
 
         public ActionResult CompanyList()

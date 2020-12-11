@@ -1,5 +1,5 @@
 ﻿@using zeynerp.Entities
-@model IEnumerable<zeynerp.Entities.Company>
+@model IEnumerable<zeynerp.Entities.CompanyGroup>
 @{
     ViewBag.Title = "CompanyList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,7 +16,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Cariler</span></li>
+                <li><span>Firma Grup Listesi</span></li>
             </ol>
         </div>
     </header>
@@ -35,7 +35,7 @@
                                         <label class="ws-nowrap mr-3 mb-0">Filter By:</label>
                                         <select class="form-control select-style-1 filter-by" name="filter-by">
                                             <option value="all" selected>All</option>
-                                            <option value="1">ID</option>
+                                            <option value="1"></option>
                                             <option value="2">Company Name</option>
                                             <option value="3">Slug</option>
                                             <option value="4">Parent Category</option>
@@ -71,29 +71,21 @@
                         <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 550px;">
                             <thead>
                                 <tr>
-                                    <th width="8%"> No </th>
-                                    <th width="10%"> Kısa Adı </th>
+                                    <th width="8%"> Id </th>
                                     <th width="10%"> Adı </th>
-                                    <th width="10%"> Tür </th>
-                                    <th width="10%"> Telefon </th>
-                                    <th width="10%"> E-Posta </th>
-                                    <th width="10%"> Durum </th>
+                                    <th width="10%"> Aktif </th>
                                     <th width="10%"> Detay </th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @{int totalNumberOfCompanies = 0;}
+                                @{int totalNumberOfCompanyGroups = 0;}
                                 @foreach (var item in Model)
                                 {
-                                    totalNumberOfCompanies++;
+                                    totalNumberOfCompanyGroups++;
                                     <tr>
-                                        <td> @totalNumberOfCompanies </td>
-                                        <td><a href=""> @item.ShortName </a></td>
+                                        <td> @totalNumberOfCompanyGroups </td>
+                                        <td><a href=""> @item.Id </a></td>
                                         <td> <strong> @item.Name </strong> </td>
-                                        <td> @item.Kind </td>
-                                        <td> @item.Phone </td>
-                                        <td> @item.Eposta </td>
                                         @if (@item.Confirmation == YesNo.Onaysız)
                                         {
                                             <td style="color:green"> <strong> @item.Confirmation </strong> </td>
@@ -109,7 +101,7 @@
                         </table>
                         <hr class="solid mt-5 opacity-4">
                         <div class="datatable-footer">
-                            <div style="text-align:center"> <strong> Toplam Firma Sayısı: @totalNumberOfCompanies  </strong> </div>
+
                         </div>
                     </div>
                 </div>

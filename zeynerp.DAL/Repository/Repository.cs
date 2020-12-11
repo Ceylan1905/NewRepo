@@ -106,6 +106,11 @@ namespace zeynerp.DAL.Repository
             databaseContext.Entry(Comp).State = EntityState.Modified;
             return databaseContext.SaveChanges();
         }
+        public int deneme()
+        {
+            int sonKayit=databaseContext.Companies.Max(x => x.Id);
+            return sonKayit;
+        }
 
     }
 }

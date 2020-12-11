@@ -4325,6 +4325,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4346,6 +4347,7 @@
     <Content Include="Views\Home\Employees.cshtml" />
     <Content Include="Views\Home\CompanyDetail.cshtml" />
     <Content Include="Views\Home\Deneme.cshtml" />
+    <Content Include="Views\Supplier\SupplierList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

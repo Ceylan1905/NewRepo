@@ -15,11 +15,10 @@ namespace zeynerp.BL
         public int CompanyAdd(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            int x=comp.Insert(new Company()
+            comp.Insert(new Company()
             {
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
-                //Kind = companyModel.Kind,
                 Kind = companyModel.Kind,
                 Phone = companyModel.Phone,
                 Fax = companyModel.Fax,
@@ -30,7 +29,8 @@ namespace zeynerp.BL
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
             }) ;
-            return x;
+            int sonKayitId = comp.deneme();
+            return sonKayitId;
         }
 
         public List<Company> GetCompanyList(Employee employeeModel)
