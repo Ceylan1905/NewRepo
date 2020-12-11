@@ -100,12 +100,5 @@ namespace zeynerp.DAL.Repository
 
             return Save();
         }
-
-        public int UpdateCompany(Company Comp)
-        { 
-            databaseContext.Entry(Comp).State = EntityState.Modified;
-            return databaseContext.SaveChanges();
-        }
-
     }
 }

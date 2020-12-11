@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <section role="main" class="content-body content-body-modern mt-0">
     <header class="page-header">
         <h2>Cari Listesi</h2>
@@ -18,6 +17,8 @@
                 </li>
                 <li><span>Cariler</span></li>
             </ol>
+
+            @*<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>*@
         </div>
     </header>
 
@@ -91,7 +92,7 @@
                                         <td> @x </td>
                                         <td><a href=""> @item.ShortName </a></td>
                                         <td> <strong> @item.Name </strong> </td>
-                                        <td> @item.Kind </td>
+                                        <td> </td>
                                         <td> @item.Phone </td>
                                         <td> @item.Eposta </td>
                                         @if (@item.Confirmation == YesNo.Onaysız)
@@ -102,14 +103,36 @@
                                         {
                                             <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                         }
-                                        <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
+                                        <td> <a href=""> Detay </a> </td>
+                                        <!--<td><a href="ecommerce-category-form.html"> @item.Name </a></td> -->
                                     </tr>
+
                                 }
+
                             </tbody>
                         </table>
                         <hr class="solid mt-5 opacity-4">
                         <div class="datatable-footer">
                             <div style="text-align:center"> <strong> Toplam Firma Sayısı: @x  </strong> </div>
+
+
+                            @*<div class="row align-items-center justify-content-between mt-3">
+                                            <div class="col-md-auto order-1 mb-3 mb-lg-0">
+                                                <div class="d-flex align-items-stretch">
+                                                    <select class="form-control select-style-1 bulk-action mr-3" name="bulk-action" style="min-width: 170px;">
+                                    <option value="" selected>Bulk Actions</option>
+                                    <option value="delete">Delete</option>
+                                </select>
+                                <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-auto text-center order-3 order-lg-2">
+                                                <div class="results-info-wrapper"></div>
+                                            </div>
+                                            <div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
+                                                <div class="pagination-wrapper"></div>
+                                            </div>
+                                        </div>*@
                         </div>
                     </div>
                 </div>

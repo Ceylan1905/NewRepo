@@ -12,15 +12,14 @@ namespace zeynerp.BL
     {
         private BL_Result<Employee> result_employee = new BL_Result<Employee>();
         private BL_Result<Company> result_company = new BL_Result<Company>();
-        public int CompanyAdd(Employee employeeModel, Company companyModel)
+        public BL_Result<Company> CompanyAdd(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            int x=comp.Insert(new Company()
+            comp.Insert(new Company()
             {
                 Name = companyModel.Name,
                 ShortName = companyModel.ShortName,
                 //Kind = companyModel.Kind,
-                Kind = companyModel.Kind,
                 Phone = companyModel.Phone,
                 Fax = companyModel.Fax,
                 Eposta = companyModel.Eposta,
@@ -29,30 +28,17 @@ namespace zeynerp.BL
                 BillingAddress = companyModel.BillingAddress,
                 //CenterOfResponsibility = companyModel.CenterOfResponsibility,
                 Confirmation = companyModel.Confirmation
-            }) ;
-            return x;
+
+
+            });
+            return result_company;
         }
 
-        public List<Company> GetCompanyList(Employee employeeModel)
+        public List<Company> GetCompany(Employee employeeModel)
         {
             Repository<Company> companyList = new Repository<Company>(employeeModel.CompanyName);
             var list = companyList.List();
             return list;
-        }
-
-
-        public Company GetCompany(Employee employeeModel, int id)
-        {
-            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            Company company = comp.Find(x => x.Id == id );
-            return company;
-        }
-        
-        public int CompanyUpdate(Employee employeeModel, Company companyModel)
-        {
-            Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
-            int updateResult=comp.UpdateCompany(companyModel);
-            return updateResult;
         }
     }
 }

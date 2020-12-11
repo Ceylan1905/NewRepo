@@ -32,11 +32,6 @@
     <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.theme.css" />
     <link rel="stylesheet" href="~/Assets/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
     <link rel="stylesheet" href="~/Assets/vendor/morris/morris.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/select2/css/select2.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/datatables/media/css/dataTables.bootstrap4.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/boxicons/css/boxicons.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/pnotify/pnotify.custom.css" />
 
     <!--(remove-empty-lines-end)-->
     <!-- Theme CSS -->
@@ -89,7 +84,13 @@
 
                             }
                             @remainder  ₺
+
+
+
+
                         </b>
+
+
                     </div>
                 }
                 <span class="separator"></span>
@@ -137,9 +138,9 @@
             <aside id="sidebar-left" class="sidebar-left">
 
                 <div class="sidebar-header">
-                    <div class="sidebar-title">
-                        Menü
-                    </div>
+                    @*<div class="sidebar-title">
+                            Menü
+                        </div>*@
                     <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
                         <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
                     </div>
@@ -170,19 +171,6 @@
                                         <i class="fas fa-compact-disc" aria-hidden="true"></i>
                                         <span> Cariler </span>
                                     </a>
-                                </li>
-                                <li class="nav-parent">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-users" aria-hidden="true"></i>
-                                        <span>İnsan Kaynakları</span>
-                                    </a>
-                                    <ul class="nav nav-children">
-                                        <li>
-                                            <a class="nav-link" href="/insan-kaynaklari/personel-listesi">
-                                                Personel Listesi
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 @*<li class="nav-parent">
                                                     <a class="nav-link" href="#">
@@ -1001,7 +989,6 @@
             setTimeout("preventBack()", 0);
             window.onunload = function () { null; };
         </script>*@
-
     <!-- Vendor -->
     <script src="~/Assets/vendor/jquery/jquery.js"></script>
     <script src="~/Assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -1040,20 +1027,8 @@
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
-    <!-- Specific Page Vendor -->
     <script src="~/Assets/vendor/select2/js/select2.js"></script>
-    <script src="~/Assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="~/Assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
-    <script src="~/Assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
-    <script src="~/Assets/vendor/jquery-validation/jquery.validate.js"></script>
     <script src="~/Assets/vendor/pnotify/pnotify.custom.js"></script>
-
     <!--(remove-empty-lines-end)-->
     <!-- Theme Base, Components and Settings -->
     <script src="~/Assets/js/theme.js" charset="windows-1254"></script>
@@ -1066,8 +1041,7 @@
 
     <!-- Examples -->
     <script src="~/Assets/js/examples/examples.dashboard.js"></script>
-    <script src="~/Assets/js/examples/examples.header.menu.js"></script>
-    <script src="~/Assets/js/examples/examples.ecommerce.datatables.list.js"></script>
+    <script src="~/Assets/js/examples/examples.modals.js"></script>
 </body>
 </html>
 
