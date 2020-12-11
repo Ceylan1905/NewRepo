@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zeynerp.Entities
 {
-    public class CompanyGroup:BaseEntity
+    public class CompanyGroup
     {
         public int Id { get; set; }
         public string Name { get; set; }

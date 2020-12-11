@@ -200,7 +200,6 @@ namespace zeynerp.Controllers
             return View(companyModel);
         }
 
-
         [Route("insan-kaynaklari/personel-listesi")]
         [Authorize]
         public ActionResult Employees()
