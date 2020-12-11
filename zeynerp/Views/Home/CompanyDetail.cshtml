@@ -39,7 +39,8 @@
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Türü</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    Müşteri: @if (Model.Kind.Contains("Müşteri"))
+                                    @Html.HiddenFor(model => model.Kind, new { id = "CompanyKind" })
+                                    Müşteri: @if (Model.Kind.ToString().Contains("Müşteri"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" />}
@@ -63,7 +64,7 @@
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Personel" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Personel" />}
-                                    Personel: @if (Model.Kind.Contains("Personel"))
+                                    Ortaklar: @if (Model.Kind.Contains("Ortaklar"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" />}

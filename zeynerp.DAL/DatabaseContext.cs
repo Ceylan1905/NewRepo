@@ -21,6 +21,7 @@ namespace zeynerp.DAL
         public DbSet<GrupModule> GrupModules { get; set; }
         public DbSet<Remainder> Remainders { get; set; }
         public DbSet<Company> Companies{ get; set; }
+        public DbSet<CompanyGroup> CompanyGroups{ get; set; }
         public DbSet<Deneme> Denemes { get; set; }
     }
 

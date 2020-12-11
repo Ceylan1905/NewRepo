@@ -12,6 +12,7 @@ namespace zeynerp.Entities
         //public Staff Staff { get; set; }
         public string Name { get; set; }
         public string ShortName { get; set; }
+        //public string  CompanyGroup ComapnyGroup { get; set; }
         public string Kind { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
@@ -28,5 +29,4 @@ namespace zeynerp.Entities
         Onaysız,
         Onaylı
     }
-
 }

@@ -1,10 +1,6 @@
 ﻿/* Add here all your JS customizations */
-function getSelected() {
-    var sList = "";
-    $('input[type=checkbox]').each(function () {
-        if (this.checked) {
-            sList += this.value + ", ";
 
+<<<<<<< HEAD
         }
     });
     $("#CompanyKind").val(sList);
@@ -13,6 +9,8 @@ function getSelected() {
 
 
 
+=======
+>>>>>>> 649f0c60ec51ccb9060b5a3f53f37c1bee7f39b2
     $("#companycheck").click(function () {
         if ($(this).is(":checked")) {
             $("#sirketAdi").hide();
