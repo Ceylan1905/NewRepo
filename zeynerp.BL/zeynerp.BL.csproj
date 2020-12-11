@@ -84,6 +84,7 @@
     <Compile Include="Manager.cs" />
     <Compile Include="PaymentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\zeynerp.Common\zeynerp.Common.csproj">
