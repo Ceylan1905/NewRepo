@@ -48,11 +48,11 @@ namespace zeynerp.BL
             return company;
         }
 
-        public int CompanyUpdate(Employee employeeModel, Company companyModel)
+        public Company CompanyUpdate(Employee employeeModel, Company companyModel)
         {
             Repository<Company> comp = new Repository<Company>(employeeModel.CompanyName);
             int updateResult = comp.UpdateCompany(companyModel);
-            return updateResult;
+            return companyModel;
         }
     }
 }

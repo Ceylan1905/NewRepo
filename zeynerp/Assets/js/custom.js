@@ -1,5 +1,4 @@
 ﻿function getSelected() {
-    alert("deneme");
     var sList = "";
     $('input[type=checkbox]').each(function () {
         if (this.checked) {

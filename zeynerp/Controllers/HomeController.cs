@@ -195,8 +195,8 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            int deneme = companyProcess.CompanyUpdate(employee, companyModel);
-            return View();
+            Company comp = companyProcess.CompanyUpdate(employee, companyModel);
+            return View(comp);
         }
 
         [Route("insan-kaynaklari/personel-listesi")]
