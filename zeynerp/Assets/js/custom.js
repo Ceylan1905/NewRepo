@@ -1,6 +1,5 @@
 ﻿/* Add here all your JS customizations */
 function getSelected() {
-    alert("ewrg");
     var sList = "";
     $('input[type=checkbox]').each(function () {
         if (this.checked) {
@@ -85,13 +84,6 @@ $(document).ready(function () {
 
 
     });
-
-
-
-
-
-
-
 
 
 
