@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using zeynerp.Entities;
+using zeynerp.Entities.HumanResource;
 
 namespace zeynerp.DAL
 {
@@ -22,7 +23,7 @@ namespace zeynerp.DAL
         public DbSet<Remainder> Remainders { get; set; }
         public DbSet<Company> Companies{ get; set; }
         public DbSet<CompanyGroup> CompanyGroups{ get; set; }
-        public DbSet<Deneme> Denemes { get; set; }
+        public DbSet<Personnel> Personnels { get; set; }
     }
 
     public sealed class MigrationConfiguration : DbMigrationsConfiguration<DatabaseContext>
