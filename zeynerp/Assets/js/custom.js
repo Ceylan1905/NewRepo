@@ -1,4 +1,6 @@
-﻿function getSelected() {
+﻿/* Add here all your JS customizations */
+function getSelected() {
+    alert("ewrg");
     var sList = "";
     $('input[type=checkbox]').each(function () {
         if (this.checked) {
@@ -8,7 +10,6 @@
     });
     $("#CompanyKind").val(sList);
 }
-
 
 $(document).ready(function () {
     $("#companycheck").click(function () {
@@ -84,6 +85,13 @@ $(document).ready(function () {
 
 
     });
+
+
+
+
+
+
+
 
 
 

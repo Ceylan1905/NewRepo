@@ -111,10 +111,6 @@
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Onay Durumu </label>
                                 <div class="col-lg-7 col-xl-6">
                                     @Html.DropDownListFor(m => m.Confirmation, new SelectList(Enum.GetValues(typeof(YesNo))), "-Seç-", new { @class = "form-control form-control-modern", @name = "companyCorfirmation" })
-                                    @*   @Html.DropDownListFor(x=>x.MedeniDurum,new List<SelectListItem> {
-                                            new SelectListItem() {Text="Bekar",Value="0" },
-                                            new SelectListItem() {Text="Evli",Value="1" },
-                                        }) *@
                                 </div>
                             </div>
 
