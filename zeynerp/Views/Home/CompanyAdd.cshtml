@@ -38,16 +38,27 @@
                 <div class="card-body">
                     <div class="row">
                         @*<div class="col-lg-2-5 col-xl-1-5">
-                            <i class="card-big-info-icon bx bx-dollar-circle"></i>
-                            <h2 class="card-big-info-title">Billing Info</h2>
-                            <p class="card-big-info-desc">Add here the.</p>
-                        </div>*@
+                                <i class="card-big-info-icon bx bx-dollar-circle"></i>
+                                <h2 class="card-big-info-title">Billing Info</h2>
+                                <p class="card-big-info-desc">Add here the.</p>
+                            </div>*@
                         <div class="col-lg-3-5 col-xl-4-5 offset-lg-2">
-                            @* <div class="form-group row align-items-center">
-                                    <div class="form-group row align-items-center">
-                                        @Html.CheckBoxFor(x => x.Kind, new { @class = "form-control form-control-lg", name = "Musteri" })
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Türü</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    <div class="editor-field">
+                                        @Html.HiddenFor(model => model.Kind, new { id = "CompanyKind" })
+                                        Müşteri: <input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" />
+                                        Tedarikçi: <input id="w" type="checkbox" onchange="getSelected()" value="Tedarikçi" />
+                                        Taşeron: <input type="checkbox" id="r" onchange="getSelected()" value="Taşeron" />
+                                        Resmi: <input type="checkbox" id="r" onchange="getSelected()" value="Resmi" />
+                                        Banka: <input type="checkbox" id="r" onchange="getSelected()" value="Banka" />
+                                        Ortaklar: <input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" />
+
+                                        @Html.ValidationMessageFor(model => model.Kind)
                                     </div>
-                                </div> *@
+                                </div>
+                            </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Adı</label>
                                 <div class="col-lg-7 col-xl-6">

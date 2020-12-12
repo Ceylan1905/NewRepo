@@ -97,13 +97,13 @@
                                         <td> @item.Eposta </td>
                                         @if (@item.Confirmation == YesNo.Onaysız)
                                         {
-                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                         }
                                         else
                                         {
-                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
                                         }
-                                        <td> <a href=""> Detay </a> </td>
+                                        <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
                                         <!--<td><a href="ecommerce-category-form.html"> @item.Name </a></td> -->
                                     </tr>
 
