@@ -30,7 +30,18 @@
     <!-- Specific Page Vendor CSS -->
     <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.theme.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
     <link rel="stylesheet" href="~/Assets/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/dropzone/basic.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/dropzone/dropzone.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/summernote/summernote-bs4.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/codemirror/theme/monokai.css" />
     <link rel="stylesheet" href="~/Assets/vendor/morris/morris.css" />
     <link rel="stylesheet" href="~/Assets/vendor/boxicons/css/boxicons.min.css" />
     <link rel="stylesheet" href="~/Assets/vendor/pnotify/pnotify.custom.css" />
@@ -42,7 +53,6 @@
     <!-- Theme Layout -->
     <link rel="stylesheet" href="~/Assets/css/layouts/modern.css" />
     <!--(remove-empty-lines-end)-->
-
     <!-- Skin CSS -->
     <link rel="stylesheet" href="~/Assets/css/skins/default.css" />
 
@@ -57,6 +67,11 @@
         window.onunload = function () { null };
     </script>
 
+    <style>
+        select option:first-child {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <section class="body">
@@ -192,7 +207,7 @@
                                     </a>
                                     <ul class="nav nav-children">
                                         <li>
-                                            <a class="nav-link" href="@Url.Action("PersonnelList","Home")">
+                                            <a class="nav-link" href="@Url.Action("PersonnelList","HumanResource")">
                                                 <span>Personel Listesi</span>
                                             </a>
                                         </li>
@@ -1052,6 +1067,7 @@
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
     <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
+    <script src="~/Assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
 
     <script src="~/Assets/vendor/jquery-validation/jquery.validate.js"></script>
     <script src="~/Assets/vendor/select2/js/select2.js"></script>
@@ -1071,5 +1087,6 @@
     <script src="~/Assets/js/examples/examples.modals.js"></script>
     <script src="~/Assets/js/examples/examples.header.menu.js"></script>
     <script src="~/Assets/js/examples/examples.ecommerce.form.js"></script>
+    <script src="~/Assets/js/examples/examples.advanced.form.js"></script>
 </body>
 </html>
