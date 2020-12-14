@@ -12,27 +12,27 @@ namespace zeynerp.Controllers
     {
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
-        private CompanyProcess<Company> companyProcess = new CompanyProcess<Company>();
-        private PaymentManager payment = new PaymentManager();
+        private SupplierProcess<CompanyGroup> supplierProcess = new SupplierProcess<CompanyGroup>();
         [Authorize]
         [HttpGet]
-        //public ActionResult CompanyAdd()
-        //{
-        //    return View();
-        //}
+        public ActionResult SupplierAdd()
+        {
+            return View();
+        }
 
         //[HttpPost]
-        //public ActionResult CompanyAdd(Company companyModel)
+        //public ActionResult SupplierAdd(CompanyGroup companyGroupModel)
         //{
         //    Employee employee = Session["employee"] as Employee;
-        //    int Id = companyProcess.CompanyAdd(employee, companyModel);
+        //    int Id = supplierProcess.SupplierAdd(employee, companyGroupModel);
         //    return RedirectToAction("CompanyDetail", new { Id });
         //}
 
         public ActionResult SupplierList()
         {
-            
-            return View( );
+            Employee employee = Session["employee"] as Employee;
+            List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
+            return View(companyGroupModel);
         }
 
 

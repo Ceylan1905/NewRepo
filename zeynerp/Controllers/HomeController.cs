@@ -8,6 +8,7 @@ using System.Web.Security;
 using zeynerp.BL;
 using zeynerp.DAL.Repository;
 using zeynerp.Entities;
+using zeynerp.Entities.HumanResource;
 using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
@@ -196,22 +197,8 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            int deneme = companyProcess.CompanyUpdate(employee, companyModel);
-            return View(companyModel);
-        }
-
-        [Route("insan-kaynaklari/personel-listesi")]
-        [Authorize]
-        public ActionResult Employees()
-        {
-            Employee employee = Session["employee"] as Employee;
-            List<Employee> employees = manager_employee.GetCustomer(employee);
-            return View(employees);
-        }
-
-        public ActionResult Deneme()
-        {
-            return View();
+            Company comp = companyProcess.CompanyUpdate(employee, companyModel);
+            return View(comp);
         }
 
     [HttpPost]

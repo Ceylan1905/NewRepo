@@ -8,7 +8,7 @@
 
 <section role="main" class="content-body content-body-modern mt-0">
     <header class="page-header">
-        <h2>Cari Listesi</h2>
+        <h2> Tanımlamalar / Cariler </h2>
         <div class="right-wrapper text-right mr-3">
             <ol class="breadcrumbs">
                 <li>
@@ -96,11 +96,11 @@
                                         <td> @item.Eposta </td>
                                         @if (@item.Confirmation == YesNo.Onaysız)
                                         {
-                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                         }
                                         else
                                         {
-                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
                                         }
                                         <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
                                     </tr>

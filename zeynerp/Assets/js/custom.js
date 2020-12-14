@@ -1,4 +1,5 @@
-﻿function getSelected() {   //CompanyDetail ve CompanyAdd sayfalarinda checkbox secilmesi ile ilgili islemler
+﻿/* Add here all your JS customizations */
+function getSelected() {
     var sList = "";
     $('input[type=checkbox]').each(function () {
         if (this.checked) {
@@ -7,7 +8,6 @@
         }
     });
     $("#CompanyKind").val(sList);
-    alert(sList);
 }
 
 $("#companycheck").click(function () {
@@ -119,7 +119,7 @@ $('#odemeYap').click(function () {
 });
 
 
-//function myfunc() {
+    function myfunc() {
 
 //    if (bakiye >= tutar && tutar != 0) {
 

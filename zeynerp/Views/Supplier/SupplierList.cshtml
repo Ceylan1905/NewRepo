@@ -1,24 +1,14 @@
 ﻿@using zeynerp.Entities
 @model IEnumerable<zeynerp.Entities.CompanyGroup>
 @{
-    ViewBag.Title = "CompanyList";
+    ViewBag.Title = "SupplierList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <section role="main" class="content-body content-body-modern mt-0">
     <header class="page-header">
-        <h2>Cari Listesi</h2>
-        <div class="right-wrapper text-right mr-3">
-            <ol class="breadcrumbs">
-                <li>
-                    <a href="/panel">
-                        <i class="fas fa-home"></i>
-                    </a>
-                </li>
-                <li><span>Firma Grup Listesi</span></li>
-            </ol>
-        </div>
+        <h2> Tanımlamalar / Tedarikçi Grup </h2>
     </header>
 
     <!-- start: page -->
@@ -29,6 +19,7 @@
                 <div class="card-body">
                     <div class="datatables-header-footer-wrapper">
                         <div class="datatable-header">
+                            <div style="text-align:center"> <strong> Firma Grup Listesi </strong></div>
                             <div class="row align-items-center mb-3">
                                 <div class="col-8 col-lg-auto ml-auto mb-3 mb-lg-0">
                                     <div class="d-flex align-items-lg-center flex-column flex-lg-row">
@@ -64,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                                    <a href="@Url.Action("CompanyAdd","Home")" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4"> Yeni </a>
+                                    <a href="@Url.Action("SupplierAdd","Supplier")" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4"> Yeni </a>
                                 </div>
                             </div>
                         </div>
@@ -78,12 +69,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @{int totalNumberOfCompanyGroups = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    totalNumberOfCompanyGroups++;
+                                    <tr>
+                                        <td> @totalNumberOfCompanyGroups </td>
+                                        <td><a href=""> @item.Id </a></td>
+                                        <td> <strong> @item.Name </strong> </td>
+                                        @if (@item.Confirmation == Active.Aktif)
+                                        {
+                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
+                                        }
+                                        <td> <a href="@Url.Action("SupplierDetail","Supplier", new { id=item.Id})"> Detay </a>  </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                         <hr class="solid mt-5 opacity-4">
                         <div class="datatable-footer">
-
+                            <div style="text-align:center"> <strong> Toplam Firma Grup Sayısı: @totalNumberOfCompanyGroups  </strong> </div> 
                         </div>
                     </div>
                 </div>
