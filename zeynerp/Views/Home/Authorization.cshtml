@@ -1,10 +1,11 @@
 ﻿@using zeynerp.Entities
+@using zeynerp.BL
 @model IEnumerable<zeynerp.Entities.Employee>
 @{
     ViewBag.Title = "Authorization";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- @{var company = Session["employee"] as Employee; }
+@{var company = Session["employee"] as Employee; }
 
 
 <section role="main" class="content-body">
@@ -53,20 +54,24 @@
                             </thead>
                             <tbody>
                                 <div id="checkboxlist">
-                                    <tr id="deneme" no="@ViewBag.Remainder">
+                                    @{ var employee = Session["employee"] as Employee;
+                                        PaymentManager payment = new PaymentManager();
+                                        var remainder = payment.GetRemainder(employee);
+                                    }
+                                    <tr id="deneme" no="@remainder">
                                         <td> </td>
-                                        <td> 2.007,5 ₺ </td>
+                                        <td> 30.000,0 ₺ </td>
                                         @for (var i = 0; i < Model.Count(); i++)
                                         {
-                                            <td> <div><input type="checkbox" value="11" class="chk" no="2007.5"> </div> </td>
+                                            <td> <div><input type="checkbox" value="11" class="chk" no="30000.00"> </div> </td>
                                         }
                                     </tr>
                                     <tr id="" no="2">
                                         <td></td>
-                                        <td>24.090 ₺ </td>
+                                        <td>45.000,0 ₺ </td>
                                         @for (var i = 0; i < Model.Count(); i++)
                                         {
-                                            <td> <div><input type="checkbox" value="21" class="chk" no="24000.09"> </div> </td>
+                                            <td> <div><input type="checkbox" value="21" class="chk" no="45000.00"> </div> </td>
                                         }
 
 
@@ -106,20 +111,21 @@
 
         <section class="card">
             @*<header class="card-header">
-                <div class="card-actions">
-                    <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-                    <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
-                </div>
-
-                <h2 class="card-title">Modal with CSS animation</h2>
-                <p class="card-subtitle">Animations are added with simple CSS transitions, you can make them look however you wish.</p>
-            </header>*@
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <a class="mb-1 mt-1 mr-1 modal-with-zoom-anim ws-normal btn btn-primary" href="#modalAnim" id="odemeYap">ÖDEME YAP</a>
+                    <div class="card-actions">
+                        <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
-                  
+
+                    <h2 class="card-title">Modal with CSS animation</h2>
+                    <p class="card-subtitle">Animations are added with simple CSS transitions, you can make them look however you wish.</p>
+                </header>*@
+            <div class="card-body">
+                <div class="row" style="margin-left:50%;">
+                    <div class="col-lg-6">
+                        <a class="mb-1 mt-1 mr-1 modal-with-zoom-anim ws-normal btn btn-primary" href="#modalAnim" id="odemeYap">0.00₺ <br> Ödeme Yap</a>
+
+                    </div>
+
                 </div>
 
                 <!-- Modal Animation -->
@@ -133,7 +139,7 @@
                                 <div class="modal-icon">
                                     <i class="fas fa-question-circle"></i>
                                 </div>
-                                <div class="m-xl-1" >
+                                <div class="m-xl-1">
                                     <p class="mb-0" style="color:black;" id="modalPayment"></p>
                                 </div>
                             </div>
@@ -141,9 +147,9 @@
                         <footer class="card-footer">
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <button class="btn btn-primary modal-confirm" id="confirm" onclick="myfunc();">Onayla</button>
+                                    <button class="btn btn-primary modal-confirm" id="confirm">Onayla</button>
                                     <button class="btn btn-default modal-dismiss">İptal Et</button>
-                                  
+
                                 </div>
                             </div>
                         </footer>

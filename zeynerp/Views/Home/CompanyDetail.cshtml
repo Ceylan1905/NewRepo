@@ -3,7 +3,21 @@
     ViewBag.Title = "CompanyDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
 
+    select {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+</style>
 <section class="body">
     <header class="page-header">
         <h2>Cari Detay</h2>
@@ -138,4 +152,107 @@
             </div>
         </div>
     }
-</section> 
+
+
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <div class="row">
+                    @*<div class="col-lg-2-5 col-xl-1-5">
+                        <i class="card-big-info-icon bx bx-dollar-circle"></i>
+                        <h2 class="card-big-info-title">  </h2>
+                        <p class="card-big-info-desc">  </p>
+                    </div>*@
+                    <div class="col-12 col-lg-7 m-auto">
+                        <div class="form-group row align-items-center">
+                            <table class="table table-bordered" id="myTable">
+                                <thead> <tr> <th class="table-bordered  table-bordered mb-0" style="text-align:center;" colspan="7">Cari Yetkilileri</th> </tr></thead>
+                                <thead style="text-align:center;">
+
+                                    <tr>
+                                        <th>No:</th>
+                                        <th>Adı-Soyadı</th>
+                                        <th>Telefon</th>
+                                        <th>Cep Telefon</th>
+                                        <th>Fax</th>
+                                        <th>E-Posta</th>
+                                        <th>Aktif</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="numara">1</td>
+                                        <td><input type="text" placeholder="2016" id="txtName1" class="form-control"></td>
+                                        <td><input type="text" placeholder="2016" id="txtAge1" class="form-control"></td>
+                                        <td><input type="text" placeholder="2016" id="txtGender1" class="form-control"></td>
+                                        <td><input type="text" placeholder="2016" id="txtOccupation1" class="form-control"></td>
+                                        <td><input type="text" placeholder="2016" id="txtdeneme1" class="form-control"></td>
+                                        <td>
+                                            <select id="secim1">
+                                                <option>Aktif</option>
+                                                <option>Pasif</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tr>
+                                    <td colspan="7">
+                                        <button class="btn-primary" id="satirekle">Satır Ekle</button>
+                                        <button class="btn-primary">Yetkilileri Kaydet</button>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col">
+            <div class="card-body">
+                <div class="row">
+                    @*<div class="col-lg-2-5 col-xl-1-5">
+                        <i class="card-big-info-icon bx bx-dollar-circle"></i>
+                        <h2 class="card-big-info-title">  </h2>
+                        <p class="card-big-info-desc">  </p>
+                    </div>*@
+                    <div class="col-12 col-lg-7 m-auto">
+                        <div class="form-group row align-items-center">
+                            <table class="table table-bordered" id="myTable1">
+                                <thead> <tr> <th class="table-bordered  table-bordered mb-0" style="text-align:center;" colspan="7">Teslimat Adresleri</th> </tr></thead>
+                                <thead style="text-align:center;">
+                                    <tr>
+                                        <th>No:</th>
+                                        <th>Başlık</th>
+                                        <th>Adres</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="numaraA">1</td>
+                                        <td><input type="text" placeholder="2016" id="txtNameA1" class="form-control"></td>
+                                        <td><input type="text" placeholder="2016" id="txtAgeA1" class="form-control"></td>
+                                        <td id="denemeA"></td>
+                                    </tr>
+                                </tbody>
+                                <tr>
+                                    <td colspan="7">
+                                        <button class="btn-primary" id="satirekleAdr">Satır Ekle</button>
+                                        <button class="btn-primary">Adresleri Kaydet</button>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

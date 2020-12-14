@@ -146,19 +146,20 @@ namespace zeynerp.Controllers
 
             return View();
         }
+      
         [Authorize]
         public ActionResult Authorization()
         {
             Employee employee = Session["employee"] as Employee;
-            if(employee!=null)
+            if (employee != null)
             {
                 List<Employee> employees = manager_employee.GetCustomer(employee);
 
-                var remainder = payment.GetRemainder(employee);
-                ViewBag.Remainder = remainder;
+                //var remainder = payment.GetRemainder(employee);
+                //Session["remainder"] = remainder;
                 return View(employees);
             }
-           return  RedirectToAction("SignIn");
+            return RedirectToAction("SignIn");
         }
 
         [Authorize]
@@ -213,19 +214,18 @@ namespace zeynerp.Controllers
             return View();
         }
 
-    
-        public ActionResult guncelleBakiye(float bakiye)
+    [HttpPost]
+        public JsonResult guncelleBakiye(float bakiye)
         {
             Employee employee = Session["employee"] as Employee;
             int updateResult = payment.UpdateRemainder(employee, bakiye);
-            if(updateResult>0)
+            if (updateResult > 0)
             {
+                
+                return Json(new { msg = bakiye });
 
-                Session["remainder"] = bakiye;
-
-                return RedirectToAction("Authorization");
             }
-            return View();
+            return Json(new { success = false, msg = "operation failed" }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Logout()
         {

@@ -1,5 +1,6 @@
 ﻿@using zeynerp.Entities
 @using Scrypt
+@using zeynerp.BL
 <!doctype html>
 <html class="fixed sidebar-left-collapsed">
 <head>
@@ -74,21 +75,25 @@
                 @{var employee = Session["employee"] as Employee; }
                 @if (Session["employee"] != null && employee.IsAdmin == true)
                 {
-                    var remainder = Session["remainder"];
+
                     <div id="remainder" class="userbox">
                         Bakiye :
-                        <b>
-                            @if (remainder == null)
-                            {
-                                remainder = 0;
 
-                            }
-                            @remainder  ₺
+                        <div id="bakiyem" style="display:inline-block;">
+                            @{PaymentManager payment = new PaymentManager();
+                                var remainder = payment.GetRemainder(employee);
+                                if (remainder == null)
+                                {
+                                    remainder = 0;
+
+                                }
+                                @remainder}
+                        </div>  ₺
 
 
 
 
-                        </b>
+
 
 
                     </div>
@@ -1060,7 +1065,7 @@
     <script src="~/Assets/js/examples/examples.modals.js"></script>
 </body>
 </html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
 
