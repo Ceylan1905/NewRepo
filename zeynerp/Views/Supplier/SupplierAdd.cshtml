@@ -1,0 +1,67 @@
+﻿@using zeynerp.Entities
+@model CompanyGroup
+@{
+    ViewBag.Title = "SupplierAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="body">
+    <header class="page-header">
+        <h2>Cari Detay</h2>
+
+        <div class="right-wrapper text-right mr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/CompanyList">
+                        <span>Cariler</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Cari Ekleme</span>
+                </li>
+            </ol>
+
+            @*<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>*@
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("SupplierAdd", "Supplier", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col">
+                <div class="card-body">
+                    <div class="row">
+                        @*<div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-dollar-circle"></i>
+                                <h2 class="card-big-info-title">Billing Info</h2>
+                                <p class="card-big-info-desc">Add here the.</p>
+                            </div>*@
+                        <div class="col-lg-3-5 col-xl-4-5 offset-lg-2">
+                            <div style="text-align:center"> <strong> Firma Grup Tanım </strong> </div>
+                            <div class="form-group row align-items-center"> 
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Grup Adı</label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", name = "companyName", type = "text" })
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Aktif </label>
+                                <div class="col-lg-7 col-xl-6">
+                                    @* @Html.TextBoxFor(model => model.ShortName, new { @class = "form-control form-control-lg", name = "companyShortName", type = "text" }) *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

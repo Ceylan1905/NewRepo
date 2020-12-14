@@ -4033,6 +4033,7 @@
     <Content Include="Views\Supplier\SupplierList.cshtml" />
     <Content Include="Views\Home\PersonnelList.cshtml" />
     <Content Include="Views\Home\PersonnelAdd.cshtml" />
+    <Content Include="Views\Supplier\SupplierAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

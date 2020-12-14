@@ -7,7 +7,7 @@
 
 <section role="main" class="content-body content-body-modern mt-0">
     <header class="page-header">
-        <h2>Cari Listesi</h2>
+        <h2> Tanımlamalar / Cariler </h2>
         <div class="right-wrapper text-right mr-3">
             <ol class="breadcrumbs">
                 <li>
@@ -92,18 +92,18 @@
                                         <td> @totalNumberOfCompanies </td>
                                         <td><a href=""> @item.ShortName </a></td>
                                         <td> <strong> @item.Name </strong> </td>
-                                        <td> </td>
+                                        <td> @item.Kind</td>
                                         <td> @item.Phone </td>
                                         <td> @item.Eposta </td>
                                         @if (@item.Confirmation == YesNo.Onaysız)
                                         {
-                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                         }
                                         else
                                         {
-                                            <td style="color:red"> <strong> @item.Confirmation </strong> </td>
+                                            <td style="color:green"> <strong> @item.Confirmation </strong> </td>
                                         }
-                                        <td> <a href=""> Detay </a> </td>
+                                        <td> <a href="@Url.Action("CompanyDetail","Home", new { id=item.Id})"> Detay </a>  </td>
                                         <!--<td><a href="ecommerce-category-form.html"> @item.Name </a></td> -->
                                     </tr>
 
