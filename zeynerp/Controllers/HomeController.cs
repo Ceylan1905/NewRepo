@@ -189,8 +189,11 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(int id)
         {
             Employee employee = Session["employee"] as Employee;
-            Company comp = companyProcess.GetCompany(employee, id);
-            return View(comp);
+            CompanyViewModel companyviewModel = new CompanyViewModel();
+            companyviewModel.Companies = companyProcess.GetCompany(employee, id);
+            companyviewModel.CompanyAuthorizeds = companyProcess.GetCompanyAuthorizedList(employee, id);
+            List<CompanyAuthorized> authorized = companyProcess.GetCompanyAuthorizedList(employee, id);
+            return View(companyviewModel);
         }
 
         [HttpPost]
@@ -202,7 +205,8 @@ namespace zeynerp.Controllers
         }
 
     [HttpPost]
-        public JsonResult guncelleBakiye(float bakiye)
+        [Route("Home/guncelleBakiye")]
+        public ActionResult guncelleBakiye(float bakiye)
         {
             Employee employee = Session["employee"] as Employee;
             int updateResult = payment.UpdateRemainder(employee, bakiye);
@@ -219,6 +223,15 @@ namespace zeynerp.Controllers
             Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
+        }
+
+
+
+        [HttpPost]
+        
+        public ActionResult dene(string isim)
+        {
+            return View();
         }
     }
 }

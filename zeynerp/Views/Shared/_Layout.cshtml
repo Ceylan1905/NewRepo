@@ -89,30 +89,39 @@
             </div>
 
             <!-- start: search & user box -->
-            <div class="header-right d-flex justify-content-end d-md-block">
+            <div class="header-right">
                 <span class="separator"> </span>
                 @{var employee = Session["employee"] as Employee; }
                 @if (Session["employee"] != null && employee.IsAdmin == true)
                 {
                     <div id="remainder" class="userbox">
                         Bakiye :
+
                         <div id="bakiyem" style="display:inline-block;">
                             @{PaymentManager payment = new PaymentManager();
-                            var remainder = payment.GetRemainder(employee);
-                            if (remainder == null)
-                            {
-                                remainder = 0;
-                            }
-                            @remainder}
+                                var remainder = payment.GetRemainder(employee);
+                                if (remainder == null)
+                                {
+                                    remainder = 0;
+
+                                }
+                                @remainder}
                         </div>  ₺
+
+
+
+
+
+
+
                     </div>
                 }
                 <span class="separator"></span>
                 <div id="userbox" class="userbox pr-3 pr-md-0">
                     <a href="#" data-toggle="dropdown">
                         @*<figure class="profile-picture" style="display: none">
-                       <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
-                </figure>*@
+                                   <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
+                            </figure>*@
 
                         <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]" data-lock-surname="@employee.Surname">
                             @if (Session["employee"] != null)
@@ -128,8 +137,8 @@
                         <ul class="list-unstyled mb-2">
                             <li class="divider"></li>
                             @*<li>
-                        <a role="menuitem" tabindex="-1" href="/Home/Profile"><i class="fas fa-user"></i> My Profile</a>
-                    </li>*@
+                                    <a role="menuitem" tabindex="-1" href="/Home/Profile"><i class="fas fa-user"></i> My Profile</a>
+                                </li>*@
                             <li>
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-key"></i> Şifre Değiştirme</a>
                             </li>

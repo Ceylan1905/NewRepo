@@ -119,32 +119,11 @@ $('#odemeYap').click(function () {
 });
 
 
-    function myfunc() {
-
-//    if (bakiye >= tutar && tutar != 0) {
-
-//        bakiye = bakiye - tutar;
-//        alert(bakiye);
-
-//        $.ajax({
-//            type: "POST",
-//            url: '@Url.Action("guncelleBakiye", "Home")',
-//            data: {
-//                bakiye: bakiye,
-//            },
-//            dataType: 'json',
-//            success: function (result) {
-//            }
-//        })
-//        //window.location.href = "/Home/guncelleBakiye?bakiye=" + bakiye;
-//        $("#tutar").hide();
-
-//    }
-//}
+ 
 
    
+$(document).ready(function () { 
 
-$(function () {
     $("#confirm").click(function () {
 
         alert("eksilmemiş bakye" + bakiye);
@@ -153,26 +132,46 @@ $(function () {
             bakiye = bakiye - tutar;
             alert(bakiye);
             alert(tutar);
-            
-            $.ajax({
-                type: "POST",
-                url: "/Home/guncelleBakiye",
-                data: { bakiye: bakiye },
-                dataType: "json",
-                success: function (result) {
-                    //alert(typeof (result.msg));
-                    var n = result.msg.toString();
 
-                    $("#bakiyem").text(n);
+           
+           
+        var url = "/Home/guncelleBakiye";
+        
+        $.post(url, {bakiye: bakiye}, function (result) {
+            alert(typeof (result.msg));
+            var n = result.msg.toString();
 
-                    $("#odemeYap").html("0.00" + "₺" + "<br> Ödeme Yap");
+            $("#bakiyem").text(n);
 
-                    $(".chk:checked").each(function () {
-                        this.disabled = true;
+            $("#odemeYap").html("0.00" + "₺" + "<br> Ödeme Yap");
 
-                    });
-                },
+            $(".chk:checked").each(function () {
+                this.disabled = true;
+
             });
+        });
+
+  
+            
+            //$.ajax({
+            //    type: "post",
+            //    url: "/Home/guncelleBakiye",
+            //    data: { bakiye: bakiye },
+            //    dataType: "json",
+            //    success: function (result) {
+            //        alert(typeof (result.msg));
+            //        var n = result.msg.toString();
+
+            //        $("#bakiyem").text(n);
+
+            //        $("#odemeYap").html("0.00" + "₺" + "<br> Ödeme Yap");
+
+            //        $(".chk:checked").each(function () {
+            //            this.disabled = true;
+
+            //        });
+            //    },
+            //});
             //window.location.href = "/Home/guncelleBakiye?bakiye=" + bakiye;
             $("#tutar").hide();
 
@@ -210,6 +209,19 @@ $(function () {
         var newTr = '<tr><td id=' + numaraA + '></td><td><input type="text" id=' + txtNameA + ' class="form-control"/></td><td><input type="text" id=' + txtAgeA + ' class="form-control" /></td><td id=' + denemeA + '></td></tr>';
         $('#myTable1').append(newTr);
     });
+
+    $('#yetkiliKaydet').click(function () {
+        var isim = "ceylan";
+         $.ajax({
+                type: "post",
+                url: "/Home/dene",
+                data: { isim: isim },
+                dataType: "json",
+             
+            });
+
+
+    });
     //$("#satirekle").click(function (e) {
     //    var table = document.getElementById("myTable");
     //    var row = table.insertRow(0);
@@ -232,17 +244,10 @@ $(function () {
 
 
     //});
+
+
+
 });
-
-
-//function insert_Row() {
-    
-
-
-
-//}
-
-
 
 
 

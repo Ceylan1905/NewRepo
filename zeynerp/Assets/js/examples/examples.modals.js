@@ -78,11 +78,11 @@ Theme Version: 	3.0.0
 		e.preventDefault();
 		$.magnificPopup.close();
 
-		new PNotify({
-			title: 'Success!',
-			text: 'Modal Confirm Message.',
-			type: 'success'
-		});
+	//	new PNotify({
+	//		title: 'Success!',
+	//		text: 'Modal Confirm Message.',
+	//		type: 'success'
+	//	});
 	});
 
 	/*
@@ -110,9 +110,9 @@ Theme Version: 	3.0.0
 	/*
 	Ajax
 	*/
-	$('.simple-ajax-modal').magnificPopup({
-		type: 'ajax',
-		modal: true
-	});
+	//$('.simple-ajax-modal').magnificPopup({
+	//	type: 'ajax',
+	//	modal: true
+	//});
 
 }).apply(this, [jQuery]);

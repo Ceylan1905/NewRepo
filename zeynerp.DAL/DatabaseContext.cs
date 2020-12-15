@@ -24,6 +24,7 @@ namespace zeynerp.DAL
         public DbSet<Company> Companies{ get; set; }
         public DbSet<CompanyGroup> CompanyGroups{ get; set; }
         public DbSet<Personnel> Personnels { get; set; }
+        public DbSet<CompanyAuthorized> CompanyAuthorizeds { get; set; }
     }
 
     public sealed class MigrationConfiguration : DbMigrationsConfiguration<DatabaseContext>
