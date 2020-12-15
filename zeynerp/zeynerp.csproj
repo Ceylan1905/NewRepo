@@ -4667,7 +4667,6 @@
     <Content Include="Views\Supplier\SupplierAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
     <Content Include="Views\HumanResource\PersonnelAdd.cshtml" />
-    <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4690,6 +4689,10 @@
     <ProjectReference Include="..\zeynerp.BL\zeynerp.BL.csproj">
       <Project>{07cf54a2-8d94-44c3-b363-dc39ca494ac9}</Project>
       <Name>zeynerp.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\zeynerp.Common\zeynerp.Common.csproj">
+      <Project>{6561d774-e21a-481b-a737-e3dd99e6b6f3}</Project>
+      <Name>zeynerp.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\zeynerp.DAL\zeynerp.DAL.csproj">
       <Project>{aae8bed6-3f38-4a99-be7b-87cea7f30984}</Project>

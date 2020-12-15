@@ -77,6 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Helpers\Select\AvailableOrUnavailable.cs" />
+    <Compile Include="Helpers\Select\Cities.cs" />
+    <Compile Include="Helpers\Select\MaritalStatus.cs" />
+    <Compile Include="Helpers\Select\MilitaryStatus.cs" />
     <Compile Include="Messages\ErrorMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

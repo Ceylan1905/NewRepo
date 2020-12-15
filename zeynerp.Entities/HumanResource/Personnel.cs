@@ -16,8 +16,8 @@ namespace zeynerp.Entities.HumanResource
         public string Surname { get; set; }
         [Required]
         public string City { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
-        public DateTime Birthday { get; set; }
+        [Required]
+        public string Birthday { get; set; }
         [Required]
         public int Tc_No { get; set; }
         [Required]

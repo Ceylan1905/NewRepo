@@ -25,6 +25,10 @@
     @*<form class="ecommerce-form action-buttons-fixed" action="#" method="post">*@
     @using (Html.BeginForm("PersonnelAdd", "HumanResource", FormMethod.Post, new { @class = "action-buttons-fixed" }))
     {
+        if (Model != null)
+        {
+            @Html.HiddenFor(x => x.Id)
+        }
         <div class="row">
             <div class="col">
                 <section class="card card-modern card-big-info">
@@ -57,7 +61,7 @@
                                     <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Doğum Yeri</label>
-                                        @Html.DropDownListFor(model => model.City, new SelectList(ViewBag.Cities, "Value", "Text"), new { @class = "form-control populate" })
+                                        @Html.DropDownListFor(x => x.City, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Cities))), new { @class = "form-control populate" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">Doğum Tarihi</label>
@@ -67,7 +71,6 @@
                                                     <i class="fas fa-calendar-alt"></i>
                                                 </span>
                                             </span>
-                                            @*<input id="date" data-plugin-masked-input data-input-mask="99/99/9999" placeholder="__/__/____" class="form-control">*@
                                             @Html.TextBoxFor(x => x.Birthday, new { id = "date", @class = "form-control", placeholder = "__/__/____", required = "required" })
                                         </div>
                                     </div>
@@ -87,11 +90,11 @@
                                     <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Askerlik Durumu</label>
-                                        @Html.DropDownListFor(model => model.MilitaryStatus, new SelectList(ViewBag.MilitaryStatus, "Value", "Text"), new { @class = "form-control populate" })
+                                        @Html.DropDownListFor(x => x.MilitaryStatus, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.MilitaryStatus))), " ", new { @class = "form-control populate" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputMaritalStatus">Medeni Hal</label>
-                                        @Html.DropDownListFor(model => model.MaritalStatus, new SelectList(ViewBag.MaritalStatus, "Value", "Text"), new { @class = "form-control populate" })
+                                        @Html.DropDownListFor(x => x.MaritalStatus, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.MaritalStatus))), " ", new { @class = "form-control populate" })
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
@@ -110,7 +113,7 @@
                                     <div class="col-lg-6 col-xl-5 row mr-auto p-0 m-0">
                                         <div class="col-lg-4 mb-3 mb-lg-0">
                                             <label for="inputVehicle">Araç</label>
-                                            @Html.DropDownListFor(model => model.Vehicle, new SelectList(ViewBag.AvailableOrUnavailable, "Value", "Text"), new { @class = "form-control populate" })
+                                            @Html.DropDownListFor(x => x.Vehicle, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.AvailableOrUnavailable))), " ", new { @class = "form-control populate" })
                                         </div>
                                         <div class="col-lg-8">
                                             <label for="inputVehicleLicensePlate">Plaka</label>

@@ -18,28 +18,50 @@ namespace zeynerp.BL
             if(personnel != null)
             {
                 Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
-
-                int db = repo_personnel.Insert(new Personnel()
+                Personnel db_personnel = repo_personnel.Find(x => x.Id == personnel.Id);
+                if(db_personnel != null)
                 {
-                    Name = personnel.Name,
-                    Surname = personnel.Surname.ToUpper(),
-                    City = personnel.City,
-                    Birthday = personnel.Birthday,
-                    MilitaryStatus = personnel.MilitaryStatus,
-                    MaritalStatus = personnel.MaritalStatus,
-                    Tc_No = personnel.Tc_No,
-                    SGK_No = personnel.SGK_No,
-                    Phone = personnel.Phone,
-                    Vehicle = personnel.Vehicle,
-                    VehicleRegistrationPlate = personnel.VehicleRegistrationPlate,
-                    NameOfRelative = personnel.NameOfRelative,
-                    SurnameOfRelative = personnel.SurnameOfRelative,
-                    PhoneOfRelative = personnel.PhoneOfRelative,
-                    Address = personnel.Address
-                });
+                    db_personnel.Name = personnel.Name;
+                    db_personnel.Surname = personnel.Surname;
+                    db_personnel.City = personnel.City;
+                    db_personnel.Birthday = personnel.Birthday;
+                    db_personnel.Tc_No = personnel.Tc_No;
+                    db_personnel.SGK_No = personnel.SGK_No;
+                    db_personnel.MilitaryStatus = personnel.MilitaryStatus;
+                    db_personnel.MaritalStatus = personnel.MaritalStatus;
+                    db_personnel.Phone = personnel.Phone;
+                    db_personnel.Vehicle = personnel.Vehicle;
+                    db_personnel.VehicleRegistrationPlate = personnel.VehicleRegistrationPlate;
+                    db_personnel.NameOfRelative = personnel.NameOfRelative;
+                    db_personnel.SurnameOfRelative = personnel.SurnameOfRelative;
+                    db_personnel.PhoneOfRelative = personnel.PhoneOfRelative;
+                    db_personnel.Address = personnel.Address;
 
-                if(db > 0)
+                    repo_personnel.Update(db_personnel);
+
+                    result_personnel.Result = repo_personnel.Find(x => x.Id == personnel.Id);
+                }
+                else
                 {
+                    repo_personnel.Insert(new Personnel()
+                    {
+                        Name = personnel.Name,
+                        Surname = personnel.Surname.ToUpper(),
+                        City = personnel.City,
+                        Birthday = personnel.Birthday,
+                        Tc_No = personnel.Tc_No,
+                        SGK_No = personnel.SGK_No,
+                        MilitaryStatus = personnel.MilitaryStatus,
+                        MaritalStatus = personnel.MaritalStatus,
+                        Phone = personnel.Phone,
+                        Vehicle = personnel.Vehicle,
+                        VehicleRegistrationPlate = personnel.VehicleRegistrationPlate,
+                        NameOfRelative = personnel.NameOfRelative,
+                        SurnameOfRelative = personnel.SurnameOfRelative,
+                        PhoneOfRelative = personnel.PhoneOfRelative,
+                        Address = personnel.Address                        
+                    });
+
                     result_personnel.Result = repo_personnel.Find(x => x.Id == personnel.Id);
                 }
             }
