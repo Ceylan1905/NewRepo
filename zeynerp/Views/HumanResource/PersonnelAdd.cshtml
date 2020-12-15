@@ -47,7 +47,6 @@
                             </div>
                             <div class="col-lg-3-5 col-xl-4-5">
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Ad</label>
                                         @Html.TextBoxFor(x => x.Name, new { id = "inputFirstName", @class = "form-control", type = "text", required = "required" })
@@ -58,7 +57,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Doğum Yeri</label>
                                         @Html.DropDownListFor(x => x.City, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Cities))), new { @class = "form-control populate" })
@@ -71,12 +69,11 @@
                                                     <i class="fas fa-calendar-alt"></i>
                                                 </span>
                                             </span>
-                                            @Html.TextBoxFor(x => x.Birthday, new { id = "date", @class = "form-control", placeholder = "__/__/____", required = "required" })
+                                            @Html.TextBoxFor(x => x.Birthday, new { @class = "form-control input-date", placeholder = "__/__/____", required = "required" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Vatandaşlık Numarası</label>
                                         @Html.TextBoxFor(x => x.Tc_No, new { id = "inputTcNo", @class = "form-control", type = "text", required = "required" })
@@ -87,7 +84,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Askerlik Durumu</label>
                                         @Html.DropDownListFor(x => x.MilitaryStatus, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.MilitaryStatus))), " ", new { @class = "form-control populate" })
@@ -98,7 +94,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Telefon</label>
                                         <div class="input-group">
@@ -122,7 +117,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 row ml-auto p-0 m-0">
                                         <div class="col-lg-6 mb-3 mb-lg-0">
                                             <label for="RelativeName">Yakını Ad</label>
@@ -146,10 +140,226 @@
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
-                                    <!-- <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0">First Name</label> -->
                                     <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
                                         <label for="inputAddress">Adres</label>
                                         @Html.TextAreaFor(x => x.Address, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140", required = "required" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-briefcase"></i>
+                                <h2 class="card-big-info-title">İş Bilgileri</h2>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Firma</label>
+                                            @Html.DropDownListFor(x => x.Company, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Company))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Sorumluluk Merkezi</label>
+                                            @Html.DropDownListFor(x => x.S_Central, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.S_Central))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Amir</label>
+                                            @Html.DropDownListFor(x => x.Chief, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Chief))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Pozisyon</label>
+                                            @Html.DropDownListFor(x => x.Position, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Position))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Başlangıç Tarihi</label>
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-calendar-alt"></i>
+                                                    </span>
+                                                </span>
+                                                @Html.TextBoxFor(x => x.StartingDate, new { @class = "form-control input-date", placeholder = "__/__/____", required = "required" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Maaş</label>
+                                            @Html.TextBoxFor(x => x.Salary, new { id = "inputFirstName", @class = "form-control", type = "text", required = "required" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-edit-alt"></i>
+                                <h2 class="card-big-info-title">Dil Bilgisi</h2>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">İngilizce Konuşma</label>
+                                            @Html.DropDownListFor(x => x.English_speak, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">İngilizce Yazma</label>
+                                            @Html.DropDownListFor(x => x.English_write, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">İngilizce Okuma</label>
+                                            @Html.DropDownListFor(x => x.English_read, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">Almanca Konuşma</label>
+                                            @Html.DropDownListFor(x => x.German_speak, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Almanca Yazma</label>
+                                            @Html.DropDownListFor(x => x.German_write, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">Almanca Okuma</label>
+                                            @Html.DropDownListFor(x => x.German_read, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
+                                            <label for="inputFirstName">Fransızca Konuşma</label>
+                                            @Html.DropDownListFor(x => x.French_speak, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3 mb-3 mb-lg-0">
+                                            <label for="inputLastName">Fransızca Yazma</label>
+                                            @Html.DropDownListFor(x => x.French_write, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label for="inputLastName">Fransızca Okuma</label>
+                                            @Html.DropDownListFor(x => x.French_read, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.Language))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-9 col-xl-9 offset-lg-1">
+                                            <label for="inputFirstName">Diğer</label>
+                                            @Html.TextAreaFor(x => x.OtherLanguage, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-book-alt"></i>
+                                <h2 class="card-big-info-title">Eğitim Bilgileri</h2>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                            <label for="inputFirstName">Okul Adı</label>
+                                            @Html.TextBoxFor(x => x.SchoolName, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                            <label for="inputFirstName">Bölümü</label>
+                                            @Html.TextBoxFor(x => x.Section, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Mezuniyet Tarihi</label>
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-calendar-alt"></i>
+                                                    </span>
+                                                </span>
+                                                @Html.TextBoxFor(x => x.SchoolGraduation, new { @class = "form-control input-date", placeholder = "__/__/____" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Not Ortalaması</label>
+                                            @Html.TextBoxFor(x => x.Grade, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card card-modern card-big-info">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <i class="card-big-info-icon bx bx-message-alt-detail"></i>
+                                <h2 class="card-big-info-title">Diğer Bilgiler</h2>
+                            </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                <div class="shipping-fields-wrapper collapse show">
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Geçirmiş olduğunuz önemli hastalıklar var mı?</label>
+                                            @Html.TextBoxFor(x => x.DiseaseState, new { id = "inputFirstName", @class = "form-control", type = "text", required = "required" })
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Sağlık durumunuzda belirtmeniz gereken özel bir durum var mı?</label>
+                                            @Html.TextBoxFor(x => x.HealthSituation, new { id = "inputFirstName", @class = "form-control", type = "text", required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Otomobil ehliyetiniz var mı?</label>
+                                            @Html.DropDownListFor(x => x.DrivingLicense, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.AvailableOrUnavailable))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Mesaiye kalır mısınız?</label>
+                                            @Html.DropDownListFor(x => x.Shift, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.YesOrNo))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                            <label for="inputFirstName">Sigara içiyor musunuz?</label>
+                                            @Html.DropDownListFor(x => x.Smoke, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.YesOrNo))), " ", new { @class = "form-control populate" })
+                                        </div>
+                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                            <label for="inputLastName">Alkol kullanıyor musunuz?</label>
+                                            @Html.DropDownListFor(x => x.Alcohol, new SelectList(Enum.GetValues(typeof(zeynerp.Common.Helpers.Select.YesOrNo))), " ", new { @class = "form-control populate" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -165,15 +375,21 @@
                 </button>
             </div>
             <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
-                <a href="ecommerce-customers-list.html" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">İptal</a>
+                <a href="/insan-kaynaklari/personel-listesi" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">İptal</a>
             </div>
         </div>
     }
     <script>
         document.getElementsByTagName("select")[0].setAttribute("data-plugin-selectTwo", "");
 
-        document.getElementById("date").setAttribute("data-plugin-masked-input", "");
-        document.getElementById("date").setAttribute("data-input-mask", "99/99/9999");
+        //document.getElementById("date").setAttribute("data-plugin-masked-input", "");
+        //document.getElementById("date").setAttribute("data-input-mask", "99/99/9999");
+
+        var inputDateArr = document.getElementsByClassName("input-date");
+        for (var i = 0; i < inputDateArr.length; i++) {
+            inputDateArr[i].setAttribute("data-plugin-masked-input", "");
+            inputDateArr[i].setAttribute("data-input-mask", "99/99/9999");
+        }
 
         var inputPhoneArr = document.getElementsByClassName("input-phone");
         for (var i = 0; i < inputPhoneArr.length; i++) {

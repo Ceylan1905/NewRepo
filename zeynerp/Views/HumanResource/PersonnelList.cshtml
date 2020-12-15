@@ -95,14 +95,14 @@
                                 {
                                     <tr>
                                         <td>@Html.ActionLink("1", "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>                               
-                                        <td><a href="#" class="text-dark text-decoration-none">@personnel.Name @personnel.Surname</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">@personnel.City</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">@personnel.Birthday</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">@personnel.Phone</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">Kadro</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">S-Mak</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">Software Developer</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">01-01-2020</a></td>
+                                        <td>@Html.ActionLink(personnel.Name + " " + personnel.Surname, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.City, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.Birthday, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.Phone, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.Company, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.S_Central, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.Position, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>
+                                        <td>@Html.ActionLink(personnel.StartingDate, "PersonnelAdd", "HumanResource", new { id = personnel.Id }, new { @class = "text-dark text-decoration-none" })</td>                                       
                                         <td><a href="#" class="text-dark text-decoration-none">01-01-2020</a></td>
                                         <td><a href="#" class="text-dark text-decoration-none">1 Yıl</a></td>
                                         <td><a href="#" class="text-dark text-decoration-none">10 Gün</a></td>

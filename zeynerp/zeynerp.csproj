@@ -4592,13 +4592,6 @@
     <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\tutorial.tmpl" />
     <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\type.tmpl" />
     <Content Include="Assets\vendor\dropzone\dropzone.js.map" />
-    <Content Include="Assets\vendor\codemirror\AUTHORS" />
-    <Content Include="Assets\vendor\codemirror\bin\source-highlight" />
-    <Content Include="Assets\vendor\codemirror\CHANGELOG.md" />
-    <Content Include="Assets\vendor\codemirror\CONTRIBUTING.md" />
-    <Content Include="Assets\vendor\codemirror\LICENSE" />
-    <Content Include="Assets\vendor\codemirror\package.json" />
-    <Content Include="Assets\vendor\codemirror\README.md" />
     <Content Include="Assets\vendor\summernote\font\summernote.eot" />
     <Content Include="Assets\vendor\summernote\font\summernote.ttf" />
     <Content Include="Assets\vendor\summernote\font\summernote.woff" />
@@ -4610,6 +4603,13 @@
     <Content Include="Assets\vendor\summernote\summernote-lite.min.js.map" />
     <Content Include="Assets\vendor\summernote\summernote.js.map" />
     <Content Include="Assets\vendor\summernote\summernote.min.js.map" />
+    <Content Include="Assets\vendor\codemirror\AUTHORS" />
+    <Content Include="Assets\vendor\codemirror\bin\source-highlight" />
+    <Content Include="Assets\vendor\codemirror\CHANGELOG.md" />
+    <Content Include="Assets\vendor\codemirror\CONTRIBUTING.md" />
+    <Content Include="Assets\vendor\codemirror\LICENSE" />
+    <Content Include="Assets\vendor\codemirror\package.json" />
+    <Content Include="Assets\vendor\codemirror\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

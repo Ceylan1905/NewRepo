@@ -78,9 +78,15 @@
   <ItemGroup>
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\Select\AvailableOrUnavailable.cs" />
+    <Compile Include="Helpers\Select\Chief.cs" />
     <Compile Include="Helpers\Select\Cities.cs" />
+    <Compile Include="Helpers\Select\Company.cs" />
+    <Compile Include="Helpers\Select\Language.cs" />
     <Compile Include="Helpers\Select\MaritalStatus.cs" />
     <Compile Include="Helpers\Select\MilitaryStatus.cs" />
+    <Compile Include="Helpers\Select\Position.cs" />
+    <Compile Include="Helpers\Select\S_Central.cs" />
+    <Compile Include="Helpers\Select\YesOrNo.cs" />
     <Compile Include="Messages\ErrorMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
