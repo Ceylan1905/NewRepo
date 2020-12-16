@@ -143,5 +143,16 @@ namespace zeynerp.BL
             }
             return personnel;
         }
+
+        public Personnel PersonnelDelete(string db_name, int id)
+        {
+            Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
+            Personnel personnel = repo_personnel.Find(x => x.Id == id);
+            if(personnel != null)
+            {
+                repo_personnel.Delete(personnel);
+            }
+            return personnel;
+        }
     }
 }

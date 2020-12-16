@@ -19,9 +19,9 @@ namespace zeynerp.Entities.HumanResource
         [Required]
         public string Birthday { get; set; }
         [Required]
-        public int Tc_No { get; set; }
+        public string Tc_No { get; set; }
         [Required]
-        public int SGK_No { get; set; }
+        public string SGK_No { get; set; }
         [Required]
         public string MilitaryStatus { get; set; }
         [Required]
@@ -62,8 +62,8 @@ namespace zeynerp.Entities.HumanResource
         public string OtherLanguage { get; set; }
         public string SchoolName { get; set; }
         public string Section { get; set; }
-        public DateTime? SchoolGraduation { get; set; }
-        public float? Grade { get; set; }
+        public string SchoolGraduation { get; set; }
+        public string Grade { get; set; }
         [Required]
         public string DiseaseState { get; set; }
         [Required]
@@ -72,5 +72,6 @@ namespace zeynerp.Entities.HumanResource
         public string Shift { get; set; }
         public string Smoke { get; set; }
         public string Alcohol { get; set; }
+        public string ProfileImage { get; set; }
     }
 }
