@@ -13,137 +13,134 @@ namespace zeynerp.BL
     {
         private BL_Result<Personnel> result_personnel = new BL_Result<Personnel>();
 
+        public BL_Result<Personnel> GetPersonnel(string db_name, int id)
+        {
+            Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
+            result_personnel.Result = repo_personnel.Find(x => x.Id == id);
+            return result_personnel;
+        }
+        public List<Personnel> GetPersonnels(string db_name)
+        {
+            Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
+
+            if (repo_personnel.List() == null)
+            {
+                // Error
+            }
+
+            List<Personnel> personnelList = repo_personnel.List();
+            return personnelList;
+        }
         public BL_Result<Personnel> PersonnelAdd(string db_name, Personnel personnel)
         {
             if(personnel != null)
             {
                 Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
-                Personnel db_personnel = repo_personnel.Find(x => x.Id == personnel.Id);
-                if(db_personnel != null)
+                int db = repo_personnel.Insert(new Personnel()
                 {
-                    db_personnel.Name = personnel.Name;
-                    db_personnel.Surname = personnel.Surname;
-                    db_personnel.City = personnel.City;
-                    db_personnel.Birthday = personnel.Birthday;
-                    db_personnel.Tc_No = personnel.Tc_No;
-                    db_personnel.SGK_No = personnel.SGK_No;
-                    db_personnel.MilitaryStatus = personnel.MilitaryStatus;
-                    db_personnel.MaritalStatus = personnel.MaritalStatus;
-                    db_personnel.Phone = personnel.Phone;
-                    db_personnel.Vehicle = personnel.Vehicle;
-                    db_personnel.VehicleRegistrationPlate = personnel.VehicleRegistrationPlate;
-                    db_personnel.NameOfRelative = personnel.NameOfRelative;
-                    db_personnel.SurnameOfRelative = personnel.SurnameOfRelative;
-                    db_personnel.PhoneOfRelative = personnel.PhoneOfRelative;
-                    db_personnel.Address = personnel.Address;
-                    db_personnel.Company = personnel.Company;
-                    db_personnel.S_Central = personnel.S_Central;
-                    db_personnel.Chief = personnel.Chief;
-                    db_personnel.Position = personnel.Position;
-                    db_personnel.StartingDate = personnel.StartingDate;
-                    db_personnel.Salary = personnel.Salary;
-                    db_personnel.English_speak = personnel.English_speak;
-                    db_personnel.English_write = personnel.English_write;
-                    db_personnel.English_read = personnel.English_read;
-                    db_personnel.German_speak = personnel.German_speak;
-                    db_personnel.German_write = personnel.German_write;
-                    db_personnel.German_read = personnel.German_read;
-                    db_personnel.French_speak = personnel.French_speak;
-                    db_personnel.French_write = personnel.French_write;
-                    db_personnel.French_read = personnel.French_read;
-                    db_personnel.OtherLanguage = personnel.OtherLanguage;
-                    db_personnel.SchoolName = personnel.SchoolName;
-                    db_personnel.Section = personnel.Section;
-                    db_personnel.SchoolGraduation = personnel.SchoolGraduation;
-                    db_personnel.Grade = personnel.Grade;
-                    db_personnel.DiseaseState = personnel.DiseaseState;
-                    db_personnel.HealthSituation = personnel.HealthSituation;
-                    db_personnel.DrivingLicense = personnel.DrivingLicense;
-                    db_personnel.Shift = personnel.Shift;
-                    db_personnel.Smoke = personnel.Smoke;
-                    db_personnel.Alcohol = personnel.Alcohol;
-
-                    repo_personnel.Update(db_personnel);
-
-                    result_personnel.Result = repo_personnel.Find(x => x.Id == personnel.Id);
-                }
-                else
-                {
-                    repo_personnel.Insert(new Personnel()
-                    {
-                        Name = personnel.Name,
-                        Surname = personnel.Surname.ToUpper(),
-                        City = personnel.City,
-                        Birthday = personnel.Birthday,
-                        Tc_No = personnel.Tc_No,
-                        SGK_No = personnel.SGK_No,
-                        MilitaryStatus = personnel.MilitaryStatus,
-                        MaritalStatus = personnel.MaritalStatus,
-                        Phone = personnel.Phone,
-                        Vehicle = personnel.Vehicle,
-                        VehicleRegistrationPlate = personnel.VehicleRegistrationPlate,
-                        NameOfRelative = personnel.NameOfRelative,
-                        SurnameOfRelative = personnel.SurnameOfRelative,
-                        PhoneOfRelative = personnel.PhoneOfRelative,
-                        Address = personnel.Address,
-                        Company = personnel.Company,
-                        S_Central = personnel.S_Central,
-                        Chief = personnel.Chief,
-                        Position = personnel.Position,
-                        StartingDate = personnel.StartingDate,
-                        Salary = personnel.Salary,
-                        English_speak = personnel.English_speak,
-                        English_write = personnel.English_write,
-                        English_read = personnel.English_read,
-                        German_speak = personnel.German_speak,
-                        German_write = personnel.German_write,
-                        German_read = personnel.German_read,
-                        French_speak = personnel.French_speak,
-                        French_write = personnel.French_write,
-                        French_read = personnel.French_read,
-                        OtherLanguage = personnel.OtherLanguage,
-                        SchoolName = personnel.SchoolName,
-                        Section = personnel.Section,
-                        SchoolGraduation = personnel.SchoolGraduation,
-                        Grade = personnel.Grade,
-                        DiseaseState = personnel.DiseaseState,
-                        HealthSituation = personnel.HealthSituation,
-                        DrivingLicense = personnel.DrivingLicense,
-                        Shift = personnel.Shift,
-                        Smoke = personnel.Smoke,
-                        Alcohol = personnel.Alcohol
+                    Name = personnel.Name,
+                    Surname = personnel.Surname,
+                    City = personnel.City,
+                    Birthday = personnel.Birthday,
+                    Tc_No = personnel.Tc_No,
+                    SGK_No = personnel.SGK_No,
+                    MilitaryStatus = personnel.MilitaryStatus,
+                    MaritalStatus = personnel.MaritalStatus,
+                    Phone = personnel.Phone,
+                    Vehicle = personnel.Vehicle,
+                    VehicleRegistrationPlate = personnel.VehicleRegistrationPlate,
+                    NameOfRelative = personnel.NameOfRelative,
+                    SurnameOfRelative = personnel.SurnameOfRelative,
+                    PhoneOfRelative = personnel.PhoneOfRelative,
+                    Address = personnel.Address,
+                    Company = personnel.Company,
+                    S_Central = personnel.S_Central,
+                    Chief = personnel.Chief,
+                    Position = personnel.Position,
+                    StartingDate = personnel.StartingDate,
+                    Salary = personnel.Salary,
+                    English_speak = personnel.English_speak,
+                    English_write = personnel.English_write,
+                    English_read = personnel.English_read,
+                    German_speak = personnel.German_speak,
+                    German_write = personnel.German_write,
+                    German_read = personnel.German_read,
+                    French_speak = personnel.French_speak,
+                    French_write = personnel.French_write,
+                    French_read = personnel.French_read,
+                    OtherLanguage = personnel.OtherLanguage,
+                    SchoolName = personnel.SchoolName,
+                    Section = personnel.Section,
+                    SchoolGraduation = personnel.SchoolGraduation,
+                    Grade = personnel.Grade,
+                    DiseaseState = personnel.DiseaseState,
+                    HealthSituation = personnel.HealthSituation,
+                    DrivingLicense = personnel.DrivingLicense,
+                    Shift = personnel.Shift,
+                    Smoke = personnel.Smoke,
+                    Alcohol = personnel.Alcohol,
+                    ProfileImage = personnel.ProfileImage
                 });
 
+                if(db > 0)
+                {
                     result_personnel.Result = repo_personnel.Find(x => x.Id == personnel.Id);
                 }
             }
             return result_personnel;
         }
-
-        public List<Personnel> GetPersonnels(string db_name)
+        public BL_Result<Personnel> PersonnelUpdate(string db_name, BL_Result<Personnel> per)
         {
             Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
-            
-            if(repo_personnel.List() == null)
+            Personnel personnel = repo_personnel.Find(x => x.Id == per.Result.Id);
+            if(personnel != null)
             {
-                // Error
+                personnel.Name = per.Result.Name;
+                personnel.Surname = per.Result.Surname;
+                personnel.City = per.Result.City;
+                personnel.Birthday = per.Result.Birthday;
+                personnel.Tc_No = per.Result.Tc_No;
+                personnel.SGK_No = per.Result.SGK_No;
+                personnel.MilitaryStatus = per.Result.MilitaryStatus;
+                personnel.MaritalStatus = per.Result.MaritalStatus;
+                personnel.Phone = per.Result.Phone;
+                personnel.Vehicle = per.Result.Vehicle;
+                personnel.VehicleRegistrationPlate = per.Result.VehicleRegistrationPlate;
+                personnel.NameOfRelative = per.Result.NameOfRelative;
+                personnel.SurnameOfRelative = per.Result.SurnameOfRelative;
+                personnel.PhoneOfRelative = per.Result.PhoneOfRelative;
+                personnel.Address = per.Result.Address;
+                personnel.Company = per.Result.Company;
+                personnel.S_Central = per.Result.S_Central;
+                personnel.Chief = per.Result.Chief;
+                personnel.Position = per.Result.Position;
+                personnel.StartingDate = per.Result.StartingDate;
+                personnel.Salary = per.Result.Salary;
+                personnel.English_speak = per.Result.English_speak;
+                personnel.English_write = per.Result.English_write;
+                personnel.English_read = per.Result.English_read;
+                personnel.German_speak = per.Result.German_speak;
+                personnel.German_write = per.Result.German_write;
+                personnel.German_read = per.Result.German_read;
+                personnel.French_speak = per.Result.French_speak;
+                personnel.French_write = per.Result.French_write;
+                personnel.French_read = per.Result.French_read;
+                personnel.OtherLanguage = per.Result.OtherLanguage;
+                personnel.SchoolName = per.Result.SchoolName;
+                personnel.Section = per.Result.Section;
+                personnel.SchoolGraduation = per.Result.SchoolGraduation;
+                personnel.Grade = per.Result.Grade;
+                personnel.DiseaseState = per.Result.DiseaseState;
+                personnel.HealthSituation = per.Result.HealthSituation;
+                personnel.DrivingLicense = per.Result.DrivingLicense;
+                personnel.Shift = per.Result.Shift;
+                personnel.Smoke = per.Result.Smoke;
+                personnel.Alcohol = per.Result.Alcohol;
+                personnel.ProfileImage = per.Result.ProfileImage;
             }
-            
-            List<Personnel> personnelList = repo_personnel.List();
-            return personnelList;
+            repo_personnel.Update(personnel);
+            return result_personnel;
         }
-
-        public Personnel GetPersonnel(string db_name, int id)
-        {
-            Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
-            Personnel personnel = repo_personnel.Find(x => x.Id == id);
-            if (personnel == null)
-            {
-                // Error
-            }
-            return personnel;
-        }
-
         public Personnel PersonnelDelete(string db_name, int id)
         {
             Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);

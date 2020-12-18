@@ -1,5 +1,6 @@
-﻿@using zeynerp.Entities.HumanResource
-@model Personnel
+﻿@using zeynerp.BL
+@using zeynerp.Entities.HumanResource 
+@model BL_Result<Personnel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -22,7 +23,7 @@
         </div>
     </header>
 
-    @using (Ajax.BeginForm("PersonnelAdd", "HumanResource", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccess" }, new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("PersonnelDetail", "HumanResource", FormMethod.Post, new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))
     {
         <div class="row">
             <div class="col">
@@ -31,32 +32,34 @@
                         <div class="row">
                             <div class="col-lg-2-5 col-xl-1-5">
                                 <div class="thumb-info mb-3">
-                                    <img src="~/Assets/img/!logged-user.jpg" class="rounded img-fluid" alt="John Doe">
+                                    <img src="~/images/@Model.Result.ProfileImage" class="rounded img-fluid" alt="John Doe">
+                                    @Html.HiddenFor(x => x.Result.ProfileImage)
                                     <div class="">
                                         @*<label for="file-input">
                                             <i class="el el-edit"></i>
                                         </label>*@
-                                        <input id="file-input" class="mt-2 w-100" type="file" name="imageFile" required />
+                                        <input id="file-input" class="mt-2 w-100" type="file" name="imageFile" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3-5 col-xl-4-5">
+                                @Html.HiddenFor(x => x.Result.Id)
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Ad</label>
-                                        @Html.TextBoxFor(x => x.Name, new { id = "inputFirstName", @class = "form-control", type = "text" })
-                                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Result.Name, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.Name, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">Soyad</label>
-                                        @Html.TextBoxFor(x => x.Surname, new { id = "inputLastName", @class = "form-control", type = "text" })
-                                        @Html.ValidationMessageFor(x => x.Surname, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Result.Surname, new { id = "inputLastName", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.Surname, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Doğum Yeri</label>
-                                        @Html.DropDownListFor(x => x.City, new List<SelectListItem> {
+                                        @Html.DropDownListFor(x => x.Result.City, new List<SelectListItem> {
                                             new SelectListItem { Text = "Adana", Value = "Adana"},
                                             new SelectListItem { Text = "Adıyaman", Value = "Adıyaman"},
                                             new SelectListItem { Text = "Afyon", Value = "Afyon"},
@@ -137,7 +140,7 @@
                                             new SelectListItem { Text = "Yalova", Value = "Yalova"},
                                             new SelectListItem { Text = "Yozgat", Value = "Yozgat"},
                                             new SelectListItem { Text = "Zonguldak", Value = "Zonguldak" } }, new { @class = "form-control populate" })
-                                        @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(x => x.Result.City, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">Doğum Tarihi</label>
@@ -147,41 +150,41 @@
                                                     <i class="fas fa-calendar-alt"></i>
                                                 </span>
                                             </span>
-                                            @Html.TextBoxFor(x => x.Birthday, new { @class = "form-control input-date", placeholder = "__/__/____" })
-                                            @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger w-100" })
+                                            @Html.TextBoxFor(x => x.Result.Birthday, new { @class = "form-control input-date", placeholder = "__/__/____" })
+                                            @Html.ValidationMessageFor(x => x.Result.Birthday, "", new { @class = "text-danger w-100" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Vatandaşlık Numarası</label>
-                                        @Html.TextBoxFor(x => x.Tc_No, new { id = "inputTcNo", @class = "form-control", type = "text" })
-                                        @Html.ValidationMessageFor(x => x.Tc_No, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Result.Tc_No, new { id = "inputTcNo", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.Tc_No, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">SGK Numarası</label>
-                                        @Html.TextBoxFor(x => x.SGK_No, new { id = "inputSgkNo", @class = "form-control", type = "text" })
-                                        @Html.ValidationMessageFor(x => x.SGK_No, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Result.SGK_No, new { id = "inputSgkNo", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.SGK_No, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Askerlik Durumu</label>
-                                        @Html.DropDownListFor(x => x.MilitaryStatus, new List<SelectListItem> {
+                                        @Html.DropDownListFor(x => x.Result.MilitaryStatus, new List<SelectListItem> {
                                             new SelectListItem { Text = "", Value = ""},
                                             new SelectListItem { Text = "Yapıldı", Value = "Yapıldı"},
                                             new SelectListItem { Text = "Yapılmadı", Value = "Yapılmadı"},
                                             new SelectListItem { Text = "Muaf", Value = "Muaf"},
                                             new SelectListItem { Text = "Tecilli", Value = "Tecilli" } }, new { @class = "form-control populate" })
-                                        @Html.ValidationMessageFor(x => x.MilitaryStatus, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(x => x.Result.MilitaryStatus, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputMaritalStatus">Medeni Hal</label>
-                                        @Html.DropDownListFor(x => x.MaritalStatus, new List<SelectListItem> {
+                                        @Html.DropDownListFor(x => x.Result.MaritalStatus, new List<SelectListItem> {
                                             new SelectListItem { Text = "", Value = ""},
                                             new SelectListItem { Text = "Bekar", Value = "Bekar"},
                                             new SelectListItem { Text = "Evli", Value = "Evli" } }, new { @class = "form-control populate" })
-                                        @Html.ValidationMessageFor(x => x.MaritalStatus, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(x => x.Result.MaritalStatus, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
@@ -193,22 +196,22 @@
                                                     <i class="fas fa-phone"></i>
                                                 </span>
                                             </span>
-                                            @Html.TextBoxFor(x => x.Phone, new { id = "phone", @class = "form-control input-phone", type = "text", placeholder = "(123) 123-1234" })
-                                            @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger w-100" })
+                                            @Html.TextBoxFor(x => x.Result.Phone, new { id = "phone", @class = "form-control input-phone", type = "text", placeholder = "(123) 123-1234" })
+                                            @Html.ValidationMessageFor(x => x.Result.Phone, "", new { @class = "text-danger w-100" })
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-xl-5 row mr-auto p-0 m-0">
                                         <div class="col-lg-4 mb-3 mb-lg-0">
-                                            <label for="inputVehicle">Araç</label>                                   
-                                            @Html.DropDownListFor(x => x.Vehicle, new List<SelectListItem> {
+                                            <label for="inputVehicle">Araç</label>
+                                            @Html.DropDownListFor(x => x.Result.Vehicle, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Var", Value = "Var"},
                                                 new SelectListItem { Text = "Yok", Value = "Yok" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Vehicle, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Vehicle, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-8">
                                             <label for="inputVehicleLicensePlate">Plaka</label>
-                                            @Html.TextBoxFor(x => x.VehicleRegistrationPlate, new { id = "inputVehicleLicensePlate", @class = "form-control", type = "text" })
+                                            @Html.TextBoxFor(x => x.Result.VehicleRegistrationPlate, new { id = "inputVehicleLicensePlate", @class = "form-control", type = "text" })
                                         </div>
                                     </div>
                                 </div>
@@ -216,13 +219,13 @@
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 row ml-auto p-0 m-0">
                                         <div class="col-lg-6 mb-3 mb-lg-0">
                                             <label for="RelativeName">Yakını Ad</label>
-                                            @Html.TextBoxFor(x => x.NameOfRelative, new { id = "inputRelativeName", @class = "form-control", type = "text" })
-                                            @Html.ValidationMessageFor(x => x.NameOfRelative, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Result.NameOfRelative, new { id = "inputRelativeName", @class = "form-control", type = "text" })
+                                            @Html.ValidationMessageFor(x => x.Result.NameOfRelative, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6">
                                             <label for="inputRelativeSurname">Yakını Soyad</label>
-                                            @Html.TextBoxFor(x => x.SurnameOfRelative, new { id = "inputRelativeSurname", @class = "form-control", type = "text" })
-                                            @Html.ValidationMessageFor(x => x.SurnameOfRelative, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Result.SurnameOfRelative, new { id = "inputRelativeSurname", @class = "form-control", type = "text" })
+                                            @Html.ValidationMessageFor(x => x.Result.SurnameOfRelative, "", new { @class = "text-danger w-100" })
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
@@ -233,16 +236,16 @@
                                                     <i class="fas fa-phone"></i>
                                                 </span>
                                             </span>
-                                            @Html.TextBoxFor(x => x.PhoneOfRelative, new { id = "inputRelativePhone", @class = "form-control input-phone", type = "text", placeholder = "(123) 123-1234" })
-                                            @Html.ValidationMessageFor(x => x.PhoneOfRelative, "", new { @class = "text-danger w-100" })
+                                            @Html.TextBoxFor(x => x.Result.PhoneOfRelative, new { id = "inputRelativePhone", @class = "form-control input-phone", type = "text", placeholder = "(123) 123-1234" })
+                                            @Html.ValidationMessageFor(x => x.Result.PhoneOfRelative, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
                                         <label for="inputAddress">Adres</label>
-                                        @Html.TextAreaFor(x => x.Address, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140" })
-                                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                                        @Html.TextAreaFor(x => x.Result.Address, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140" })
+                                        @Html.ValidationMessageFor(x => x.Result.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +268,7 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                             <label for="inputFirstName">Firma</label>
-                                            @Html.DropDownListFor(x => x.Company, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Company, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Kadro", Value = "Kadro"},
                                                 new SelectListItem { Text = "Erdağ Makine", Value = "Erdağ Makine"},
@@ -274,11 +277,11 @@
                                                 new SelectListItem { Text = "Pınarbaşı", Value = "Pınarbaşı"},
                                                 new SelectListItem { Text = "Kadro", Value = "Kadro"},
                                                 new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Company, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Company, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Sorumluluk Merkezi</label>
-                                            @Html.DropDownListFor(x => x.S_Central, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.S_Central, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "S-Mak", Value = "S-Mak"},
                                                 new SelectListItem { Text = "S-Gaz", Value = "S-Gaz"},
@@ -290,13 +293,13 @@
                                                 new SelectListItem { Text = "Teşvik Gelirleri", Value = "Teşvik Gelirleri"},
                                                 new SelectListItem { Text = "S-Mak Industries", Value = "S-Mak Industries"},
                                                 new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.S_Central, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.S_Central, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                             <label for="inputFirstName">Amir</label>
-                                            @Html.DropDownListFor(x => x.Chief, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Chief, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Abdulkadir UĞURLU", Value = "Abdulkadir UĞURLU"},
                                                 new SelectListItem { Text = "Ali YETİŞ", Value = "Ali YETİŞ"},
@@ -314,11 +317,11 @@
                                                 new SelectListItem { Text = "Nurullah ALAGEYİK", Value = "Nurullah ALAGEYİK"},
                                                 new SelectListItem { Text = "Sefa TÜRK", Value = "Sefa TÜRK"},
                                                 new SelectListItem { Text = "Selim SELİMOĞLU", Value = "Selim SELİMOĞLU" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Chief, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Chief, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Pozisyon</label>
-                                            @Html.DropDownListFor(x => x.Position, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Position, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Genel Başvuru", Value = "Genel Başvuru"},
                                                 new SelectListItem { Text = "Genel Müdür", Value = "Genel Müdür"},
@@ -358,7 +361,7 @@
                                                 new SelectListItem { Text = "Satış Mühendisi", Value = "Satış Mühendisi"},
                                                 new SelectListItem { Text = "Finansal Analist", Value = "Finansal Analist"},
                                                 new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Position, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Position, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
@@ -370,14 +373,14 @@
                                                         <i class="fas fa-calendar-alt"></i>
                                                     </span>
                                                 </span>
-                                                @Html.TextBoxFor(x => x.StartingDate, new { @class = "form-control input-date", placeholder = "__/__/____" })
-                                                @Html.ValidationMessageFor(x => x.StartingDate, "", new { @class = "text-danger w-100" })
+                                                @Html.TextBoxFor(x => x.Result.StartingDate, new { @class = "form-control input-date", placeholder = "__/__/____" })
+                                                @Html.ValidationMessageFor(x => x.Result.StartingDate, "", new { @class = "text-danger w-100" })
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Maaş</label>
-                                            @Html.TextBoxFor(x => x.Salary, new { id = "inputFirstName", @class = "form-control", type = "text" })
-                                            @Html.ValidationMessageFor(x => x.Salary, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Result.Salary, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.ValidationMessageFor(x => x.Result.Salary, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -401,8 +404,8 @@
                                 <div class="shipping-fields-wrapper collapse show">
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
-                                            <label for="inputFirstName">İngilizce Konuşma</label>                                            
-                                            @Html.DropDownListFor(x => x.English_speak, new List<SelectListItem> {
+                                            <label for="inputFirstName">İngilizce Konuşma</label>
+                                            @Html.DropDownListFor(x => x.Result.English_speak, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -411,8 +414,8 @@
                                                 new SelectListItem { Text = "Çok İyi", Value = "Çok İyi" } }, new { @class = "form-control populate" })
                                         </div>
                                         <div class="col-lg-3 mb-3 mb-lg-0">
-                                            <label for="inputLastName">İngilizce Yazma</label> 
-                                            @Html.DropDownListFor(x => x.English_write, new List<SelectListItem> {
+                                            <label for="inputLastName">İngilizce Yazma</label>
+                                            @Html.DropDownListFor(x => x.Result.English_write, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -422,7 +425,7 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <label for="inputLastName">İngilizce Okuma</label>
-                                            @Html.DropDownListFor(x => x.English_read, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.English_read, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -434,7 +437,7 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
                                             <label for="inputFirstName">Almanca Konuşma</label>
-                                            @Html.DropDownListFor(x => x.German_speak, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.German_speak, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -444,7 +447,7 @@
                                         </div>
                                         <div class="col-lg-3 mb-3 mb-lg-0">
                                             <label for="inputLastName">Almanca Yazma</label>
-                                            @Html.DropDownListFor(x => x.German_write, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.German_write, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -454,7 +457,7 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <label for="inputLastName">Almanca Okuma</label>
-                                            @Html.DropDownListFor(x => x.German_read, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.German_read, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -466,7 +469,7 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-3 mb-3 mb-lg-0 offset-lg-1">
                                             <label for="inputFirstName">Fransızca Konuşma</label>
-                                            @Html.DropDownListFor(x => x.French_speak, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.French_speak, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -476,7 +479,7 @@
                                         </div>
                                         <div class="col-lg-3 mb-3 mb-lg-0">
                                             <label for="inputLastName">Fransızca Yazma</label>
-                                            @Html.DropDownListFor(x => x.French_write, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.French_write, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -485,8 +488,8 @@
                                                 new SelectListItem { Text = "Çok İyi", Value = "Çok İyi" } }, new { @class = "form-control populate" })
                                         </div>
                                         <div class="col-lg-3">
-                                            <label for="inputLastName">Fransızca Okuma</label>                                 
-                                            @Html.DropDownListFor(x => x.French_read, new List<SelectListItem> {
+                                            <label for="inputLastName">Fransızca Okuma</label>
+                                            @Html.DropDownListFor(x => x.Result.French_read, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Başlangıç", Value = "Başlangıç"},
@@ -498,7 +501,7 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-9 col-xl-9 offset-lg-1">
                                             <label for="inputFirstName">Diğer</label>
-                                            @Html.TextAreaFor(x => x.OtherLanguage, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140" })
+                                            @Html.TextAreaFor(x => x.Result.OtherLanguage, new { id = "inputAddress", @class = "form-control", rows = "3", maxlength = "140" })
                                         </div>
                                     </div>
                                 </div>
@@ -522,13 +525,13 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
                                             <label for="inputFirstName">Okul Adı</label>
-                                            @Html.TextBoxFor(x => x.SchoolName, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.TextBoxFor(x => x.Result.SchoolName, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
                                             <label for="inputFirstName">Bölümü</label>
-                                            @Html.TextBoxFor(x => x.Section, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.TextBoxFor(x => x.Result.Section, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
@@ -540,12 +543,12 @@
                                                         <i class="fas fa-calendar-alt"></i>
                                                     </span>
                                                 </span>
-                                                @Html.TextBoxFor(x => x.SchoolGraduation, new { @class = "form-control input-date", placeholder = "__/__/____" })
+                                                @Html.TextBoxFor(x => x.Result.SchoolGraduation, new { @class = "form-control input-date", placeholder = "__/__/____" })
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Not Ortalaması</label>
-                                            @Html.TextBoxFor(x => x.Grade, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.TextBoxFor(x => x.Result.Grade, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                         </div>
                                     </div>
                                 </div>
@@ -569,49 +572,49 @@
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                             <label for="inputFirstName">Geçirmiş olduğunuz önemli hastalıklar var mı?</label>
-                                            @Html.TextBoxFor(x => x.DiseaseState, new { id = "inputFirstName", @class = "form-control", type = "text" })
-                                            @Html.ValidationMessageFor(x => x.DiseaseState, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Result.DiseaseState, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.ValidationMessageFor(x => x.Result.DiseaseState, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Sağlık durumunuzda belirtmeniz gereken özel bir durum var mı?</label>
-                                            @Html.TextBoxFor(x => x.HealthSituation, new { id = "inputFirstName", @class = "form-control", type = "text" })
-                                            @Html.ValidationMessageFor(x => x.HealthSituation, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.Result.HealthSituation, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                            @Html.ValidationMessageFor(x => x.Result.HealthSituation, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                             <label for="inputFirstName">Otomobil ehliyetiniz var mı?</label>
-                                            @Html.DropDownListFor(x => x.DrivingLicense, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.DrivingLicense, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Yok", Value = "Yok"},
                                                 new SelectListItem { Text = "Var", Value = "Var" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.DrivingLicense, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.DrivingLicense, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Mesaiye kalır mısınız?</label>
-                                            @Html.DropDownListFor(x => x.Shift, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Shift, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Hayır", Value = "Hayır"},
                                                 new SelectListItem { Text = "Evet", Value = "Evet" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Shift, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Shift, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                             <label for="inputFirstName">Sigara içiyor musunuz?</label>
-                                            @Html.DropDownListFor(x => x.Smoke, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Smoke, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Hayır", Value = "Hayır"},
                                                 new SelectListItem { Text = "Evet", Value = "Evet" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Smoke, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Smoke, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6 col-xl-5 mr-auto">
                                             <label for="inputLastName">Alkol kullanıyor musunuz?</label>
-                                            @Html.DropDownListFor(x => x.Alcohol, new List<SelectListItem> {
+                                            @Html.DropDownListFor(x => x.Result.Alcohol, new List<SelectListItem> {
                                                 new SelectListItem { Text = "", Value = ""},
                                                 new SelectListItem { Text = "Hayır", Value = "Hayır"},
                                                 new SelectListItem { Text = "Evet", Value = "Evet" } }, new { @class = "form-control populate" })
-                                            @Html.ValidationMessageFor(x => x.Alcohol, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(x => x.Result.Alcohol, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -630,9 +633,12 @@
             <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
                 <a href="/insan-kaynaklari/personel-listesi" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">İptal</a>
             </div>
+            @*<div class="col-12 col-md-auto ml-md-auto mt-3 mt-md-0">
+                @Html.ActionLink("Sil", "PersonnelDelete", "HumanResource", new { id = Html.DisplayFor(x => x.Id) }, new { @class = "delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" })
+            </div>*@
         </div>
     }
-<script>
+    <script>
         document.getElementsByTagName("select")[0].setAttribute("data-plugin-selectTwo", "");
 
         //document.getElementById("date").setAttribute("data-plugin-masked-input", "");
@@ -649,8 +655,4 @@
             inputPhoneArr[i].setAttribute("data-plugin-masked-input", "");
             inputPhoneArr[i].setAttribute("data-input-mask", "(999) 999-9999");
         }
-
-        function OnSuccess() {
-            location.href = "@Url.Content("personel-listesi")";
-        }
-</script>
+    </script>

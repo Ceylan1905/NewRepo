@@ -10,46 +10,47 @@ namespace zeynerp.Entities.HumanResource
     public class Personnel
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "İsim alanı gereklidir.")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Soyisim alanı gereklidir.")]
         public string Surname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Doğum yeri alanı gereklidir.")]
         public string City { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Doğum tarihi alanı gereklidir.")]
         public string Birthday { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Tc numarası alanı gereklidir.")]
         public string Tc_No { get; set; }
-        [Required]
+        [Required(ErrorMessage = "SGK numarası alanı gereklidir.")]
         public string SGK_No { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Askerlik durum alanı gereklidir.")]
         public string MilitaryStatus { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Medeni hal durum alanı gereklidir.")]
         public string MaritalStatus { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Telefon alanı gereklidir.")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Araç alanı gereklidir.")]
         public string Vehicle { get; set; }
         public string VehicleRegistrationPlate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Yakının ismi alanı gereklidir.")]
         public string NameOfRelative { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Yakının soyismi alanı gereklidir.")]
         public string SurnameOfRelative { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Yakının telefon alanı gereklidir.")]
         public string PhoneOfRelative { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Adres alanı gereklidir.")]
         public string Address { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Firma alanı gereklidir.")]
         public string Company { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Sorumluluk merkezi alanı gereklidir.")]
         public string S_Central { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Amir alanı gereklidir.")]
         public string Chief { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Pozisyon alanı gereklidir.")]
         public string Position { get; set; }
+        [Required(ErrorMessage = "Başlangıç tarih alanı gereklidir.")]
         public string StartingDate { get; set; }
-        [Required]
-        public decimal Salary { get; set; }
+        [Required(ErrorMessage = "Maaş alanı gereklidir.")]
+        public string Salary { get; set; }
         public string English_speak { get; set; }
         public string English_write { get; set; }
         public string English_read { get; set; }
@@ -64,14 +65,19 @@ namespace zeynerp.Entities.HumanResource
         public string Section { get; set; }
         public string SchoolGraduation { get; set; }
         public string Grade { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Hastalık durum alanı gereklidir.")]
         public string DiseaseState { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Sağlık durum alanı gereklidir.")]
         public string HealthSituation { get; set; }
+        [Required(ErrorMessage = "Ehliyet alanı gereklidir.")]
         public string DrivingLicense { get; set; }
+        [Required(ErrorMessage = "Mesai alanı gereklidir.")]
         public string Shift { get; set; }
+        [Required(ErrorMessage = "Sigara alanı gereklidir.")]
         public string Smoke { get; set; }
+        [Required(ErrorMessage = "Alkol alanı gereklidir.")]
         public string Alcohol { get; set; }
+        [Required(ErrorMessage = "Profil fotoğraf alanı gereklidir.")]
         public string ProfileImage { get; set; }
     }
 }
