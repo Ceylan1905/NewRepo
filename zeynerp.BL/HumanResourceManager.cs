@@ -141,7 +141,7 @@ namespace zeynerp.BL
             repo_personnel.Update(personnel);
             return result_personnel;
         }
-        public Personnel PersonnelDelete(string db_name, int id)
+        public void PersonnelDelete(string db_name, int id)
         {
             Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
             Personnel personnel = repo_personnel.Find(x => x.Id == id);
@@ -149,7 +149,6 @@ namespace zeynerp.BL
             {
                 repo_personnel.Delete(personnel);
             }
-            return personnel;
         }
     }
 }

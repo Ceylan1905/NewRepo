@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,12 @@ namespace zeynerp.Controllers
         public ActionResult PersonnelList()
         {
             Employee employee = Session["employee"] as Employee;
+
+            if(employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
             List<Personnel> personnels = manager_personnel.GetPersonnels(employee.CompanyName);
             return View(personnels);
         }
@@ -72,16 +79,12 @@ namespace zeynerp.Controllers
             return RedirectToAction("PersonnelList");
         }
 
-        [Route("insan-kaynaklari/personel-sil")]
-        public ActionResult PersonnelDelete(int? id)
+        [Route("insan-kaynaklari/personel-sil/{id}")]
+        public ActionResult PersonnelDelete(int id)
         {
-            if(id != null)
-            {
-                Employee employee = Session["employee"] as Employee;
-                manager_personnel.PersonnelDelete(employee.CompanyName, id.Value);
-                return RedirectToAction("PersonnelList");
-            }
-            return View(); // Error
+            Employee employee = Session["employee"] as Employee;
+            manager_personnel.PersonnelDelete(employee.CompanyName, id);
+            return RedirectToAction("PersonnelList");
         }
     }
 }

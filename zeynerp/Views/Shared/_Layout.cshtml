@@ -73,12 +73,12 @@
             </div>
 
             <!-- start: search & user box -->
-            <div class="header-right">
-                <span class="separator"> </span>
+            <div class="header-right d-flex justify-content-end align-items-center">
+                <span class="separator"></span>
                 @{var employee = Session["employee"] as Employee; }
                 @if (Session["employee"] != null && employee.IsAdmin == true)
                 {
-                    <div id="remainder" class="userbox">
+                    <div id="remainder" class="userbox mb-3 mb-md-0">
                         Bakiye :
 
                         <div id="bakiyem" style="display:inline-block;">
@@ -94,7 +94,7 @@
                     </div>
                 }
                 <span class="separator"></span>
-                <div id="userbox" class="userbox pr-3 pr-md-0">
+                <div id="userbox" class="userbox pr-3 pr-md-0 pl-3 pl-md-0 mb-3 mb-md-0">
                     <a href="#" data-toggle="dropdown">
                         @*<figure class="profile-picture" style="display: none">
                                    <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
