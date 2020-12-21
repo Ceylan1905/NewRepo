@@ -22,30 +22,15 @@
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="~/Assets/vendor/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/animate/animate.css">
 
     <link rel="stylesheet" href="~/Assets/vendor/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/Assets/vendor/magnific-popup/magnific-popup.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/datatables/media/css/dataTables.bootstrap4.css" />
 
     <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/jquery-ui/jquery-ui.theme.css" />
     <link rel="stylesheet" href="~/Assets/vendor/select2/css/select2.css" />
     <link rel="stylesheet" href="~/Assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/dropzone/basic.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/dropzone/dropzone.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/summernote/summernote-bs4.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/codemirror/lib/codemirror.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/codemirror/theme/monokai.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/morris/morris.css" />
     <link rel="stylesheet" href="~/Assets/vendor/boxicons/css/boxicons.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/pnotify/pnotify.custom.css" />
 
     <!--(remove-empty-lines-end)-->
     <!-- Theme CSS -->
@@ -58,10 +43,9 @@
     <link rel="stylesheet" href="~/Assets/css/skins/default.css" />
 
     <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="~/Assets/css/custom.css">
-
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
+
     <script type="text/javascript">
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
@@ -85,13 +69,12 @@
             </div>
 
             <!-- start: search & user box -->
-            <div class="header-right">
-                <span class="separator"> </span>
+            <div class="header-right d-flex justify-content-end align-items-center">
+                <span class="separator"></span>
                 @{var employee = Session["employee"] as Employee; }
                 @if (Session["employee"] != null && employee.IsAdmin == true)
                 {
-
-                    <div id="remainder" class="userbox">
+                    <div id="remainder" class="userbox mb-3 mb-md-0">
                         Bakiye :
 
                         <div id="bakiyem" style="display:inline-block;">
@@ -104,21 +87,14 @@
                                 }
                                 @remainder}
                         </div>  ₺
-
-
-
-
-
-
-
                     </div>
                 }
                 <span class="separator"></span>
-                <div id="userbox" class="userbox pr-3 pr-md-0">
+                <div id="userbox" class="userbox pr-3 pr-md-0 pl-3 pl-md-0 mb-3 mb-md-0">
                     <a href="#" data-toggle="dropdown">
                         @*<figure class="profile-picture" style="display: none">
-                           <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
-                    </figure>*@
+                                   <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
+                            </figure>*@
 
                         <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]" data-lock-surname="@employee.Surname">
                             @if (Session["employee"] != null)
@@ -134,8 +110,8 @@
                         <ul class="list-unstyled mb-2">
                             <li class="divider"></li>
                             @*<li>
-                            <a role="menuitem" tabindex="-1" href="/Home/Profile"><i class="fas fa-user"></i> My Profile</a>
-                        </li>*@
+                                    <a role="menuitem" tabindex="-1" href="/Home/Profile"><i class="fas fa-user"></i> My Profile</a>
+                                </li>*@
                             <li>
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-key"></i> Şifre Değiştirme</a>
                             </li>
@@ -158,9 +134,9 @@
             <aside id="sidebar-left" class="sidebar-left">
 
                 <div class="sidebar-header">
-                    @*<div class="sidebar-title">
-                            Menü
-                        </div>*@
+                    <div class="sidebar-title">
+                        Menü
+                    </div>
                     <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
                         <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
                     </div>
@@ -171,12 +147,7 @@
                         <nav id="menu" class="nav-main" role="navigation">
 
                             <ul class="nav nav-main">
-                                <li>
-                                    @*<a class="nav-link" href="@Url.Action("Dashboard","Home")">
-                                            <i class="fas fa-home" aria-hidden="true"></i>
-                                            <span>Dashboard</span>
-                                        </a>*@
-                                </li>
+
                                 <li>
                                     @if (Session["employee"] != null)
                                     {
@@ -221,732 +192,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                @*<li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                                                        <span>eCommerce</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-dashboard.html">
-                                                                Dashboard
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-products-list.html">
-                                                                Products List
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-products-form.html">
-                                                                Products Form
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-category-list.html">
-                                                                Categories List
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-category-form.html">
-                                                                Category Form
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-coupons-list.html">
-                                                                Coupons List
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-coupons-form.html">
-                                                                Coupons Form
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-orders-list.html">
-                                                                Orders List
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-orders-detail.html">
-                                                                Orders Detail
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-customers-list.html">
-                                                                Customers List
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ecommerce-customers-form.html">
-                                                                Customers Form
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link" href="mailbox-folder.html">
-                                                        <span class="float-right badge badge-primary">182</span>
-                                                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                                                        <span>Mailbox</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-parent nav-expanded nav-active">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-columns" aria-hidden="true"></i>
-                                                        <span>Layouts</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="index.html">
-                                                                Landing Page
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-active">
-                                                            <a class="nav-link" href="layouts-default.html">
-                                                                Default
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Boxed
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-boxed.html">
-                                                                        Static Header
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-boxed-fixed-header.html">
-                                                                        Fixed Header
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Horizontal Menu Header
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-header-menu.html">
-                                                                        Pills
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-header-menu-stripe.html">
-                                                                        Stripe
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-header-menu-top-line.html">
-                                                                        Top Line
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-dark.html">
-                                                                Dark
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-dark-header.html">
-                                                                Dark Header
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-two-navigations.html">
-                                                                Two Navigations
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Tab Navigation
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-tab-navigation-dark.html">
-                                                                        Tab Navigation Dark
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-tab-navigation.html">
-                                                                        Tab Navigation Light
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-tab-navigation-boxed.html">
-                                                                        Tab Navigation Boxed
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-light-sidebar.html">
-                                                                Light Sidebar
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-left-sidebar-collapsed.html">
-                                                                Left Sidebar Collapsed
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-left-sidebar-scroll.html">
-                                                                Left Sidebar Scroll
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Left Sidebar Big Icons
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-left-sidebar-big-icons.html">
-                                                                        Left Sidebar Big Icons Dark
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-left-sidebar-big-icons-light.html">
-                                                                        Left Sidebar Big Icons Light
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Left Sidebar Panel
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-left-sidebar-panel.html">
-                                                                        Left Sidebar Panel Dark
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-left-sidebar-panel-light.html">
-                                                                        Left Sidebar Panel Light
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a>
-                                                                Left Sidebar Sizes
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-sidebar-sizes-xs.html">
-                                                                        Left Sidebar XS
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-sidebar-sizes-sm.html">
-                                                                        Left Sidebar SM
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="layouts-sidebar-sizes-md.html">
-                                                                        Left Sidebar MD
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="layouts-square-borders.html">
-                                                                Square Borders
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-copy" aria-hidden="true"></i>
-                                                        <span>Pages</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="pages-signup.html">
-                                                                Sign Up
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-signin.html">
-                                                                Sign In
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-recover-password.html">
-                                                                Recover Password
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-lock-screen.html">
-                                                                Locked Screen
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-user-profile.html">
-                                                                User Profile
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-session-timeout.html">
-                                                                Session Timeout
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-calendar.html">
-                                                                Calendar
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-timeline.html">
-                                                                Timeline
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-media-gallery.html">
-                                                                Media Gallery
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-invoice.html">
-                                                                Invoice
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-blank.html">
-                                                                Blank Page
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-404.html">
-                                                                404
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-500.html">
-                                                                500
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-log-viewer.html">
-                                                                Log Viewer
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="pages-search-results.html">
-                                                                Search Results
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-tasks" aria-hidden="true"></i>
-                                                        <span>UI Elements</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-typography.html">
-                                                                Typography
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a class="nav-link" href="#">
-                                                                Icons <span class="mega-sub-nav-toggle toggled float-right" data-toggle="collapse" data-target=".mega-sub-nav-sub-menu-1"></span>
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-icons-elusive.html">
-                                                                        Elusive
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-icons-font-awesome.html">
-                                                                        Font Awesome
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-icons-line-icons.html">
-                                                                        Line Icons
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-icons-meteocons.html">
-                                                                        Meteocons
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-icons-box-icons.html">
-                                                                        Box Icons
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-tabs.html">
-                                                                Tabs
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-cards.html">
-                                                                Cards
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-widgets.html">
-                                                                Widgets
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-portlets.html">
-                                                                Portlets
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-buttons.html">
-                                                                Buttons
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-alerts.html">
-                                                                Alerts
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-notifications.html">
-                                                                Notifications
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-modals.html">
-                                                                Modals
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-lightbox.html">
-                                                                Lightbox
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-progressbars.html">
-                                                                Progress Bars
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-sliders.html">
-                                                                Sliders
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-carousels.html">
-                                                                Carousels
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-accordions.html">
-                                                                Accordions
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-toggles.html">
-                                                                Toggles
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-nestable.html">
-                                                                Nestable
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-tree-view.html">
-                                                                Tree View
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-scrollable.html">
-                                                                Scrollable
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-grid-system.html">
-                                                                Grid System
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-charts.html">
-                                                                Charts
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a class="nav-link" href="#">
-                                                                Animations <span class="mega-sub-nav-toggle toggled float-right" data-toggle="collapse" data-target=".mega-sub-nav-sub-menu-2"></span>
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-animations-appear.html">
-                                                                        Appear
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-animations-hover.html">
-                                                                        Hover
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a class="nav-link" href="#">
-                                                                Loading <span class="mega-sub-nav-toggle toggled float-right" data-toggle="collapse" data-target=".mega-sub-nav-sub-menu-3"></span>
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-loading-overlay.html">
-                                                                        Overlay
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="nav-link" href="ui-elements-loading-progress.html">
-                                                                        Progress
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="ui-elements-extra.html">
-                                                                Extra
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                        <span>Maps</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="maps-google-maps.html">
-                                                                Basic
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="maps-google-maps-builder.html">
-                                                                Map Builder
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="maps-vector.html">
-                                                                Vector
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link" href="extra-ajax-made-easy.html">
-                                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                                        <span>Ajax</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-list-alt" aria-hidden="true"></i>
-                                                        <span>Forms</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="forms-basic.html">
-                                                                Basic
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="forms-advanced.html">
-                                                                Advanced
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="forms-validation.html">
-                                                                Validation
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="forms-layouts.html">
-                                                                Layouts
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="forms-wizard.html">
-                                                                Wizard
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="forms-code-editor.html">
-                                                                Code Editor
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-table" aria-hidden="true"></i>
-                                                        <span>Tables</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a class="nav-link" href="tables-basic.html">
-                                                                Basic
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="tables-advanced.html">
-                                                                Advanced
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="tables-responsive.html">
-                                                                Responsive
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="tables-editable.html">
-                                                                Editable
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="tables-ajax.html">
-                                                                Ajax
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="nav-link" href="tables-pricing.html">
-                                                                Pricing
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-parent">
-                                                    <a class="nav-link" href="#">
-                                                        <i class="fas fa-align-left" aria-hidden="true"></i>
-                                                        <span>Menu Levels</span>
-                                                    </a>
-                                                    <ul class="nav nav-children">
-                                                        <li>
-                                                            <a>
-                                                                First Level
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-parent">
-                                                            <a class="nav-link" href="#">
-                                                                Second Level
-                                                            </a>
-                                                            <ul class="nav nav-children">
-                                                                <li>
-                                                                    <a>
-                                                                        Second Level Link #1
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a>
-                                                                        Second Level Link #2
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nav-parent">
-                                                                    <a class="nav-link" href="#">
-                                                                        Third Level
-                                                                    </a>
-                                                                    <ul class="nav nav-children">
-                                                                        <li>
-                                                                            <a>
-                                                                                Third Level Link #1
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a>
-                                                                                Third Level Link #2
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link" href="http://themeforest.net/item/porto-responsive-html5-template/4106987?ref=Okler">
-                                                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                                                        <span>Front-End <em class="not-included">(Not Included)</em></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link" href="extra-changelog.html">
-                                                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                                                        <span>Changelog</span>
-                                                    </a>
-                                                </li>
 
-                                            </ul>
-                                        </nav>
-
-                                        <hr class="separator" />
-
-                                        <div class="sidebar-widget widget-tasks">
-                                            <div class="widget-header">
-                                                <h6>Projects</h6>
-                                                <div class="widget-toggle">+</div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <ul class="list-unstyled m-0">
-                                                    <li><a href="#">Porto HTML5 Template</a></li>
-                                                    <li><a href="#">Tucson Template</a></li>
-                                                    <li><a href="#">Porto Admin</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <hr class="separator" />
-
-                                        <div class="sidebar-widget widget-stats">
-                                            <div class="widget-header">
-                                                <h6>Company Stats</h6>
-                                                <div class="widget-toggle">+</div>
-                                            </div>
-                                            <div class="widget-content">
-                                                <ul>
-                                                    <li>
-                                                        <span class="stats-title">Stat 1</span>
-                                                        <span class="stats-complete">85%</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                                                                <span class="sr-only">85% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="stats-title">Stat 2</span>
-                                                        <span class="stats-complete">70%</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                                                                <span class="sr-only">70% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <span class="stats-title">Stat 3</span>
-                                                        <span class="stats-complete">2%</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                                                                <span class="sr-only">2% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>*@
                                 <script>
                                     // Maintain Scroll Position
                                     if (typeof localStorage !== 'undefined') {
@@ -1033,53 +279,21 @@
             </div>
         </aside>
     </section>
-    @*<script type="text/javascript">
-            function preventBack() { window.history.forward(); }
-            setTimeout("preventBack()", 0);
-            window.onunload = function () { null; };
-        </script>*@
+
     <!-- Vendor -->
     <script src="~/Assets/vendor/jquery/jquery.js"></script>
-    <script src="~/Assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
     <script src="~/Assets/vendor/popper/umd/popper.min.js"></script>
     <script src="~/Assets/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="~/Assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="~/Assets/vendor/common/common.js"></script>
-    <script src="~/Assets/vendor/nanoscroller/nanoscroller.js"></script>
     <script src="~/Assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
-    <script src="~/Assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 
     <!-- Specific Page Vendor -->
-    <script src="~/Assets/vendor/jquery-ui/jquery-ui.js"></script>
-    <script src="~/Assets/vendor/jqueryui-touch-punch/jquery.ui.touch-punch.js"></script>
-    <script src="~/Assets/vendor/jquery-appear/jquery.appear.js"></script>
-    <script src="~/Assets/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
-    <script src="~/Assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.js"></script>
-    <script src="~/Assets/vendor/flot/jquery.flot.js"></script>
-    <script src="~/Assets/vendor/flot.tooltip/jquery.flot.tooltip.js"></script>
-    <script src="~/Assets/vendor/flot/jquery.flot.pie.js"></script>
-    <script src="~/Assets/vendor/flot/jquery.flot.categories.js"></script>
-    <script src="~/Assets/vendor/flot/jquery.flot.resize.js"></script>
-    <script src="~/Assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
-    <script src="~/Assets/vendor/raphael/raphael.js"></script>
-    <script src="~/Assets/vendor/morris/morris.js"></script>
-    <script src="~/Assets/vendor/gauge/gauge.js"></script>
-    <script src="~/Assets/vendor/snap.svg/snap.svg.js"></script>
-    <script src="~/Assets/vendor/liquid-meter/liquid.meter.js"></script>
-    <script src="~/Assets/vendor/jqvmap/jquery.vmap.js"></script>
-    <script src="~/Assets/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
-    <script src="~/Assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
     <script src="~/Assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+    <script src="~/Assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="~/Assets/vendor/jquery-validation/jquery.validate.js"></script>
     <script src="~/Assets/vendor/select2/js/select2.js"></script>
-    <script src="~/Assets/vendor/pnotify/pnotify.custom.js"></script>
+
     <!--(remove-empty-lines-end)-->
     <!-- Theme Base, Components and Settings -->
     <script src="~/Assets/js/theme.js" charset="windows-1254"></script>
@@ -1094,14 +308,9 @@
     <script src="~/Assets/js/examples/examples.dashboard.js"></script>
     <script src="~/Assets/js/examples/examples.modals.js"></script>
     <script src="~/Assets/js/examples/examples.header.menu.js"></script>
-    <script src="~/Assets/js/examples/examples.ecommerce.form.js"></script>
-    <script src="~/Assets/js/examples/examples.advanced.form.js"></script>
+    <script src="~/Assets/js/examples/examples.ecommerce.datatables.list.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-
-
-
-
-</script>
