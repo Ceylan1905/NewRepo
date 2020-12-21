@@ -204,19 +204,19 @@ namespace zeynerp.Controllers
             return View(comp);
         }
 
-    [HttpPost]
-        [Route("Home/guncelleBakiye")]
-        public ActionResult guncelleBakiye(float bakiye)
+  
+       
+        public float guncelleBakiye(float bakiye)
         {
             Employee employee = Session["employee"] as Employee;
             int updateResult = payment.UpdateRemainder(employee, bakiye);
             if (updateResult > 0)
             {
-                
-                return Json(new { msg = bakiye });
+
+                return bakiye;
 
             }
-            return Json(new { success = false, msg = "operation failed" }, JsonRequestBehavior.AllowGet);
+            return 0;
         }
         public ActionResult Logout()
         {
@@ -229,7 +229,7 @@ namespace zeynerp.Controllers
 
         [HttpPost]
         
-        public ActionResult dene(string isim)
+        public ActionResult dene(FormCollection collection)
         {
             return View();
         }
