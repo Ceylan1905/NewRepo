@@ -156,9 +156,7 @@ $('#yetkiliKaydet').click(function () {
         });
         values.push($(this).find('td:last > select').children('option:selected').val());
     });
-    for (var i = 0; i < values.length; i++) {
-        alert(values[i]);
-    }
+   
    
 });
 

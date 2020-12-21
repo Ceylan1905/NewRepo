@@ -156,8 +156,6 @@ namespace zeynerp.Controllers
             {
                 List<Employee> employees = manager_employee.GetCustomer(employee);
 
-                //var remainder = payment.GetRemainder(employee);
-                //Session["remainder"] = remainder;
                 return View(employees);
             }
             return RedirectToAction("SignIn");
@@ -227,11 +225,5 @@ namespace zeynerp.Controllers
 
 
 
-        [HttpPost]
-        
-        public ActionResult dene(FormCollection collection)
-        {
-            return View();
-        }
     }
 }
