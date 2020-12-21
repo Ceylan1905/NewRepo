@@ -6,12 +6,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    input[type=text] {
+   /* input[type=text] {
         width: 100%;
         padding: 5px 10px;
         margin: 8px 0;
         box-sizing: border-box;
-    }
+    }*/
 
     select {
         width: 100%;
@@ -51,7 +51,7 @@
                             <h2 class="card-big-info-title">  </h2>
                             <p class="card-big-info-desc">  </p>
                         </div>
-                        <div class="col-lg-3-5 col-xl-4-5">
+                        <div class="col-lg-3-5">
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Türü</label>
                                 <div class="col-lg-7 col-xl-6">
@@ -143,7 +143,7 @@
                             </div> -->
 
 
-                            <div class="row action-buttons" style="margin-left:35%">
+                            <div class="row action-buttons" style="margin-left:30%">
                                 <div class="col-12 col-md-auto">
                                     @Html.ActionLink("Yeni", "CompanyAdd", "Home", new { @class = "btn btn-primary btn-lg " })
                                 </div>
@@ -197,13 +197,13 @@
                                                     <select id="secim1" class="form-control">
                                                         @if (@item.IsActive == IsActive.Pasif)
                                                         {
-                                                            <option class="form-control" selected>Pasif</option>
-                                                            <option class="form-control">Aktif</option>
+                                                            <option class="form-control" selected value="0">Pasif</option>
+                                                            <option class="form-control" value="1">Aktif</option>
                                                         }
                                                         @if (@item.IsActive == IsActive.Aktif)
                                                         {
-                                                            <option class="form-control">Pasif</option>
-                                                            <option class="form-control" selected>Aktif</option>
+                                                            <option class="form-control" value="0">Pasif</option>
+                                                            <option class="form-control" selected value="1">Aktif</option>
                                                         }
 
                                                     </select>
