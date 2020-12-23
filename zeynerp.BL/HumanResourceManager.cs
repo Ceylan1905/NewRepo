@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using zeynerp.DAL.Repository;
 using zeynerp.Entities;
 using zeynerp.Entities.HumanResource;
+using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.BL
 {
     public class HumanResourceManager<T> where T : class
     {
         private BL_Result<Personnel> result_personnel = new BL_Result<Personnel>();
+        private SelectViewModel selectViewModel = new SelectViewModel();
 
         public BL_Result<Personnel> GetPersonnel(string db_name, int id)
         {
@@ -19,13 +21,39 @@ namespace zeynerp.BL
             result_personnel.Result = repo_personnel.Find(x => x.Id == id);
             return result_personnel;
         }
-        public List<Personnel> GetPersonnels(string db_name)
+        public List<Personnel> GetPersonnels(string db_name, SelectViewModel selectViewModel)
         {
             Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
 
-            if (repo_personnel.List() == null)
+            if (selectViewModel.Company != null)
             {
-                // Error
+                if (selectViewModel.Company == "all")
+                {
+                    List<Personnel> personnelListAll = repo_personnel.List();
+                    return personnelListAll;
+                }
+                List<Personnel> personnelListFilter = repo_personnel.List(x => x.Company == selectViewModel.Company);
+                return personnelListFilter;
+            }
+            else if (selectViewModel.S_Central != null)
+            {
+                if (selectViewModel.S_Central == "all")
+                {
+                    List<Personnel> personnelListAll = repo_personnel.List();
+                    return personnelListAll;
+                }
+                List<Personnel> personnelListFilter = repo_personnel.List(x => x.S_Central == selectViewModel.S_Central);
+                return personnelListFilter;
+            }
+            else if (selectViewModel.Position != null)
+            {
+                if (selectViewModel.Position == "all")
+                {
+                    List<Personnel> personnelListAll = repo_personnel.List();
+                    return personnelListAll;
+                }
+                List<Personnel> personnelListFilter = repo_personnel.List(x => x.Position == selectViewModel.Position);
+                return personnelListFilter;
             }
 
             List<Personnel> personnelList = repo_personnel.List();
@@ -79,7 +107,8 @@ namespace zeynerp.BL
                     Shift = personnel.Shift,
                     Smoke = personnel.Smoke,
                     Alcohol = personnel.Alcohol,
-                    ProfileImage = personnel.ProfileImage
+                    ProfileImage = personnel.ProfileImage,
+                    CurrencyUnit = personnel.CurrencyUnit
                 });
 
                 if(db > 0)
@@ -137,6 +166,7 @@ namespace zeynerp.BL
                 personnel.Smoke = per.Result.Smoke;
                 personnel.Alcohol = per.Result.Alcohol;
                 personnel.ProfileImage = per.Result.ProfileImage;
+                personnel.CurrencyUnit = per.Result.CurrencyUnit;
             }
             repo_personnel.Update(personnel);
             return result_personnel;

@@ -80,5 +80,7 @@ namespace zeynerp.Entities.HumanResource
         public string Alcohol { get; set; }
         [Required(ErrorMessage = "Profil fotoğraf alanı gereklidir.")]
         public string ProfileImage { get; set; }
+        [Required(ErrorMessage = "Para birim alanı gereklidir.")]
+        public string CurrencyUnit { get; set; }
     }
 }

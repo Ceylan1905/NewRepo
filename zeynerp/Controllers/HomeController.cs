@@ -174,6 +174,7 @@ namespace zeynerp.Controllers
         public ActionResult CompanyAdd(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
+
             int Id = companyProcess.CompanyAdd(employee, companyModel);
             return RedirectToAction("CompanyDetail", new { Id });
         }
@@ -181,6 +182,12 @@ namespace zeynerp.Controllers
         public ActionResult CompanyList()
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             List<Company> companies = companyProcess.GetCompanyList(employee);
             return View(companies);
         }
@@ -189,6 +196,12 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(int id)
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             CompanyViewModel companyviewModel = new CompanyViewModel();
             companyviewModel.Companies = companyProcess.GetCompany(employee, id);
             companyviewModel.CompanyAuthorizeds = companyProcess.GetCompanyAuthorizedList(employee, id);
@@ -204,7 +217,7 @@ namespace zeynerp.Controllers
             return View(comp);
         }
 
-    [HttpPost]
+        [HttpPost]
         [Route("Home/guncelleBakiye")]
         public ActionResult guncelleBakiye(float bakiye)
         {
@@ -223,15 +236,6 @@ namespace zeynerp.Controllers
             Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
-        }
-
-
-
-        [HttpPost]
-        
-        public ActionResult dene(string isim)
-        {
-            return View();
         }
     }
 }

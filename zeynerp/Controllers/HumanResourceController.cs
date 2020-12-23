@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using zeynerp.BL;
-using zeynerp.Common.Helpers.Select;
 using zeynerp.Entities;
 using zeynerp.Entities.HumanResource;
+using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
 {
@@ -17,7 +17,7 @@ namespace zeynerp.Controllers
 
         [Route("insan-kaynaklari/personel-listesi")]
         [Authorize]
-        public ActionResult PersonnelList()
+        public ActionResult PersonnelList(SelectViewModel selectViewModel)
         {
             Employee employee = Session["employee"] as Employee;
 
@@ -26,8 +26,10 @@ namespace zeynerp.Controllers
                 return RedirectToAction("SignIn", "Home");
             }
 
-            List<Personnel> personnels = manager_personnel.GetPersonnels(employee.CompanyName);
-            return View(personnels);
+            List<Personnel> personnels = manager_personnel.GetPersonnels(employee.CompanyName, selectViewModel);
+            ViewData["personnels"] = personnels;
+
+            return View();
         }
 
         [Route("insan-kaynaklari/personel-ekleme")]
@@ -42,6 +44,12 @@ namespace zeynerp.Controllers
         {
 
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
             if (imageFile != null && (imageFile.ContentType == "image/jpeg" || imageFile.ContentType == "image/jpg" || imageFile.ContentType == "image/png"))
             {
                 string filename = $"{employee.CompanyId}_{personnel.Name}_{personnel.Surname}.{imageFile.ContentType.Split('/')[1]}";
@@ -57,6 +65,12 @@ namespace zeynerp.Controllers
         public ActionResult PersonnelDetail(int id)
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
             BL_Result<Personnel> bL_Result = new BL_Result<Personnel>();
             bL_Result = manager_personnel.GetPersonnel(employee.CompanyName, id);
             return View(bL_Result);
@@ -67,6 +81,12 @@ namespace zeynerp.Controllers
         public ActionResult PersonnelDetail(BL_Result<Personnel> bL_Result, HttpPostedFileBase imageFile)
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
             if (imageFile != null)
             {
                 string filename = $"{employee.CompanyId}_{bL_Result.Result.Name}_{bL_Result.Result.Surname}.{imageFile.ContentType.Split('/')[1]}";
@@ -83,6 +103,12 @@ namespace zeynerp.Controllers
         public ActionResult PersonnelDelete(int id)
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
             manager_personnel.PersonnelDelete(employee.CompanyName, id);
             return RedirectToAction("PersonnelList");
         }

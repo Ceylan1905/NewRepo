@@ -370,14 +370,22 @@
                                                         <i class="fas fa-calendar-alt"></i>
                                                     </span>
                                                 </span>
-                                                @Html.TextBoxFor(x => x.StartingDate, new { @class = "form-control input-date"})
+                                                @Html.TextBoxFor(x => x.StartingDate, new { @class = "form-control input-date" })
                                                 @Html.ValidationMessageFor(x => x.StartingDate, "", new { @class = "text-danger w-100" })
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <div class="col-lg-5 col-xl-4">
                                             <label for="inputLastName">Maaş</label>
                                             @Html.TextBoxFor(x => x.Salary, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                             @Html.ValidationMessageFor(x => x.Salary, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1 mr-auto">
+                                            <label for="inputLastName" class="invisible">CurrencyUnit</label>
+                                            @Html.DropDownListFor(x => x.CurrencyUnit, new List<SelectListItem> {
+                                                new SelectListItem { Text = "₺", Value = "₺"},
+                                                new SelectListItem { Text = "$", Value = "$"},
+                                                new SelectListItem { Text = "€", Value = "€" } }, new { @class = "form-control populate", id = "currencyUnit" })
+                                            @Html.ValidationMessageFor(x => x.CurrencyUnit, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -633,24 +641,24 @@
         </div>
     }
 <script>
-        document.getElementsByTagName("select")[0].setAttribute("data-plugin-selectTwo", "");
+    document.getElementsByTagName("select")[0].setAttribute("data-plugin-selectTwo", "");
 
-        //document.getElementById("date").setAttribute("data-plugin-masked-input", "");
-        //document.getElementById("date").setAttribute("data-input-mask", "99/99/9999");
+    //document.getElementById("date").setAttribute("data-plugin-masked-input", "");
+    //document.getElementById("date").setAttribute("data-input-mask", "99/99/9999");
 
-        var inputDateArr = document.getElementsByClassName("input-date");
-        for (var i = 0; i < inputDateArr.length; i++) {
-            inputDateArr[i].setAttribute("data-plugin-masked-input", "");
-            inputDateArr[i].setAttribute("data-input-mask", "99/99/9999");
-        }
+    var inputDateArr = document.getElementsByClassName("input-date");
+    for (var i = 0; i < inputDateArr.length; i++) {
+        inputDateArr[i].setAttribute("data-plugin-masked-input", "");
+        inputDateArr[i].setAttribute("data-input-mask", "99/99/9999");
+    }
 
-        var inputPhoneArr = document.getElementsByClassName("input-phone");
-        for (var i = 0; i < inputPhoneArr.length; i++) {
-            inputPhoneArr[i].setAttribute("data-plugin-masked-input", "");
-            inputPhoneArr[i].setAttribute("data-input-mask", "(999) 999-9999");
-        }
+    var inputPhoneArr = document.getElementsByClassName("input-phone");
+    for (var i = 0; i < inputPhoneArr.length; i++) {
+        inputPhoneArr[i].setAttribute("data-plugin-masked-input", "");
+        inputPhoneArr[i].setAttribute("data-input-mask", "(999) 999-9999");
+    }
 
-        function OnSuccess() {
-            location.href = "@Url.Content("personel-listesi")";
-        }
+    function OnSuccess() {
+        location.href = "@Url.Content("personel-listesi")";
+    }
 </script>

@@ -46,15 +46,23 @@
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
-    </script>
+    </script>*@
 
     <style>
         select option:first-child {
             display: none;
+        }
+
+        #myForm select option:first-child {
+            display: block;
+        }
+
+        #currencyUnit>option:first-child {
+            display: block;
         }
     </style>
 </head>

@@ -1,9 +1,14 @@
 ﻿@using zeynerp.Entities.HumanResource
-@model List<Personnel>
+@using zeynerp.Entities.ViewModels
+@model SelectViewModel
 @{
     ViewBag.Title = "Employees";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var counter = 1;
+}
+
+@{ 
+    List<Personnel> personnels = ViewData["personnels"] as List<Personnel>;
 }
 
 <section role="main" class="content-body">
@@ -22,125 +27,209 @@
             </ol>
         </div>
     </header>
+    @using (Ajax.BeginForm("PersonnelList", "HumanResource", null, new AjaxOptions { HttpMethod = "GET" }, new { id = "myForm" }))
+    {
+        <div class="row">
+            <div class="col">
 
-    <div class="row">
-        <div class="col">
-
-            <div class="card card-modern">
-                <div class="card-body">
-                    <div class="datatables-header-footer-wrapper">
-                        <div class="datatable-header">
-                            <div class="row align-items-center mb-3">
-                                <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                                    <a href="/insan-kaynaklari/personel-ekleme" class="btn btn-primary w-100 btn-md font-weight-semibold btn-py-2 px-4">+ Personel Ekle</a>
-                                </div>
-                                <div class="col-8 col-lg-auto ml-auto mb-3 mb-lg-0">
-                                    <div class="d-flex align-items-lg-center flex-column flex-lg-row">
-                                        <label class="ws-nowrap mr-3 mb-0">Filtre:</label>
-                                        <select class="form-control select-style-1 filter-by" name="filter-by">
-                                            <option value="all" selected>Tümü</option>
-                                            <option value="1">No</option>
-                                            <option value="2">Ad Soyad</option>
-                                            <option value="3">Firma</option>
-                                            <option value="4">Sorumluluk Merkezi</option>
-                                            <option value="5">Pozisyon</option>
-                                            <option value="6">Başlangıç Tarihi</option>
-                                            <option value="6">Çıkış Tarihi</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-4 col-lg-auto pl-lg-1 mb-3 mb-lg-0">
-                                    <div class="d-flex align-items-lg-center flex-column flex-lg-row">
-                                        <label class="ws-nowrap mr-3 mb-0">Göster:</label>
-                                        <select class="form-control select-style-1 results-per-page" name="results-per-page">
-                                            <option value="12" selected>12</option>
-                                            <option value="24">24</option>
-                                            <option value="36">36</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-auto pl-lg-1">
-                                    <div class="search search-style-1 w-100 search-style-1-lg mx-lg-auto">
-                                        <div class="input-group">
-                                            <input type="text" class="search-term form-control" name="search-term" id="search-term" placeholder="Personel Ara">
-                                            <span class="input-group-append">
-                                                <button class="btn btn-default" type="submit"><i class="bx bx-search"></i></button>
-                                            </span>
+                <div class="card card-modern">
+                    <div class="card-body">
+                        <div class="datatables-header-footer-wrapper">
+                            <div class="datatable-header">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-12 col-lg-4 col-xl-3 col-lg-auto pl-lg-1">
+                                        <div class="search search-style-1 w-100 search-style-1-lg mx-lg-auto">
+                                            <label class="invisible">search</label>
+                                            <div class="input-group">
+                                                <input type="text" class="search-term form-control" name="search-term" id="search-term" placeholder="Personel Ara">
+                                                <span class="input-group-append">
+                                                    <button class="btn btn-default" type="submit"><i class="bx bx-search"></i></button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
-                            <thead>
-                                <tr>
-                                    @*<th width="3%"><input type="checkbox" name="select-all" class="select-all checkbox-style-1 p-relative top-2" value="" /></th>*@
-                                    <th>No</th>
-                                    <th>Adı Soyadı</th>
-                                    <th>Doğum Yeri</th>
-                                    <th>Doğum Tarihi</th>
-                                    <th>Telefon</th>
-                                    <th>Firma</th>
-                                    <th>Sorumluluk Merkezi</th>
-                                    <th>Pozisyon</th>
-                                    <th>Başlangıç Tarihi</th>
-                                    <th>Çalışma Süresi</th>
-                                    <th>Yıllık İzin</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @*<td width="30"><input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" /></td>*@
-                                @foreach (Personnel personnel in Model)
-                                {
-                                    DateTime date = DateTime.Now;
-                                    var totalDays = (date - personnel.StartingDate.AsDateTime()).TotalDays;
-                                    var totalYears = Math.Truncate(totalDays / 365);
-                                    var totalMonths = Math.Truncate((totalDays % 365) / 30);
-                                    var remainingDays = Math.Truncate((totalDays % 365) % 30);
-                                    <tr>
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@counter.ToString()</a></td>
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Name + " " + personnel.Surname)</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.City</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Birthday.AsDateTime().Year + "/" + personnel.Birthday.AsDateTime().Month.ToString("d2") + "/" + personnel.Birthday.AsDateTime().Day.ToString("d2"))</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Phone</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Company</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.S_Central</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Position</a></td> 
-                                        <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.StartingDate.AsDateTime().Year + "/" + personnel.StartingDate.AsDateTime().Month.ToString("d2") + "/" + personnel.StartingDate.AsDateTime().Day.ToString("d2"))</a></td>                                                  
-                                        <td><a href="#" class="text-dark text-decoration-none">@(totalYears + " Yıl " + totalMonths + " Ay " + remainingDays + " Gün" )</a></td>
-                                        <td><a href="#" class="text-dark text-decoration-none">10 Gün</a></td>
-                                    </tr>
-                                    counter++;
-                                }
-                            </tbody>
-                        </table>
-                        <hr class="solid mt-5 opacity-4">
-                        <div class="datatable-footer">
-                            <div class="row align-items-center justify-content-between mt-3">
-                                <div class="col-md-auto order-1 mb-3 mb-lg-0 invisible">
-                                    <div class="d-flex align-items-stretch">
-                                        @*<select class="form-control select-style-1 bulk-action mr-3" name="bulk-action" style="min-width: 170px;">
-                                                <option value="" selected>Bulk Actions</option>
-                                                <option value="delete">Delete</option>
-                                            </select>*@
-                                        <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
+                                    <div class="col-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">
+                                        <div class="">
+                                            <label>Firma</label>
+                                            @Html.DropDownListFor(x => x.Company, new List<SelectListItem> {
+                                            //new SelectListItem { Text = "", Value = ""},
+                                            new SelectListItem { Text = "Tümü", Value = "all"},
+                                            new SelectListItem { Text = "Kadro", Value = "Kadro"},
+                                            new SelectListItem { Text = "Erdağ Makine", Value = "Erdağ Makine"},
+                                            new SelectListItem { Text = "Fatih Ertekin", Value = "Fatih Ertekin"},
+                                            new SelectListItem { Text = "Mustafa Akar", Value = "Mustafa Akar"},
+                                            new SelectListItem { Text = "Pınarbaşı", Value = "Pınarbaşı"},
+                                            new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit1()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-xl-2 col-lg-auto mb-3 mb-lg-0">
+                                        <div class="">
+                                            <label>Sorumluluk Merkezi</label>
+                                            @Html.DropDownListFor(x => x.S_Central, new List<SelectListItem> {
+                                            //new SelectListItem { Text = "", Value = ""},
+                                            new SelectListItem { Text = "Tümü", Value = "all"},
+                                            new SelectListItem { Text = "S-Mak", Value = "S-Mak"},
+                                            new SelectListItem { Text = "S-Gaz", Value = "S-Gaz"},
+                                            new SelectListItem { Text = "S-Gaz Bursa", Value = "S-Gaz Bursa"},
+                                            new SelectListItem { Text = "Çimaş", Value = "Çimaş"},
+                                            new SelectListItem { Text = "S-Nak", Value = "S-Nak"},
+                                            new SelectListItem { Text = "Hurda", Value = "Hurda"},
+                                            new SelectListItem { Text = "Kira Geliri", Value = "Kira Geliri"},
+                                            new SelectListItem { Text = "Teşvik Gelirleri", Value = "Teşvik Gelirleri"},
+                                            new SelectListItem { Text = "S-Mak Industries", Value = "S-Mak Industries"},
+                                            new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit2()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
+                                        <div class="">
+                                            <label>Pozisyon</label>
+                                            @Html.DropDownListFor(x => x.Position, new List<SelectListItem> {
+                                            //new SelectListItem { Text = "", Value = ""},
+                                            new SelectListItem { Text = "Tümü", Value = "all"},
+                                            new SelectListItem { Text = "Genel Başvuru", Value = "Genel Başvuru"},
+                                            new SelectListItem { Text = "Genel Müdür", Value = "Genel Müdür"},
+                                            new SelectListItem { Text = "Fabrika Yöneticisi", Value = "Fabrika Yöneticisi"},
+                                            new SelectListItem { Text = "Muhasebe Müdürü", Value = "Muhasebe Müdürü"},
+                                            new SelectListItem { Text = "Pazarlama Müdürü", Value = "Pazarlama Müdürü"},
+                                            new SelectListItem { Text = "Satın Alma Yöneticisi", Value = "Satın Alma Yöneticisi"},
+                                            new SelectListItem { Text = "Stok Yöneticisi", Value = "Stok Yöneticisi"},
+                                            new SelectListItem { Text = "Bilgi İşlem Yöneticisi", Value = "Bilgi İşlem Yöneticisi"},
+                                            new SelectListItem { Text = "Kalite Kontrol Müdürü", Value = "Kalite Kontrol Müdürü"},
+                                            new SelectListItem { Text = "Dizayn Müdürü", Value = "Dizayn Müdürü"},
+                                            new SelectListItem { Text = "Ön İmalat Yöneticisi", Value = "Ön İmalat Yöneticisi"},
+                                            new SelectListItem { Text = "Üretim Müdürü", Value = "Üretim Müdürü"},
+                                            new SelectListItem { Text = "Proje Mühendisi", Value = "Proje Mühendisi"},
+                                            new SelectListItem { Text = "İmalat Ustası", Value = "İmalat Ustası"},
+                                            new SelectListItem { Text = "Gaz Altı Kaynak Ustası", Value = "Gaz Altı Kaynak Ustası"},
+                                            new SelectListItem { Text = "Argon Kaynak Ustası", Value = "Argon Kaynak Ustası"},
+                                            new SelectListItem { Text = "Taşlama Ustası", Value = "Taşlama Ustası"},
+                                            new SelectListItem { Text = "Talaşlı İmalat Ustası", Value = "Talaşlı İmalat Ustası"},
+                                            new SelectListItem { Text = "Yardımcı Usta", Value = "Yardımcı Usta"},
+                                            new SelectListItem { Text = "Yardımcı Eleman", Value = "Yardımcı Eleman"},
+                                            new SelectListItem { Text = "Saha Elemanı", Value = "Saha Elemanı"},
+                                            new SelectListItem { Text = "Ofis Elemanı", Value = "Ofis Elemanı"},
+                                            new SelectListItem { Text = "Güvenlik Elemanı", Value = "Güvenlik Elemanı"},
+                                            new SelectListItem { Text = "Bakım & Onarım Personeli", Value = "Bakım & Onarım Personeli"},
+                                            new SelectListItem { Text = "Ağır Vasıta Şoförü", Value = "Ağır Vasıta Şoförü"},
+                                            new SelectListItem { Text = "Forklift Operatörü", Value = "Forklift Operatörü"},
+                                            new SelectListItem { Text = "Vinç Operatörü", Value = "Vinç Operatörü"},
+                                            new SelectListItem { Text = "Stajyer", Value = "Stajyer"},
+                                            new SelectListItem { Text = "Web Tasarımcısı", Value = "Web Tasarımcısı"},
+                                            new SelectListItem { Text = "Teknik Ressam", Value = "Teknik Ressam"},
+                                            new SelectListItem { Text = "Yazılım Uzmanı", Value = "Yazılım Uzmanı"},
+                                            new SelectListItem { Text = "İş Geliştirmeci", Value = "İş Geliştirmeci"},
+                                            new SelectListItem { Text = "CNC Torna Ustası", Value = "CNC Torna Ustası"},
+                                            new SelectListItem { Text = "Makine Teknikeri", Value = "Makine Teknikeri"},
+                                            new SelectListItem { Text = "Temizlik Görevlisi", Value = "Temizlik Görevlisi"},
+                                            new SelectListItem { Text = "Satış Mühendisi", Value = "Satış Mühendisi"},
+                                            new SelectListItem { Text = "Finansal Analist", Value = "Finansal Analist"},
+                                            new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit3()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
+                                        <div class="">
+                                            <label>Durum</label>
+                                            <select class="form-control select-style-1 filter-by" name="filter-by">
+                                                <option value="all">Tümü</option>
+                                                <option value="Durum-Devam Eden" selected>Devam Eden</option>
+                                                <option value="Durum-Ayrılmış">Ayrılmış</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-xl-1 mt-md-3 mt-xl-0 col-lg-auto ml-auto mb-3 mb-lg-0">
+                                        <label class="invisible">ekle</label>
+                                        <a href="/insan-kaynaklari/personel-ekleme" class="btn btn-primary w-100 btn-md font-weight-semibold btn-py-2 px-4">+ Ekle</a>
                                     </div>
                                 </div>
-                                <div class="col-lg-auto text-center order-3 order-lg-2">
-                                    <div class="results-info-wrapper"></div>
-                                </div>
-                                <div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
-                                    <div class="pagination-wrapper"></div>
+                            </div>
+                            <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
+                                <thead>
+                                    <tr>
+                                        @*<th width="3%"><input type="checkbox" name="select-all" class="select-all checkbox-style-1 p-relative top-2" value="" /></th>*@
+                                        <th>No</th>
+                                        <th>Adı Soyadı</th>
+                                        <th>Doğum Yeri</th>
+                                        <th>Doğum Tarihi</th>
+                                        <th>Telefon</th>
+                                        <th>Firma</th>
+                                        <th>Sorumluluk Merkezi</th>
+                                        <th>Pozisyon</th>
+                                        <th>Başlangıç Tarihi</th>
+                                        <th>Çalışma Süresi</th>
+                                        <th>Yıllık İzin</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*<td width="30"><input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" /></td>*@
+                                    @foreach (Personnel personnel in personnels)
+                                    {
+                                        DateTime date = DateTime.Now;
+                                        var totalDays = (date - personnel.StartingDate.AsDateTime()).TotalDays;
+                                        var totalYears = Math.Truncate(totalDays / 365);
+                                        var totalMonths = Math.Truncate((totalDays % 365) / 30);
+                                        var remainingDays = Math.Truncate((totalDays % 365) % 30);
+                                        <tr>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@counter.ToString()</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Name + " " + personnel.Surname)</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.City</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Birthday.AsDateTime().Year + "/" + personnel.Birthday.AsDateTime().Month.ToString("d2") + "/" + personnel.Birthday.AsDateTime().Day.ToString("d2"))</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Phone</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Company</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.S_Central</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Position</a></td> 
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.StartingDate.AsDateTime().Year + "/" + personnel.StartingDate.AsDateTime().Month.ToString("d2") + "/" + personnel.StartingDate.AsDateTime().Day.ToString("d2"))</a></td>                                                  
+                                            <td><a href="#" class="text-dark text-decoration-none">@(totalYears + " Yıl " + totalMonths + " Ay " + remainingDays + " Gün" )</a></td>
+                                            <td><a href="#" class="text-dark text-decoration-none">10 Gün</a></td>
+                                            <td><a href="#" class="text-decoration-none">Çıkış Ver</a></td>
+                                        </tr>
+                                        counter++;
+                                    }
+                                </tbody>
+                            </table>
+                            <hr class="solid mt-5 opacity-4">
+                            <div class="datatable-footer">
+                                <div class="row align-items-center justify-content-between mt-3">
+                                    <div class="col-md-auto order-1 mb-3 mb-lg-0 invisible">
+                                        <div class="d-flex align-items-stretch">
+                                            @*<select class="form-control select-style-1 bulk-action mr-3" name="bulk-action" style="min-width: 170px;">
+                                                    <option value="" selected>Bulk Actions</option>
+                                                    <option value="delete">Delete</option>
+                                                </select>*@
+                                            <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-auto text-center order-3 order-lg-2">
+                                        <div class="results-info-wrapper"></div>
+                                    </div>
+                                    <div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
+                                        <div class="pagination-wrapper"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </table>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
+     }       
+</section>
 
-
-
+<script>
+    function myFormSubmit1() {
+        document.getElementsByTagName("select")[1].value = "";
+        document.getElementsByTagName("select")[2].value = "";
+        document.getElementById("myForm").submit();
+    }
+    function myFormSubmit2() {
+        document.getElementsByTagName("select")[0].value = "";
+        document.getElementsByTagName("select")[2].value = "";
+        document.getElementById("myForm").submit();
+    }
+    function myFormSubmit3() {
+        document.getElementsByTagName("select")[0].value = "";
+        document.getElementsByTagName("select")[1].value = "";
+        document.getElementById("myForm").submit();
+    }
+</script>

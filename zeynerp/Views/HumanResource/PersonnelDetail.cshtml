@@ -377,10 +377,18 @@
                                                 @Html.ValidationMessageFor(x => x.Result.StartingDate, "", new { @class = "text-danger w-100" })
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <div class="col-lg-5 col-xl-4">
                                             <label for="inputLastName">Maaş</label>
                                             @Html.TextBoxFor(x => x.Result.Salary, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                             @Html.ValidationMessageFor(x => x.Result.Salary, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1 mr-auto pl-0">
+                                            <label for="inputLastName" class="invisible">CurrencyUnit</label>
+                                            @Html.DropDownListFor(x => x.Result.CurrencyUnit, new List<SelectListItem> {
+                                                new SelectListItem { Text = "₺", Value = "₺"},
+                                                new SelectListItem { Text = "$", Value = "$"},
+                                                new SelectListItem { Text = "€", Value = "€" } }, new { @class = "form-control populate", id = "currencyUnit" })
+                                            @Html.ValidationMessageFor(x => x.Result.CurrencyUnit, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
