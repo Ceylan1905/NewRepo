@@ -10,11 +10,11 @@ namespace zeynerp.BL
 {
     public class SupplierProcess<T> where T : class
     {
-        private BL_Result<Employee> result_employee = new BL_Result<Employee>();
+        //private BL_Result<Employee> result_employee = new BL_Result<Employee>();
         //private BL_Result<Company> result_company = new BL_Result<Company>();
         private BL_Result<CompanyGroup> result_company = new BL_Result<CompanyGroup>();
 
-        public int CompanyAdd(Employee employeeModel, CompanyGroup companyGroupModel)
+        public int SupplierAdd(Employee employeeModel, CompanyGroup companyGroupModel)
         {
             Repository<CompanyGroup> compGroup = new Repository<CompanyGroup>(employeeModel.CompanyName);
             compGroup.Insert(new CompanyGroup()
@@ -22,8 +22,10 @@ namespace zeynerp.BL
                 Name = companyGroupModel.Name,
                 Confirmation = companyGroupModel.Confirmation
             });
-            int sonKayitId = compGroup.deneme();   //devam
-            return sonKayitId;
+            //int sonKayitId = compGroup.lastId(CompanyGroup);   
+            var list = compGroup.List();
+            int lastId=list.Max(x => x.Id);
+            return lastId;
         }
         public List<CompanyGroup> GetCompanyGroupList(Employee employeeModel)
         {

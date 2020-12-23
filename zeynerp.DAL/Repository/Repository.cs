@@ -111,6 +111,5 @@ namespace zeynerp.DAL.Repository
             int sonKayit=databaseContext.Companies.Max(x => x.Id);
             return sonKayit;
         }
-
     }
 }

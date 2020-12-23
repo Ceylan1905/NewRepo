@@ -20,13 +20,13 @@ namespace zeynerp.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult SupplierAdd(CompanyGroup companyGroupModel)
-        //{
-        //    Employee employee = Session["employee"] as Employee;
-        //    int Id = supplierProcess.SupplierAdd(employee, companyGroupModel);
-        //    return RedirectToAction("CompanyDetail", new { Id });
-        //}
+        [HttpPost]
+        public ActionResult SupplierAdd(CompanyGroup companyGroupModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            int Id = supplierProcess.SupplierAdd(employee, companyGroupModel);
+            return RedirectToAction("CompanyDetail", new { Id });
+        }
 
         public ActionResult SupplierList()
         {
