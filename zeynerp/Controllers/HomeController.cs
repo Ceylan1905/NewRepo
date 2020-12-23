@@ -8,6 +8,7 @@ using System.Web.Security;
 using zeynerp.BL;
 using zeynerp.DAL.Repository;
 using zeynerp.Entities;
+using zeynerp.Entities.HumanResource;
 using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
@@ -146,19 +147,18 @@ namespace zeynerp.Controllers
 
             return View();
         }
+      
         [Authorize]
         public ActionResult Authorization()
         {
             Employee employee = Session["employee"] as Employee;
-            if(employee!=null)
+            if (employee != null)
             {
                 List<Employee> employees = manager_employee.GetCustomer(employee);
 
-                var remainder = payment.GetRemainder(employee);
-                ViewBag.Remainder = remainder;
                 return View(employees);
             }
-           return  RedirectToAction("SignIn");
+            return RedirectToAction("SignIn");
         }
 
         [Authorize]
@@ -172,6 +172,7 @@ namespace zeynerp.Controllers
         public ActionResult CompanyAdd(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
+
             int Id = companyProcess.CompanyAdd(employee, companyModel);
             return RedirectToAction("CompanyDetail", new { Id });
         }
@@ -179,6 +180,12 @@ namespace zeynerp.Controllers
         public ActionResult CompanyList()
         {
             Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             List<Company> companies = companyProcess.GetCompanyList(employee);
             return View(companies);
         }
@@ -187,8 +194,17 @@ namespace zeynerp.Controllers
         public ActionResult CompanyDetail(int id)
         {
             Employee employee = Session["employee"] as Employee;
-            Company comp = companyProcess.GetCompany(employee, id);
-            return View(comp);
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            CompanyViewModel companyviewModel = new CompanyViewModel();
+            companyviewModel.Companies = companyProcess.GetCompany(employee, id);
+            companyviewModel.CompanyAuthorizeds = companyProcess.GetCompanyAuthorizedList(employee, id);
+            List<CompanyAuthorized> authorized = companyProcess.GetCompanyAuthorizedList(employee, id);
+            return View(companyviewModel);
         }
 
         [HttpPost]
@@ -199,39 +215,34 @@ namespace zeynerp.Controllers
             return View(comp);
         }
 
-        [Route("insan-kaynaklari/personel-listesi")]
-        [Authorize]
-        public ActionResult Employees()
-        {
-            Employee employee = Session["employee"] as Employee;
-            List<Employee> employees = manager_employee.GetCustomer(employee);
-            return View(employees);
-        }
-
-        public ActionResult Deneme()
-        {
-            return View();
-        }
-
-    
+        [HttpPost]
+        [Route("Home/guncelleBakiye")]
         public ActionResult guncelleBakiye(float bakiye)
         {
             Employee employee = Session["employee"] as Employee;
             int updateResult = payment.UpdateRemainder(employee, bakiye);
-            if(updateResult>0)
+            if (updateResult > 0)
             {
 
-                Session["remainder"] = bakiye;
+                return bakiye;
 
-                return RedirectToAction("Authorization");
             }
-            return View();
+            return 0;
         }
         public ActionResult Logout()
         {
             Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
+        }
+
+
+
+        [HttpPost]
+        
+        public ActionResult dene(string isim)
+        {
+            return View();
         }
     }
 }

@@ -1,9 +1,25 @@
-﻿@model zeynerp.Entities.Company
+﻿@using zeynerp.Entities
+@model zeynerp.Entities.ViewModels.CompanyViewModel
+
 @{
     ViewBag.Title = "CompanyDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
 
+    select {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+</style>
 <section class="body">
     <header class="page-header">
         <h2>Cari Detay</h2>
@@ -35,36 +51,36 @@
                             <h2 class="card-big-info-title">  </h2>
                             <p class="card-big-info-desc">  </p>
                         </div>
-                        <div class="col-lg-3-5 col-xl-4-5">
+                        <div class="col-lg-3-5">
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Türü</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.HiddenFor(model => model.Kind, new { id = "CompanyKind" })
-                                    Müşteri: @if (Model.Kind.Contains("Müşteri"))
+                                    @Html.HiddenFor(model => model.Companies.Kind, new { id = "CompanyKind" })
+                                    Müşteri: @if (Model.Companies.Kind.Contains("Müşteri"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" />}
-                                    Tedarikçi: @if (Model.Kind.Contains("Tedarikçi"))
+                                    Tedarikçi: @if (Model.Companies.Kind.Contains("Tedarikçi"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Tedarikçi" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Tedarikçi" />}
-                                    Taşeron: @if (Model.Kind.Contains("Taşeron"))
+                                    Taşeron: @if (Model.Companies.Kind.Contains("Taşeron"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Taşeron" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Taşeron" />}
-                                    Resmi: @if (Model.Kind.Contains("Resmi"))
+                                    Resmi: @if (Model.Companies.Kind.Contains("Resmi"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Resmi" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Resmi" />}
-                                    Banka: @if (Model.Kind.Contains("Banka"))
+                                    Banka: @if (Model.Companies.Kind.Contains("Banka"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Banka" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Banka" />}
-                                    Personel: @if (Model.Kind.Contains("Personel"))
+                                    Personel: @if (Model.Companies.Kind.Contains("Personel"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Personel" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Personel" />}
-                                    Personel: @if (Model.Kind.Contains("Personel"))
+                                    Personel: @if (Model.Companies.Kind.Contains("Personel"))
                                     {<input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" checked /> }
                                     else
                                     { <input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" />}
@@ -74,49 +90,49 @@
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Adı</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-lg", name = "companyName", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.Name, new { @class = "form-control form-control-lg", name = "companyName", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Kısa Adı</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.ShortName, new { @class = "form-control form-control-lg", name = "companyShortName", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.ShortName, new { @class = "form-control form-control-lg", name = "companyShortName", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Telefonu </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control form-control-lg", name = "companyPhone", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.Phone, new { @class = "form-control form-control-lg", name = "companyPhone", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Fax </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.Fax, new { @class = "form-control form-control-lg", name = "companyFax", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.Fax, new { @class = "form-control form-control-lg", name = "companyFax", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari E-Posta </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.Eposta, new { @class = "form-control form-control-lg", name = "companyEposta", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.Eposta, new { @class = "form-control form-control-lg", name = "companyEposta", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Vergi Dairesi </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.TaxAdministration, new { @class = "form-control form-control-lg", name = "companyTaxAdministration", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.TaxAdministration, new { @class = "form-control form-control-lg", name = "companyTaxAdministration", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Vergi No </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.TaxNumber, new { @class = "form-control form-control-lg", name = "companyTaxNumber", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.TaxNumber, new { @class = "form-control form-control-lg", name = "companyTaxNumber", type = "text" })
                                 </div>
                             </div>
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Fatura Adresi </label>
                                 <div class="col-lg-7 col-xl-6">
-                                    @Html.TextBoxFor(model => model.BillingAddress, new { @class = "form-control form-control-lg", name = "companyBillingAddress", type = "text" })
+                                    @Html.TextBoxFor(model => model.Companies.BillingAddress, new { @class = "form-control form-control-lg", name = "companyBillingAddress", type = "text" })
                                 </div>
                             </div>
                             <!-- <div class="form-group row align-items-center">
@@ -127,7 +143,7 @@
                             </div> -->
 
 
-                            <div class="row action-buttons" style="margin-left:35%">
+                            <div class="row action-buttons" style="margin-left:30%">
                                 <div class="col-12 col-md-auto">
                                     @Html.ActionLink("Yeni", "CompanyAdd", "Home", new { @class = "btn btn-primary btn-lg " })
                                 </div>
@@ -144,4 +160,109 @@
             </div>
         </div>
     }
-</section> 
+
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-lg-7 m-auto">
+                        <div class="form-group row align-items-center">
+                            <h2 style="text-align:center; margin:auto;">Cari Yetkilileri</h2>
+                         
+                                <table class="table table-no-more table-bordered table-striped mb-0" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Adı Soyadı</th>
+                                            <th class="text-center">Telefon</th>
+                                            <th class="text-center ">Cep Telefon</th>
+                                            <th class="text-center">Fax</th>
+                                            <th class="text-center">E-posta</th>
+                                            <th class="text-center ">Aktif</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.CompanyAuthorizeds.ToList())
+                                        {
+                                            <tr>
+                                                <td data-title="No" class="text-right " id="numara">@item.Id</td>
+                                                <td data-title="Adı Soyadı" class="text-right "><input type="text" placeholder="2016" id="txtName1"  class="form-control" value="@item.NameSurname"></td>
+                                                <td data-title="Telefon" class="text-right "><input type="text" placeholder="2016" id="txtAge1" class="form-control" value="@item.Phone"></td>
+                                                <td data-title="Cep Telefon" class="text-right  "><input type="text" placeholder="2016" id="txtGender1" class="form-control" value="@item.MobilePhone"></td>
+                                                <td data-title="Fax" class="text-right "><input type="text" placeholder="2016" id="txtOccupation1" class="form-control" value="@item.Fax"></td>
+                                                <td data-title="E-posta" class="text-right "><input type="text" placeholder="2016" id="txtdeneme1" class="form-control" value="@item.Email"></td>
+                                                <td data-title="Aktif " style="width:10%;">
+                                                    <select id="secim1" class="form-control">
+                                                        @if (@item.IsActive == IsActive.Pasif)
+                                                        {
+                                                            <option class="form-control" selected value="0">Pasif</option>
+                                                            <option class="form-control" value="1">Aktif</option>
+                                                        }
+                                                        @if (@item.IsActive == IsActive.Aktif)
+                                                        {
+                                                            <option class="form-control" value="0">Pasif</option>
+                                                            <option class="form-control" selected value="1">Aktif</option>
+                                                        }
+
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                    <tr>
+                                        <td colspan="7">
+                                            <button class="btn-primary" id="satirekle">Satır Ekle</button>
+                                            <button class="btn-primary" id="yetkiliKaydet" type="submit">Yetkilileri Kaydet</button>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-lg-7 m-auto">
+                        <div class="form-group row align-items-center">
+                            <h2 style="text-align:center; margin:auto;">Teslimat Adresleri</h2>
+                            <table class="table table-no-more table-bordered table-striped mb-0" id="myTable1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Başlık</th>
+                                        <th class="text-center">Adres</th>
+                                        <th class="text-center ">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-title="No" class="text-right" id="numara">1</td>
+                                        <td data-title="Başlık" class="text-right"><input type="text" placeholder="2016" id="txtNameA1" class="form-control"></td>
+                                        <td data-title="Adres" class="text-right"><input type="text" placeholder="2016" id="txtAgeA1" class="form-control"></td>
+                                        <td data-title="İşlem" class="text-right" id="denemeA"></td>
+                                    </tr>
+                                </tbody>
+                                <tr>
+                                    <td colspan="7">
+                                        <button class="btn-primary" id="satirekleAdr">Satır Ekle</button>
+                                        <button class="btn-primary">Adresleri Kaydet</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

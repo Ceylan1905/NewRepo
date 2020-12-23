@@ -40,6 +40,12 @@ namespace zeynerp.BL
             return list;
         }
 
+        public List<CompanyAuthorized> GetCompanyAuthorizedList(Employee employeeModel,int id)
+        {
+            Repository<CompanyAuthorized> companyAuthorizedList = new Repository<CompanyAuthorized>(employeeModel.CompanyName);
+            var list = companyAuthorizedList.GetAuthorized(id);
+            return list;
+        }
 
         public Company GetCompany(Employee employeeModel, int id)
         {

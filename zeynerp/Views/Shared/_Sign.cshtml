@@ -17,11 +17,7 @@
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="~/Assets/vendor/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/animate/animate.css">
-
     <link rel="stylesheet" href="~/Assets/vendor/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/magnific-popup/magnific-popup.css" />
-    <link rel="stylesheet" href="~/Assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -36,7 +32,7 @@
     <link rel="stylesheet" href="~/Assets/css/skins/default.css" />
 
     <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="~/Assets/css/custom.css">
+
 
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
@@ -57,6 +53,9 @@
         }
 
         .wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
             background: rgba(192, 192, 192, 0.4);
         }
 
@@ -91,9 +90,6 @@
             .wrapper {
                 background: rgba(192, 192, 192, 0.7);
             }
-            /* nav a{
-                color: #0d0d0d;
-            } */
         }
     </style>
 </head>
@@ -129,8 +125,6 @@
                         </li>
                     </ul>
                     <form class="d-flex justify-content-end">
-                        @*<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">*@
-                        @*<button class="btn submit-btn w-100" type="submit">Sign In</button>*@
                         @Html.ActionLink("Giriş", "SignIn", "Home", null, new { @class = "me-2 btn submit-btn" })
                         @Html.ActionLink("Kayıt Ol", "SignUp", "Home", null, new { @class = "btn submit-btn" })
                     </form>
@@ -141,43 +135,13 @@
 
     <section class="body-sign">
         <div class="center-sign">
-            @*<a href="/" class="logo float-left">
-                    <img src="~/Assets/img/logo.png" height="54" alt="Porto Admin" />
-                </a>*@
-
             <div class="panel card-sign">
                 @RenderBody()
             </div>
-
-            @*<p class="text-center text-muted mt-3 mb-3">&copy; Telif hakkı © 2020 ... Tüm hakları saklıdır. | Tasarım & Programlama: ...</p>*@
         </div>
     </section>
-
     <script src="~/Assets/vendor/jquery/jquery.js"></script>
-    <script src="~/Assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-    <script src="~/Assets/vendor/popper/umd/popper.min.js"></script>
-    <script src="~/Assets/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="~/Assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="~/Assets/vendor/common/common.js"></script>
-    <script src="~/Assets/vendor/nanoscroller/nanoscroller.js"></script>
-    <script src="~/Assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
-    <script src="~/Assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-
-    <!-- Specific Page Vendor -->
-    <!--(remove-empty-lines-end)-->
-    <!-- Theme Base, Components and Settings -->
-    <script src="~/Assets/js/theme.js"></script>
-
-    <!-- Theme Custom -->
     <script src="~/Assets/js/custom.js"></script>
-
-    <!-- Theme Initialization Files -->
-    <script src="~/Assets/js/theme.init.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
-@*<script type="text/javascript">
-    function preventBack() { window.history.forward(); }
-    setTimeout("preventBack()", 0);
-    window.onunload = function () { null; };
-</script>*@
