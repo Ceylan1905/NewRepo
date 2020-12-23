@@ -156,8 +156,6 @@ namespace zeynerp.Controllers
             {
                 List<Employee> employees = manager_employee.GetCustomer(employee);
 
-                //var remainder = payment.GetRemainder(employee);
-                //Session["remainder"] = remainder;
                 return View(employees);
             }
             return RedirectToAction("SignIn");
@@ -225,17 +223,26 @@ namespace zeynerp.Controllers
             int updateResult = payment.UpdateRemainder(employee, bakiye);
             if (updateResult > 0)
             {
-                
-                return Json(new { msg = bakiye });
+
+                return bakiye;
 
             }
-            return Json(new { success = false, msg = "operation failed" }, JsonRequestBehavior.AllowGet);
+            return 0;
         }
         public ActionResult Logout()
         {
             Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
+        }
+
+
+
+        [HttpPost]
+        
+        public ActionResult dene(string isim)
+        {
+            return View();
         }
     }
 }

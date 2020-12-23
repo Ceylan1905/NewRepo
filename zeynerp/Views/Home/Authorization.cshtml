@@ -59,24 +59,38 @@
                                         var remainder = payment.GetRemainder(employee);
                                     }
                                     <tr id="deneme" no="@remainder">
-                                        <td> </td>
+                                        <td> Cariler</td>
                                         <td> 30.000,0 ₺ </td>
-                                        @for (var i = 0; i < Model.Count(); i++)
+                                        @foreach (var item in Model)
                                         {
-                                            <td> <div><input type="checkbox" value="11" class="chk" no="30000.00"> </div> </td>
+                                            <td> <div><input type="checkbox" value="11" class="chk" no="30000.00" name="@item.Id"> </div> </td>
                                         }
                                     </tr>
                                     <tr id="" no="2">
-                                        <td></td>
+                                        <td>İnsan Kaynakları</td>
                                         <td>45.000,0 ₺ </td>
-                                        @for (var i = 0; i < Model.Count(); i++)
+                                        @foreach (var item in Model)
                                         {
-                                            <td> <div><input type="checkbox" value="21" class="chk" no="45000.00"> </div> </td>
+                                            <td> <div><input type="checkbox" value="21" class="chk" no="45000.00" name="@item.Id"> </div> </td>
                                         }
-
-
-
                                     </tr>
+
+                                    @*<tr id="" no="2">
+                                        <td>Cariler</td>
+                                        <td>50.000,0 ₺</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td> <div><input type="checkbox" value="21" class="chk" no="50000.00" name="@item.Id"> </div> </td>
+                                        }
+                                    </tr>
+                                    <tr id="" no="2">
+                                        <td>İnsan Kaynakları</td>
+                                        <td>60.000,0 ₺</td>
+                                      @foreach(var item in Model)
+                                        {
+                                            <td> <div><input type="checkbox" value="21" class="chk" no="60000.00" name="@item.Id" > </div> </td>
+                                        }
+                                    </tr>*@
                                 </div>
 
                             </tbody>

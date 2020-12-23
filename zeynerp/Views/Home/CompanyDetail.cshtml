@@ -51,7 +51,7 @@
                             <h2 class="card-big-info-title">  </h2>
                             <p class="card-big-info-desc">  </p>
                         </div>
-                        <div class="col-lg-3-5 col-xl-4-5">
+                        <div class="col-lg-3-5">
                             <div class="form-group row align-items-center">
                                 <label class="col-lg-5 col-xl-3 control-label text-lg-right mb-0"> Cari Türü</label>
                                 <div class="col-lg-7 col-xl-6">
@@ -143,7 +143,7 @@
                             </div> -->
 
 
-                            <div class="row action-buttons" style="margin-left:35%">
+                            <div class="row action-buttons" style="margin-left:30%">
                                 <div class="col-12 col-md-auto">
                                     @Html.ActionLink("Yeni", "CompanyAdd", "Home", new { @class = "btn btn-primary btn-lg " })
                                 </div>
@@ -168,58 +168,59 @@
                     <div class="col-12 col-lg-7 m-auto">
                         <div class="form-group row align-items-center">
                             <h2 style="text-align:center; margin:auto;">Cari Yetkilileri</h2>
-                            <table class="table table-no-more table-bordered table-striped mb-0" id="myTable">
-                                <thead>
+                         
+                                <table class="table table-no-more table-bordered table-striped mb-0" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Adı Soyadı</th>
+                                            <th class="text-center">Telefon</th>
+                                            <th class="text-center ">Cep Telefon</th>
+                                            <th class="text-center">Fax</th>
+                                            <th class="text-center">E-posta</th>
+                                            <th class="text-center ">Aktif</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.CompanyAuthorizeds.ToList())
+                                        {
+                                            <tr>
+                                                <td data-title="No" class="text-right " id="numara">@item.Id</td>
+                                                <td data-title="Adı Soyadı" class="text-right "><input type="text" placeholder="2016" id="txtName1"  class="form-control" value="@item.NameSurname"></td>
+                                                <td data-title="Telefon" class="text-right "><input type="text" placeholder="2016" id="txtAge1" class="form-control" value="@item.Phone"></td>
+                                                <td data-title="Cep Telefon" class="text-right  "><input type="text" placeholder="2016" id="txtGender1" class="form-control" value="@item.MobilePhone"></td>
+                                                <td data-title="Fax" class="text-right "><input type="text" placeholder="2016" id="txtOccupation1" class="form-control" value="@item.Fax"></td>
+                                                <td data-title="E-posta" class="text-right "><input type="text" placeholder="2016" id="txtdeneme1" class="form-control" value="@item.Email"></td>
+                                                <td data-title="Aktif " style="width:10%;">
+                                                    <select id="secim1" class="form-control">
+                                                        @if (@item.IsActive == IsActive.Pasif)
+                                                        {
+                                                            <option class="form-control" selected value="0">Pasif</option>
+                                                            <option class="form-control" value="1">Aktif</option>
+                                                        }
+                                                        @if (@item.IsActive == IsActive.Aktif)
+                                                        {
+                                                            <option class="form-control" value="0">Pasif</option>
+                                                            <option class="form-control" selected value="1">Aktif</option>
+                                                        }
+
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
                                     <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Adı Soyadı</th>
-                                        <th class="text-center">Telefon</th>
-                                        <th class="text-center ">Cep Telefon</th>
-                                        <th class="text-center">Fax</th>
-                                        <th class="text-center">E-posta</th>
-                                        <th class="text-center ">Aktif</th>
+                                        <td colspan="7">
+                                            <button class="btn-primary" id="satirekle">Satır Ekle</button>
+                                            <button class="btn-primary" id="yetkiliKaydet" type="submit">Yetkilileri Kaydet</button>
+                                        </td>
 
                                     </tr>
-                                </thead>
-                                <tbody>
-
-
-
-                                    @foreach (var item in Model.CompanyAuthorizeds.ToList())
-                                    {
-
-                                        <tr>
-                                            <td data-title="No" class="text-right" id="numara">@item.Id</td>
-                                            <td data-title="Adı Soyadı" class="text-right"><input type="text" placeholder="2016" id="txtName1" class="form-control" value="@item.NameSurname"></td>
-                                            <td data-title="Telefon" class="text-right"><input type="text" placeholder="2016" id="txtAge1" class="form-control" value="@item.Phone"></td>
-                                            <td data-title="Cep Telefon" class="text-right "><input type="text" placeholder="2016" id="txtGender1" class="form-control" value="@item.MobilePhone"></td>
-                                            <td data-title="Fax" class="text-right"><input type="text" placeholder="2016" id="txtOccupation1" class="form-control" value="@item.Fax"></td>
-                                            <td data-title="E-posta" class="text-right"><input type="text" placeholder="2016" id="txtdeneme1" class="form-control" value="@item.Email"></td>
-                                            <td data-title="Aktif ">
-                                                <select id="secim1">
-                                                    @if (@item.IsActive == 0)
-                                                    {
-                                                        <option>Pasif</option>
-                                                    }
-
-                                                   
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    }
-
-
-
-
-                                </tbody>
-                                <tr>
-                                    <td colspan="7">
-                                        <button class="btn-primary" id="satirekle">Satır Ekle</button>
-                                        <button class="btn-primary" id="yetkiliKaydet">Yetkilileri Kaydet</button>
-                                    </td>
-
-                                </tr>
-                            </table>
+                                </table>
+                         
                         </div>
                     </div>
                 </div>

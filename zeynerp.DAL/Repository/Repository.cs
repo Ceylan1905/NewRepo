@@ -77,12 +77,15 @@ namespace zeynerp.DAL.Repository
         {
             return contextObj.ToList();
         }
-
-        public List<T> List(Expression<Func<T, bool>> where)
+       public  List<T> List(Expression<Func<T, bool>> where)
         {
-            return contextObj.Where(where).ToList();
+            return contextObj.ToList();
         }
 
+        public List<CompanyAuthorized> GetAuthorized(int id)
+        {
+            return databaseContext.CompanyAuthorizeds.Where(x => x.CompanyId == id).ToList();
+        }
         public int Save()
         {
             return databaseContext.SaveChanges();
