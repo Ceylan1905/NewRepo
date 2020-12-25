@@ -1,5 +1,4 @@
 ﻿@using zeynerp.Entities
-@using Scrypt
 @using zeynerp.BL
 <!doctype html>
 <html class="fixed sidebar-left-collapsed">
@@ -46,12 +45,6 @@
     <!-- Head Libs -->
     <script src="~/Assets/vendor/modernizr/modernizr.js"></script>
 
-    @*<script type="text/javascript">
-        function preventBack() { window.history.forward(); }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () { null };
-    </script>*@
-
     <style>
         select option:first-child {
             display: none;
@@ -61,7 +54,7 @@
             display: block;
         }
 
-        #currencyUnit>option:first-child {
+        #currencyUnit > option:first-child {
             display: block;
         }
     </style>
@@ -82,48 +75,60 @@
 
             <!-- start: search & user box -->
             <div class="header-right d-flex justify-content-end align-items-center">
-                <span class="separator"></span>
-                @{var employee = Session["employee"] as Employee; }
-                @if (Session["employee"] != null && employee.IsAdmin == true)
-                {
-                    <div id="remainder" class="userbox mb-3 mb-md-0">
-                        Bakiye :
+                @{
+                    var user = Session["employee"] as Employee;
+                    var admin = Session["employee"] as User;
+                    if (user != null && user.IsAdmin == true)
+                    {
+                        <span class="separator"></span>
+                        <div id="remainder" class="userbox mb-3 mb-md-0">
+                            Bakiye :
 
-                        <div id="bakiyem" style="display:inline-block;">
-                            @{PaymentManager payment = new PaymentManager();
-                                var remainder = payment.GetRemainder(employee);
-                                if (remainder == null)
-                                {
-                                    remainder = 0;
+                            <div id="bakiyem" style="display:inline-block;">
+                                @{PaymentManager payment = new PaymentManager();
+                                    var remainder = payment.GetRemainder(user);
+                                    if (remainder == null)
+                                    {
+                                        remainder = 0;
 
-                                }
-                                @remainder}
-                        </div>  ₺
-                    </div>
+                                    }
+                                    @remainder}
+                            </div>  ₺
+                        </div>
+                    }
                 }
                 <span class="separator"></span>
                 <div id="userbox" class="userbox pr-3 pr-md-0 pl-3 pl-md-0 mb-3 mb-md-0">
                     <a href="#" data-toggle="dropdown">
-                        @*<figure class="profile-picture" style="display: none">
-                                   <img src="~/Assets/img/logo.png" alt="Joseph Doe" class="rounded-circle" data-lock-picture="Assets/img/logo.png" />
-                            </figure>*@
-
-                        <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]" data-lock-surname="@employee.Surname">
-                            @if (Session["employee"] != null)
+                        @{
+                            if (admin != null)
                             {
-                                var profileInfoes = Session["employee"] as Employee;
-                                <span class="name">@profileInfoes.Name @profileInfoes.Surname</span>
-                                <span class="role"> @profileInfoes.CompanyId</span>
+                                var employee = Session["employee"] as User;
+                                <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]" data-lock-surname="@employee.Surname">
+                                    @if (Session["employee"] != null)
+                                    {
+                                        <span class="name">@employee.Name @employee.Surname</span>
+                                        <span class="role"> Administrator</span>
+                                    }
+                                </div>
                             }
-                        </div>
+                            else
+                            {
+                                var employee = Session["employee"] as Employee;
+                                <div class="profile-info" data-lock-name="@employee.Name" data-lock-email="@employee.Email" data-lock-password="@Session["password"]" data-lock-surname="@employee.Surname">
+                                    @if (Session["employee"] != null)
+                                    {
+                                        <span class="name">@employee.Name @employee.Surname</span>
+                                        <span class="role"> @employee.CompanyId</span>
+                                    }
+                                </div>
+                            }
+                        }
                         <i class="fa custom-caret"></i>
                     </a>
                     <div class="dropdown-menu">
                         <ul class="list-unstyled mb-2">
                             <li class="divider"></li>
-                            @*<li>
-                                    <a role="menuitem" tabindex="-1" href="/Home/Profile"><i class="fas fa-user"></i> My Profile</a>
-                                </li>*@
                             <li>
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fas fa-key"></i> Şifre Değiştirme</a>
                             </li>
@@ -137,10 +142,7 @@
                     </div>
                 </div>
             </div>
-            <!-- end: search & user box -->
         </header>
-        <!-- end: header -->
-
         <div class="inner-wrapper">
             <!-- start: sidebar -->
             <aside id="sidebar-left" class="sidebar-left">
@@ -157,70 +159,87 @@
                 <div class="nano">
                     <div class="nano-content">
                         <nav id="menu" class="nav-main" role="navigation">
-
                             <ul class="nav nav-main">
-
-                                <li>
-                                    @if (Session["employee"] != null)
-                                    {
+                                @if (admin != null)
+                                {
+                                    @*<li>
+                                            <a class="nav-link" href="@Url.Action("Module","Admin")">
+                                                <i class="fas fa-plus" aria-hidden="true"></i>
+                                                <span>Modül Ekle</span>
+                                            </a>
+                                        </li>*@
+                                    <li class="nav-parent">
+                                        <a class="nav-link" href="#">
+                                            <i class="fas fa-plus" aria-hidden="true"></i>
+                                            <span>Tanımlamalar</span>
+                                        </a>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a class="nav-link" href="@Url.Action("Module","Admin")">
+                                                    <span>Modüller</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
                                         <a class="nav-link" href="@Url.Action("Authorization","Home")">
                                             <i class="fas fa-users-cog" aria-hidden="true"></i>
                                             <span>Kullanıcı İşlemleri</span>
                                         </a>
-                                    }
-                                </li>
-                                <li class="nav-parent">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-plus" aria-hidden="true"></i>
-                                        <span>Tanımlamalar</span>
-                                    </a>
-                                    <ul class="nav nav-children">
-                                        <li>
-                                            <a class="nav-link" href="@Url.Action("CompanyList","Home")">
-                                                <i class="fas fa-building" aria-hidden="true"></i>
-                                                <span> Cariler </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="nav nav-children">
-                                        <li>
-                                            <a class="nav-link" href="@Url.Action("SupplierList","Supplier")">
-                                                <i class="fas fa-compact-disc" aria-hidden="true"></i>
-                                                <span> Tedarikçi Grup </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-parent">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-users" aria-hidden="true"></i>
-                                        <span>İnsan Kaynakları</span>
-                                    </a>
-                                    <ul class="nav nav-children">
-                                        <li>
-                                            <a class="nav-link" href="@Url.Action("PersonnelList","HumanResource")">
-                                                <span>Personel Listesi</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <script>
-                                    // Maintain Scroll Position
-                                    if (typeof localStorage !== 'undefined') {
-                                        if (localStorage.getItem('sidebar-left-position') !== null) {
-                                            var initialPosition = localStorage.getItem('sidebar-left-position'),
-                                                sidebarLeft = document.querySelector('#sidebar-left .nano-content');
-
-                                            sidebarLeft.scrollTop = initialPosition;
-                                        }
-                                    }
-                                </script>
+                                    </li>
+                                    <li class="nav-parent">
+                                        <a class="nav-link" href="#">
+                                            <i class="fas fa-plus" aria-hidden="true"></i>
+                                            <span>Tanımlamalar</span>
+                                        </a>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a class="nav-link" href="@Url.Action("CompanyList","Home")">
+                                                    <i class="fas fa-building" aria-hidden="true"></i>
+                                                    <span> Cariler </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a class="nav-link" href="@Url.Action("SupplierList","Supplier")">
+                                                    <i class="fas fa-compact-disc" aria-hidden="true"></i>
+                                                    <span> Tedarikçi Grup </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-parent">
+                                        <a class="nav-link" href="#">
+                                            <i class="fas fa-users" aria-hidden="true"></i>
+                                            <span>İnsan Kaynakları</span>
+                                        </a>
+                                        <ul class="nav nav-children">
+                                            <li>
+                                                <a class="nav-link" href="@Url.Action("PersonnelList","HumanResource")">
+                                                    <span>Personel Listesi</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                        <script>
+                            if (typeof localStorage !== 'undefined') {
+                                if (localStorage.getItem('sidebar-left-position') !== null) {
+                                    var initialPosition = localStorage.getItem('sidebar-left-position'),
+                                        sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+                                    sidebarLeft.scrollTop = initialPosition;
+                                }
+                            }
+                        </script>
                     </div>
-
+                </div>
             </aside>
-            <!-- end: sidebar -->
-            <!--- DEĞİŞEN KISIM    -->
             @RenderBody()
         </div>
         <aside id="sidebar-right" class="sidebar-right">
@@ -243,7 +262,6 @@
                                 </li>
                             </ul>
                         </div>
-
                         <div class="sidebar-widget widget-friends">
                             <h6>Friends</h6>
                             <ul>
@@ -285,7 +303,6 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -55,7 +55,6 @@ namespace zeynerp.BL
                 List<Personnel> personnelListFilter = repo_personnel.List(x => x.Position == selectViewModel.Position);
                 return personnelListFilter;
             }
-
             List<Personnel> personnelList = repo_personnel.List();
             return personnelList;
         }

@@ -11467,7 +11467,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Toplam Personel Sayısı: _TOTAL_",
+			"sInfo": "_TOTAL_ kayıttan _START_ - _END_ arası kayıt gösteriliyor",
 	
 	
 			/**
@@ -11488,7 +11488,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Toplam Personel Sayısı: 0",
+			"sInfoEmpty": "0 kayıttan 0 - 0 arası kayıt gösteriliyor",
 	
 	
 			/**

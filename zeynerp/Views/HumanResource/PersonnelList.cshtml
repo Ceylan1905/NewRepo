@@ -1,12 +1,11 @@
-﻿@using zeynerp.Entities.HumanResource
-@using zeynerp.Entities.ViewModels
+﻿@using zeynerp.Entities.ViewModels
+@using zeynerp.Entities.HumanResource
 @model SelectViewModel
 @{
     ViewBag.Title = "Employees";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var counter = 1;
 }
-
 @{ 
     List<Personnel> personnels = ViewData["personnels"] as List<Personnel>;
 }
@@ -31,7 +30,6 @@
     {
         <div class="row">
             <div class="col">
-
                 <div class="card card-modern">
                     <div class="card-body">
                         <div class="datatables-header-footer-wrapper">
@@ -52,21 +50,19 @@
                                         <div class="">
                                             <label>Firma</label>
                                             @Html.DropDownListFor(x => x.Company, new List<SelectListItem> {
-                                            //new SelectListItem { Text = "", Value = ""},
                                             new SelectListItem { Text = "Tümü", Value = "all"},
                                             new SelectListItem { Text = "Kadro", Value = "Kadro"},
                                             new SelectListItem { Text = "Erdağ Makine", Value = "Erdağ Makine"},
                                             new SelectListItem { Text = "Fatih Ertekin", Value = "Fatih Ertekin"},
                                             new SelectListItem { Text = "Mustafa Akar", Value = "Mustafa Akar"},
                                             new SelectListItem { Text = "Pınarbaşı", Value = "Pınarbaşı"},
-                                            new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit1()" })
+                                            new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" }}, new { id = "selectListName1", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit1()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 col-lg-auto mb-3 mb-lg-0">
                                         <div class="">
                                             <label>Sorumluluk Merkezi</label>
                                             @Html.DropDownListFor(x => x.S_Central, new List<SelectListItem> {
-                                            //new SelectListItem { Text = "", Value = ""},
                                             new SelectListItem { Text = "Tümü", Value = "all"},
                                             new SelectListItem { Text = "S-Mak", Value = "S-Mak"},
                                             new SelectListItem { Text = "S-Gaz", Value = "S-Gaz"},
@@ -77,14 +73,13 @@
                                             new SelectListItem { Text = "Kira Geliri", Value = "Kira Geliri"},
                                             new SelectListItem { Text = "Teşvik Gelirleri", Value = "Teşvik Gelirleri"},
                                             new SelectListItem { Text = "S-Mak Industries", Value = "S-Mak Industries"},
-                                            new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit2()" })
+                                            new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" }}, new { id = "selectListName2", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit2()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
                                         <div class="">
                                             <label>Pozisyon</label>
                                             @Html.DropDownListFor(x => x.Position, new List<SelectListItem> {
-                                            //new SelectListItem { Text = "", Value = ""},
                                             new SelectListItem { Text = "Tümü", Value = "all"},
                                             new SelectListItem { Text = "Genel Başvuru", Value = "Genel Başvuru"},
                                             new SelectListItem { Text = "Genel Müdür", Value = "Genel Müdür"},
@@ -123,7 +118,7 @@
                                             new SelectListItem { Text = "Temizlik Görevlisi", Value = "Temizlik Görevlisi"},
                                             new SelectListItem { Text = "Satış Mühendisi", Value = "Satış Mühendisi"},
                                             new SelectListItem { Text = "Finansal Analist", Value = "Finansal Analist"},
-                                            new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" }}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit3()" })
+                                            new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" }}, new { id = "selectListName3", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit3()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
@@ -171,14 +166,14 @@
                                         var remainingDays = Math.Truncate((totalDays % 365) % 30);
                                         <tr>
                                             <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@counter.ToString()</a></td>
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Name + " " + personnel.Surname)</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.City</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Birthday.AsDateTime().Year + "/" + personnel.Birthday.AsDateTime().Month.ToString("d2") + "/" + personnel.Birthday.AsDateTime().Day.ToString("d2"))</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Phone</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Company</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.S_Central</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Position</a></td> 
-                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.StartingDate.AsDateTime().Year + "/" + personnel.StartingDate.AsDateTime().Month.ToString("d2") + "/" + personnel.StartingDate.AsDateTime().Day.ToString("d2"))</a></td>                                                  
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Name + " " + personnel.Surname)</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.City</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.Birthday.AsDateTime().Year + "/" + personnel.Birthday.AsDateTime().Month.ToString("d2") + "/" + personnel.Birthday.AsDateTime().Day.ToString("d2"))</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Phone</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Company</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.S_Central</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@personnel.Position</a></td>
+                                            <td><a href="/insan-kaynaklari/personel-detay/@personnel.Id" class="text-dark text-decoration-none">@(personnel.StartingDate.AsDateTime().Year + "/" + personnel.StartingDate.AsDateTime().Month.ToString("d2") + "/" + personnel.StartingDate.AsDateTime().Day.ToString("d2"))</a></td>
                                             <td><a href="#" class="text-dark text-decoration-none">@(totalYears + " Yıl " + totalMonths + " Ay " + remainingDays + " Gün" )</a></td>
                                             <td><a href="#" class="text-dark text-decoration-none">10 Gün</a></td>
                                             <td><a href="#" class="text-decoration-none">Çıkış Ver</a></td>
@@ -213,7 +208,7 @@
                 </div>
             </div>
         </div>
-     }       
+    }
 </section>
 
 <script>

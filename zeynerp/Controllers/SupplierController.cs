@@ -13,8 +13,6 @@ namespace zeynerp.Controllers
         private Manager<User> manager_user = new Manager<User>();
         private Manager<Employee> manager_employee = new Manager<Employee>();
         private SupplierProcess<CompanyGroup> supplierProcess = new SupplierProcess<CompanyGroup>();
-        [Authorize]
-        [HttpGet]
         public ActionResult SupplierAdd()
         {
             return View();

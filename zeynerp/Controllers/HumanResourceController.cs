@@ -16,7 +16,6 @@ namespace zeynerp.Controllers
         private HumanResourceManager<Personnel> manager_personnel = new HumanResourceManager<Personnel>();
 
         [Route("insan-kaynaklari/personel-listesi")]
-        [Authorize]
         public ActionResult PersonnelList(SelectViewModel selectViewModel)
         {
             Employee employee = Session["employee"] as Employee;
