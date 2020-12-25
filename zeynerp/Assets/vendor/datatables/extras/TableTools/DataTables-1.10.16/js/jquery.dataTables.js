@@ -11417,7 +11417,7 @@
 			 *    } );
 			 */
 
-			//"sInfo": "Toplam Personel Sayısı: _TOTAL_",
+			"sInfo": " ",
 	
 	
 			/**
@@ -11439,7 +11439,7 @@
 			 *    } );
 			 */
 
-			//"sInfoEmpty": "Toplam Personel Sayısı: 0",
+			"sInfoEmpty": " ",
 	
 	
 			/**

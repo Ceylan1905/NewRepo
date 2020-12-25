@@ -38,7 +38,7 @@
                                 <div style="text-align:center"> <strong> Firma Grup Listesi </strong></div>
                                 <div class="row align-items-center mb-3">
                                     @*<div class="col-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">*@
-                                    <div class="col-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">
+                                    <div class="col-md-push-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">
                                         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
                                             <label class="ws-nowrap mr-3 mb-0">Aktif:</label>
                                             @Html.DropDownListFor(x => x.Company, new List<SelectListItem> {
@@ -84,8 +84,7 @@
                             </table>
                             <hr class="solid mt-5 opacity-4">
                             <div class="datatable-footer">
-                                <div style="text-align:center"> <strong> 
-                                    Firma Grup Sayısı: @totalNumberOfCompanyGroups  </strong> </div>
+                                <div style="text-align:center"> <strong> Toplam Firma Grup Sayısı: @totalNumberOfCompanyGroups  </strong> </div>
                             </div>
                         </div>
                     </div>
