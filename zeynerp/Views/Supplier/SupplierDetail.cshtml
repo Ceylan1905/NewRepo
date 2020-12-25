@@ -1,0 +1,72 @@
+﻿@using zeynerp.BL
+@using zeynerp.Entities.Definitions
+@model BL_Result<CompanyGroup>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Tedarikçi Detay - @(Model.Result.Name)</h2>
+
+        <div class="right-wrapper text-right pr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span> Tanımlamalar </span></li>
+                <li><a href="/tanimlamalar/tedarikci-listesi"><span> Tedarikçi Listesi</span></a></li>
+                <li><span>Tedarikçi Detay</span></li>
+            </ol>
+        </div>
+    </header>
+
+    @using (Html.BeginForm("SupplierDetail", "Supplier", FormMethod.Post, new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col">
+                <section class="card">
+                    <div class="card-body">
+                        <div style="text-align:center"> <strong> Firma Grup Tanım </strong> </div>
+                        <div class="form-group row align-items-center">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault"> Grup Adı </label>
+                            @Html.HiddenFor(x => x.Result.Id)
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(x => x.Result.Name, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                @Html.ValidationMessageFor(x => x.Result.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Aktif </label>
+                            <div class="col-lg-6">
+                                @Html.DropDownListFor(x => x.Result.Confirmation, new List<SelectListItem> {
+                                        new SelectListItem { Text = "Tümü", Value = "all"},
+                                        new SelectListItem { Text = "Aktif", Value = "Aktif"},
+                                        new SelectListItem { Text = "Pasif", Value = "Pasif" } }, new { @class = "form-control form-control-lg mb-3" })
+                                @Html.ValidationMessageFor(x => x.Result.Confirmation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-left:40%">
+                            <div class="col-4 col-md-auto">
+                                @Html.ActionLink("Yeni", "SupplierAdd", "Supplier", new { @class = "btn btn-primary btn-lg " })
+                            </div>
+                            <div class="col-4 col-md-auto">
+                                <button type="submit" class="btn btn-primary btn-lg">Kaydet</button>
+                            </div>
+                            <div class="col-4 col-md-auto">
+                                @Html.ActionLink("Liste", "SupplierList", "Supplier", new { @class = "btn btn-primary btn-lg " })
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    }
+</section>
