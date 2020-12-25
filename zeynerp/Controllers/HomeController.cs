@@ -224,10 +224,11 @@ namespace zeynerp.Controllers
             if (updateResult > 0)
             {
 
-                return bakiye;
+                //return bakiye;
 
             }
-            return 0;
+            //return 0;
+            return View() ;
         }
         public ActionResult Logout()
         {

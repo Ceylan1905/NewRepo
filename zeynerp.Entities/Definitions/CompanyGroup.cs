@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zeynerp.Entities
+namespace zeynerp.Entities.Definitions
 {
     public class CompanyGroup
     {
@@ -17,5 +17,4 @@ namespace zeynerp.Entities
         Pasif,
         Aktif
     }
-
 }

@@ -5,50 +5,82 @@ using System.Web;
 using System.Web.Mvc;
 using zeynerp.BL;
 using zeynerp.Entities;
+using zeynerp.Entities.Definitions;
 
 namespace zeynerp.Controllers
 {
     public class SupplierController : Controller
     {
-        private Manager<User> manager_user = new Manager<User>();
-        private Manager<Employee> manager_employee = new Manager<Employee>();
         private SupplierProcess<CompanyGroup> supplierProcess = new SupplierProcess<CompanyGroup>();
-        [Authorize]
-        [HttpGet]
+
+        [Route("tanimlamalar/tedarikci-ekle")]
         public ActionResult SupplierAdd()
         {
             return View();
         }
 
+        [Route("tanimlamalar/tedarikci-ekle")]
         [HttpPost]
-        public ActionResult SupplierAdd(CompanyGroup companyGroupModel)
+        public ActionResult SupplierAdd(CompanyGroup companyGroup)
         {
+
             Employee employee = Session["employee"] as Employee;
-            int Id = supplierProcess.SupplierAdd(employee, companyGroupModel);
-            return RedirectToAction("CompanyDetail", new { Id });
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
+            supplierProcess.SupplierAdd(employee.CompanyName, companyGroup);
+            return View();
         }
 
+        //[HttpPost]
+        //public ActionResult SupplierAdd(CompanyGroup companyGroupModel)
+        //{
+        //    Employee employee = Session["employee"] as Employee;
+        //    int Id = supplierProcess.SupplierAdd(employee, companyGroupModel);
+        //    return RedirectToAction("CompanyDetail", new { Id });
+        //}
+
+        [Route("tanimlamalar/tedarikci-listesi")]
+        [Authorize]
         public ActionResult SupplierList()
         {
             Employee employee = Session["employee"] as Employee;
             List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
-            return View(companyGroupModel);
+            ViewData["compGroup"] = companyGroupModel;
+            return View();
+        }
+
+        [Route("tanimlamalar/tedarikci-detay/{id}")]
+        public ActionResult SupplierDetail(int id)
+        {
+            Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
+            BL_Result<CompanyGroup> bL_Result = new BL_Result<CompanyGroup>();
+            bL_Result = supplierProcess.GetCompanyGroup(employee.CompanyName, id);
+            return View(bL_Result);
         }
 
 
-        //public ActionResult CompanyDetail(int id)
-        //{
-        //    Employee employee = Session["employee"] as Employee;
-        //    Company comp = companyProcess.GetCompany(employee, id);
-        //    return View(comp);
-        //}
+        [Route("tanimlamalar/tedarikci-detay/{id}")]
+        [HttpPost]
+        public ActionResult SupplierDetail(BL_Result<CompanyGroup> bL_Result)
+        {
+            Employee employee = Session["employee"] as Employee;
 
-        //[HttpPost]
-        //public ActionResult CompanyDetail(Company companyModel)
-        //{
-        //    Employee employee = Session["employee"] as Employee;
-        //    int deneme = companyProcess.CompanyUpdate(employee, companyModel);
-        //    return View(companyModel);
-        //}
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+            supplierProcess.CompanyGroupUpdate(employee.CompanyName, bL_Result);
+            return RedirectToAction("SupplierList");
+        }
     }
 }

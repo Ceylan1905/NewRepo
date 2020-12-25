@@ -4194,6 +4194,7 @@
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
     <Content Include="Views\HumanResource\PersonnelAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
+    <Content Include="Views\Supplier\SupplierDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
