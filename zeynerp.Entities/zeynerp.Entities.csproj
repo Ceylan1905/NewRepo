@@ -76,10 +76,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Category.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="CompanyAuthorized.cs" />
-    <Compile Include="CompanyGroup.cs" />
+    <Compile Include="Definitions\CompanyGroup.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="GrupModule.cs" />
     <Compile Include="HumanResource\Personnel.cs" />

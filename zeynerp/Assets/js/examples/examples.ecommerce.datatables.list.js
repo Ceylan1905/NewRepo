@@ -64,7 +64,7 @@ Theme Version: 	3.0.0
 				$filterBy = $this.closest('.datatables-header-footer-wrapper').find('.filter-by'),
 				$dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
 
-			if( $filterBy.val() == 'all' ) {
+			if( $filterBy.val() != '' ) {
 				$dataTable.search( $this.val() ).draw();
 			} else {
 				$dataTable.column( parseInt( $filterBy.val() ) ).search( $this.val() ).draw();

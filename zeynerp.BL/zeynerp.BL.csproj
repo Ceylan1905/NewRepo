@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminManager.cs" />
     <Compile Include="Result\BL_Result.cs" />
     <Compile Include="CompanyProcess.cs" />
     <Compile Include="HumanResourceManager.cs" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using zeynerp.Entities;
+using zeynerp.Entities.Admin;
 
 namespace zeynerp.DAL
 {
@@ -15,6 +16,6 @@ namespace zeynerp.DAL
 
         }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
     }
 }

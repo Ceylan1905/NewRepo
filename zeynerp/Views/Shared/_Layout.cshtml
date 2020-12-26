@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="~/Assets/vendor/select2/css/select2.css" />
     <link rel="stylesheet" href="~/Assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
     <link rel="stylesheet" href="~/Assets/vendor/boxicons/css/boxicons.min.css" />
+    <link rel="stylesheet" href="~/Assets/vendor/pnotify/pnotify.custom.css" />
 
     <!--(remove-empty-lines-end)-->
     <!-- Theme CSS -->
@@ -50,7 +51,7 @@
             display: none;
         }
 
-        #myForm select option:first-child {
+        #personnelForm select option:first-child {
             display: block;
         }
 
@@ -66,7 +67,7 @@
         <header class="header">
             <div class="logo-container">
                 <a href="/panel" class="logo">
-                    <img src="~/Assets/img/logo.png" width="75" height="35" alt="Porto Admin" />
+                    <img src="~/Assets/img/logo.png" width="160" height="35" alt="Porto Admin" />
                 </a>
                 <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
                     <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
@@ -240,7 +241,10 @@
                     </div>
                 </div>
             </aside>
-            @RenderBody()
+            <div id="result">
+                @RenderBody()
+            </div>
+            @*@RenderBody()*@
         </div>
         <aside id="sidebar-right" class="sidebar-right">
             <div class="nano">
@@ -319,7 +323,7 @@
     <script src="~/Assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
     <script src="~/Assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="~/Assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
-
+    <script src="~/Assets/vendor/pnotify/pnotify.custom.js"></script>
     <script src="~/Assets/vendor/jquery-validation/jquery.validate.js"></script>
     <script src="~/Assets/vendor/select2/js/select2.js"></script>
 
@@ -338,6 +342,7 @@
     <script src="~/Assets/js/examples/examples.modals.js"></script>
     <script src="~/Assets/js/examples/examples.header.menu.js"></script>
     <script src="~/Assets/js/examples/examples.ecommerce.datatables.list.js"></script>
+    <script src="~/Assets/js/examples/examples.notifications.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using zeynerp.Entities;
+using zeynerp.Entities.Definitions;
 using zeynerp.Entities.HumanResource;
 
 namespace zeynerp.DAL

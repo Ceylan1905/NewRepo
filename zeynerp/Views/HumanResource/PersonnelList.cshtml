@@ -26,7 +26,7 @@
             </ol>
         </div>
     </header>
-    @using (Ajax.BeginForm("PersonnelList", "HumanResource", null, new AjaxOptions { HttpMethod = "GET" }, new { id = "myForm" }))
+    @using (Html.BeginForm("PersonnelList", "HumanResource", FormMethod.Post, new { id = "personnelForm" }))
     {
         <div class="row">
             <div class="col">
@@ -56,7 +56,7 @@
                                             new SelectListItem { Text = "Fatih Ertekin", Value = "Fatih Ertekin"},
                                             new SelectListItem { Text = "Mustafa Akar", Value = "Mustafa Akar"},
                                             new SelectListItem { Text = "Pınarbaşı", Value = "Pınarbaşı"},
-                                            new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" }}, new { id = "selectListName1", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit1()" })
+                                            new SelectListItem { Text = "SM Makina / Aynur Yener", Value = "SM Makina / Aynur Yener" }}, new { id = "selectCompany", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "personnelFormChange()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 col-lg-auto mb-3 mb-lg-0">
@@ -73,7 +73,7 @@
                                             new SelectListItem { Text = "Kira Geliri", Value = "Kira Geliri"},
                                             new SelectListItem { Text = "Teşvik Gelirleri", Value = "Teşvik Gelirleri"},
                                             new SelectListItem { Text = "S-Mak Industries", Value = "S-Mak Industries"},
-                                            new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" }}, new { id = "selectListName2", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit2()" })
+                                            new SelectListItem { Text = "SS Şahsi", Value = "SS Şahsi" }}, new { id = "selectS_Central", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "personnelFormChange()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
@@ -118,7 +118,7 @@
                                             new SelectListItem { Text = "Temizlik Görevlisi", Value = "Temizlik Görevlisi"},
                                             new SelectListItem { Text = "Satış Mühendisi", Value = "Satış Mühendisi"},
                                             new SelectListItem { Text = "Finansal Analist", Value = "Finansal Analist"},
-                                            new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" }}, new { id = "selectListName3", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit3()" })
+                                            new SelectListItem { Text = "Kalite Kontrol Sorumlusu", Value = "Kalite Kontrol Sorumlusu" }}, new { id = "selectPosition", @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "personnelFormChange()" })
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto mb-3 mb-lg-0">
@@ -210,21 +210,8 @@
         </div>
     }
 </section>
-
 <script>
-    function myFormSubmit1() {
-        document.getElementsByTagName("select")[1].value = "";
-        document.getElementsByTagName("select")[2].value = "";
-        document.getElementById("myForm").submit();
-    }
-    function myFormSubmit2() {
-        document.getElementsByTagName("select")[0].value = "";
-        document.getElementsByTagName("select")[2].value = "";
-        document.getElementById("myForm").submit();
-    }
-    function myFormSubmit3() {
-        document.getElementsByTagName("select")[0].value = "";
-        document.getElementsByTagName("select")[1].value = "";
-        document.getElementById("myForm").submit();
+    function personnelFormChange() {
+        document.getElementById("personnelForm").submit();
     }
 </script>
