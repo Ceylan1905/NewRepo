@@ -97,14 +97,6 @@
       <Project>{6561d774-e21a-481b-a737-e3dd99e6b6f3}</Project>
       <Name>zeynerp.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\zeynerp.DAL\zeynerp.DAL.csproj">
-      <Project>{aae8bed6-3f38-4a99-be7b-87cea7f30984}</Project>
-      <Name>zeynerp.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zeynerp.Entities\zeynerp.Entities.csproj">
-      <Project>{158500fd-e138-4083-bf92-15f4aebf4c5e}</Project>
-      <Name>zeynerp.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -20,13 +20,13 @@ namespace zeynerp.DAL
 
         }
         public DbSet<Employee> Employees { get; set; }
-        //public DbSet<GrupModule> GrupModules { get; set; }
+        public DbSet<GrupModule> GrupModules { get; set; }
         public DbSet<Remainder> Remainders { get; set; }
         public DbSet<Company> Companies{ get; set; }
-        public DbSet<CompanyGroup> CompanyGroups{ get; set; }
+        public DbSet<CompanyGroup> companyGroups { get; set; }
         public DbSet<Personnel> Personnels { get; set; }
         public DbSet<CompanyAuthorized> CompanyAuthorizeds { get; set; }
-        //public DbSet<Module> Modules { get; set; }
+        public DbSet<Module> Modules { get; set; }
     }
 
     public sealed class MigrationConfiguration : DbMigrationsConfiguration<DatabaseContext>
