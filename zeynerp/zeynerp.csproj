@@ -1920,6 +1920,15 @@
     <Content Include="Assets\vendor\datatables\media\js\dataTables.bootstrap4.min.js" />
     <Content Include="Assets\vendor\datatables\media\js\jquery.dataTables.js" />
     <Content Include="Assets\vendor\datatables\media\js\jquery.dataTables.min.js" />
+    <Content Include="Assets\vendor\common\common.js" />
+    <Content Include="Assets\vendor\dropzone\basic.css" />
+    <Content Include="Assets\vendor\dropzone\dropzone-amd-module.js" />
+    <Content Include="Assets\vendor\dropzone\dropzone.css" />
+    <Content Include="Assets\vendor\dropzone\dropzone.js" />
+    <Content Include="Assets\vendor\dropzone\min\basic.min.css" />
+    <Content Include="Assets\vendor\dropzone\min\dropzone-amd-module.min.js" />
+    <Content Include="Assets\vendor\dropzone\min\dropzone.min.css" />
+    <Content Include="Assets\vendor\dropzone\min\dropzone.min.js" />
     <Content Include="Assets\vendor\elusive-icons\css\elusive-icons.css" />
     <Content Include="Assets\vendor\elusive-icons\css\elusive-icons.min.css" />
     <Content Include="Assets\vendor\elusive-icons\fonts\elusiveicons-webfont.svg" />
@@ -4187,7 +4196,7 @@
     <Content Include="Views\Home\Authorization.cshtml" />
     <Content Include="Views\Home\CompanyAdd.cshtml" />
     <Content Include="Views\Home\CompanyList.cshtml" />
-    <Content Include="Views\Home\CompanyDetai.cshtml" />
+    <Content Include="Views\Home\CompanyDetail.cshtml" />
     <Content Include="Views\Supplier\SupplierList.cshtml" />
     <Content Include="Views\Supplier\SupplierAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
@@ -4204,14 +4213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\css\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\examples\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\" />
-    <Folder Include="Assets\vendor\bootstrap-multiselect\less\" />
-    <Folder Include="Assets\vendor\bootstrap-multiselect\scss\" />
-    <Folder Include="Assets\vendor\codemirror\bin\" />
-    <Folder Include="Assets\vendor\common\" />
-    <Folder Include="Assets\vendor\summernote\font\" />
     <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>

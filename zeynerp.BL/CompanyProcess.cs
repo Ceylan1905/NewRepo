@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using zeynerp.DAL.Repository;
 using zeynerp.Entities;
 
-namespace zeynerp.BL.Definitions
+namespace zeynerp.BL
 {
     public class CompanyProcess<T> where T : class
     {
@@ -40,7 +40,7 @@ namespace zeynerp.BL.Definitions
             return list;
         }
 
-        public List<CompanyAuthorized> GetCompanyAuthorizedList(Employee employeeModel, int id)
+        public List<CompanyAuthorized> GetCompanyAuthorizedList(Employee employeeModel,int id)
         {
             Repository<CompanyAuthorized> companyAuthorizedList = new Repository<CompanyAuthorized>(employeeModel.CompanyName);
             var list = companyAuthorizedList.GetAuthorized(id);
@@ -62,4 +62,3 @@ namespace zeynerp.BL.Definitions
         }
     }
 }
-
