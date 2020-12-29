@@ -16,12 +16,28 @@ namespace zeynerp.Controllers
         private HumanResourceManager<Personnel> manager_personnel = new HumanResourceManager<Personnel>();
 
         [Route("insan-kaynaklari/personel-listesi")]
-        [Authorize]
+        public ActionResult PersonnelList()
+        {
+            Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
+            List<Personnel> personnels = manager_personnel.GetPersonnels(employee.CompanyName);
+            ViewData["personnels"] = personnels;
+
+            return View();
+        }
+
+        [Route("insan-kaynaklari/personel-listesi")]
+        [HttpPost]
         public ActionResult PersonnelList(SelectViewModel selectViewModel)
         {
             Employee employee = Session["employee"] as Employee;
 
-            if(employee == null)
+            if (employee == null)
             {
                 return RedirectToAction("SignIn", "Home");
             }

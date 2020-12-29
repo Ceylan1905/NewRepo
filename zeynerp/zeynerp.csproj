@@ -148,7 +148,6 @@
     <Content Include="Assets\img\!happy-face.png" />
     <Content Include="Assets\img\!logged-user.jpg" />
     <Content Include="Assets\img\!sample-user.jpg" />
-    <Content Include="Assets\img\logo.png" />
     <Content Include="Assets\img\apple-touch-icon-precomposed.png" />
     <Content Include="Assets\img\arrows-dark.png" />
     <Content Include="Assets\img\arrows.png" />
@@ -167,6 +166,7 @@
     <Content Include="Assets\img\logo-default.png" />
     <Content Include="Assets\img\logo-light.png" />
     <Content Include="Assets\img\logo-modern.png" />
+    <Content Include="Assets\img\logo.png" />
     <Content Include="Assets\img\logo1.png" />
     <Content Include="Assets\img\pencil-blue-line-2-dark.png" />
     <Content Include="Assets\img\pencil-blue-line-2.png" />
@@ -178,9 +178,12 @@
     <Content Include="Assets\img\widget-twitter-profile.jpg" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\examples\examples.dashboard.js" />
+    <Content Include="Assets\js\examples\examples.datatables.tabletools.js" />
     <Content Include="Assets\js\examples\examples.ecommerce.datatables.list.js" />
+    <Content Include="Assets\js\examples\examples.ecommerce.form.js" />
     <Content Include="Assets\js\examples\examples.header.menu.js" />
     <Content Include="Assets\js\examples\examples.modals.js" />
+    <Content Include="Assets\js\examples\examples.notifications.js" />
     <Content Include="Assets\js\theme.admin.extension.js" />
     <Content Include="Assets\js\theme.init.js" />
     <Content Include="Assets\js\theme.js" />
@@ -3685,6 +3688,8 @@
     <Content Include="Assets\vendor\magnific-popup\jquery.magnific-popup.min.js" />
     <Content Include="Assets\vendor\magnific-popup\magnific-popup.css" />
     <Content Include="Assets\vendor\modernizr\modernizr.js" />
+    <Content Include="Assets\vendor\pnotify\pnotify.custom.css" />
+    <Content Include="Assets\vendor\pnotify\pnotify.custom.js" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.js" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.min.js" />
     <Content Include="Assets\vendor\popper\esm\popper.js" />
@@ -3765,8 +3770,6 @@
     <Content Include="Assets\vendor\select2\js\select2.full.min.js" />
     <Content Include="Assets\vendor\select2\js\select2.js" />
     <Content Include="Assets\vendor\select2\js\select2.min.js" />
-    <Content Include="Assets\vendor\snap.svg\snap.svg-min.js" />
-    <Content Include="Assets\vendor\snap.svg\snap.svg.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -4053,6 +4056,10 @@
     <Content Include="Assets\vendor\font-awesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Assets\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="Assets\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.js.map" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.min.js.map" />
     <Content Include="Assets\vendor\popper\esm\popper.js.map" />
@@ -4070,6 +4077,56 @@
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.ttf" />
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff" />
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="Assets\vendor\bootstrap-multiselect\less\bootstrap-multiselect.less" />
+    <Content Include="Assets\vendor\bootstrap-multiselect\scss\bootstrap-multiselect.scss" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css.map" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css.map" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\example-group.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\example.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples.json" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\Basics.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p02_Advanced_Examples.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p03_Colorpicker_Events.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p04_Colorpicker_Extensions.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p05_OlderVersions.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p06_SupportUs.hbs" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\LICENSE" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\README.md" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\augments.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\container.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\details.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\example.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\examples.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\exceptions.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\layout.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\mainpage.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\members.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\method.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\params.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\properties.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\returns.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\source.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\tutorial.tmpl" />
+    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\type.tmpl" />
+    <Content Include="Assets\vendor\dropzone\dropzone.js.map" />
+    <Content Include="Assets\vendor\codemirror\AUTHORS" />
+    <Content Include="Assets\vendor\codemirror\bin\source-highlight" />
+    <Content Include="Assets\vendor\codemirror\CHANGELOG.md" />
+    <Content Include="Assets\vendor\codemirror\CONTRIBUTING.md" />
+    <Content Include="Assets\vendor\codemirror\LICENSE" />
+    <Content Include="Assets\vendor\codemirror\package.json" />
+    <Content Include="Assets\vendor\codemirror\README.md" />
+    <Content Include="Assets\vendor\summernote\font\summernote.eot" />
+    <Content Include="Assets\vendor\summernote\font\summernote.ttf" />
+    <Content Include="Assets\vendor\summernote\font\summernote.woff" />
+    <Content Include="Assets\vendor\summernote\font\summernote.woff2" />
+    <Content Include="Assets\vendor\summernote\summernote-0.8.16-dist.zip" />
+    <Content Include="Assets\vendor\summernote\summernote-bs4.js.map" />
+    <Content Include="Assets\vendor\summernote\summernote-bs4.min.js.map" />
+    <Content Include="Assets\vendor\summernote\summernote-lite.js.map" />
+    <Content Include="Assets\vendor\summernote\summernote-lite.min.js.map" />
+    <Content Include="Assets\vendor\summernote\summernote.js.map" />
+    <Content Include="Assets\vendor\summernote\summernote.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4108,10 +4165,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Company\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HumanResourceController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\UserOperationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4136,10 +4193,8 @@
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
     <Content Include="Views\HumanResource\PersonnelAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
+    <Content Include="Views\Admin\ModuleLog.cshtml" />
     <Content Include="Views\Supplier\SupplierDetail.cshtml" />
-    <Content Include="Views\Company\CompanyAdd.cshtml" />
-    <Content Include="Views\Company\CompanyList.cshtml" />
-    <Content Include="Views\Company\CompanyDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4174,10 +4229,6 @@
     <ProjectReference Include="..\zeynerp.Common\zeynerp.Common.csproj">
       <Project>{6561d774-e21a-481b-a737-e3dd99e6b6f3}</Project>
       <Name>zeynerp.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zeynerp.DAL\zeynerp.DAL.csproj">
-      <Project>{aae8bed6-3f38-4a99-be7b-87cea7f30984}</Project>
-      <Name>zeynerp.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\zeynerp.Entities\zeynerp.Entities.csproj">
       <Project>{158500fd-e138-4083-bf92-15f4aebf4c5e}</Project>

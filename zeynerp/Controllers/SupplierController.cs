@@ -45,8 +45,7 @@ namespace zeynerp.Controllers
         //}
 
         [Route("tanimlamalar/tedarikci-listesi")]
-        [Authorize]
-        public ActionResult SupplierList(SelectViewModel selectViewModel)
+        public ActionResult SupplierList()
         {
             Employee employee = Session["employee"] as Employee;
 
@@ -59,11 +58,6 @@ namespace zeynerp.Controllers
             ViewData["compGroup"] = companyGroups;
 
             return View();
-
-            //Employee employee = Session["employee"] as Employee;
-            //List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
-            //ViewData["compGroup"] = companyGroupModel;
-            //return View();
         }
 
         [Route("tanimlamalar/tedarikci-detay/{id}")]

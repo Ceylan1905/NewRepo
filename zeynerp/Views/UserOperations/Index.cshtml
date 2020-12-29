@@ -1,0 +1,86 @@
+﻿@using zeynerp.Entities
+@using zeynerp.Entities.Admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Module> listModule = ViewData["listModule"] as List<Module>;
+    List<Employee> listEmployees = ViewData["listEmployees"] as List<Employee>;
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        @{
+            var user = Session["employee"] as Employee;
+            var admin = Session["employee"] as User;
+            if (admin != null)
+            {
+                <h2>ZEYNErP</h2>
+            }
+            else
+            {
+                <h2>@user.CompanyName</h2>
+            }
+        }
+        <div class="right-wrapper text-right mr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                        <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                    </div>
+
+                    <h2 class="card-title">Kullanıcı İşlemleri</h2>
+                </header>
+                <div class="card-body position-relative">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                        <thead>
+                            <tr>
+                                <th width="15%">Modül</th>
+                                @foreach (Employee employee in listEmployees)
+                                {
+                                    <th class="text-center">@(employee.Name + " " + employee.Surname)</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Module module in listModule)
+                            {
+                                <tr>
+                                    <td>@(module.Category.CategoryName + " / " + module.ModuleName)</td>
+                                    <td class="text-center"><input type="checkbox" value="@module.Price" /></td>
+                                    <td class="text-center"><input type="checkbox" value="@module.Price" /></td>
+                                </tr>
+                            }
+                        </tbody> 
+                    </table>
+                    @*<input id="total-btn" type="submit" class="btn btn-primary m-3 position-absolute bottom-0" name="name" value="Ödeme Yap" />*@
+                    <button id="total-btn" class="btn btn-primary m-2 position-absolute bottom-0 col-lg-1">
+                        <span id="total">0 ₺</span><br /><span>Ödeme Yap</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $('input:checkbox').change(function () {
+        var total = 0;
+        $('input:checkbox:checked').each(function () {
+            total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
+        });
+        $("#total").text(total + " ₺");
+
+    });
+</script>

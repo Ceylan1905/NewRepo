@@ -1,0 +1,145 @@
+﻿@using zeynerp.Entities
+@using zeynerp.Entities.Admin
+@model Category
+@{
+    ViewBag.Title = "Module";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<Category> categories = ViewData["categories"] as List<Category>;
+}
+<section role="main" class="content-body">
+    <header class="page-header">
+        @{
+            var admin = Session["employee"] as User;
+            if (admin != null)
+            {
+                <h2>ZEYNErP</h2>
+            }
+        }
+        <div class="right-wrapper text-right mr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="@Url.Content("Dashboard")">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col">
+            <div class="card card-modern">
+                <div class="card-body">
+                    @Html.ValidationSummary(true, "", new { @class = "d-none" })
+                    <div class="datatables-header-footer-wrapper">
+                        <div class="datatable-header">
+                            <div class="row align-items-center justify-content-end mb-3">
+                                <div class="col-12 col-lg-3 col-xl-2 col-lg-auto">
+                                    <div class="search search-style-1 w-100 search-style-1-lg mx-lg-auto">
+                                        <div class="input-group">
+                                            <input type="text" class="search-term form-control" name="search-term" id="search-term" placeholder="Kategori Ara">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-default" type="submit"><i class="bx bx-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-2 col-xl-1 mt-3 mt-lg-0 col-lg-auto">
+                                    <select class="form-control select-style-1 filter-by" name="filter-by">
+                                        <option value="all">Tümü</option>
+                                        <option value="Durum-Devam Eden" selected>Aktif</option>
+                                        <option value="Durum-Ayrılmış">Pasif</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-lg-2 col-xl-1 mt-3 mt-lg-0 col-lg-auto">
+                                    <a href="#modalCategory" class="modal-basic btn btn-primary w-100 btn-md font-weight-semibold btn-py-2">+ Kategori</a>
+                                    <div id="modalCategory" class="modal-block mfp-hide">
+                                        @using (Html.BeginForm("Category", "Admin", null, FormMethod.Post))
+                                        {
+                                            <section class="card">
+                                                <header class="card-header">
+                                                    <h2 class="card-title">Kategori Ekle</h2>
+                                                </header>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="inputEmail4">Kategori Adı</label>
+                                                            @*<input type="email" class="form-control" id="inputEmail4" placeholder="Kategori Adı">*@
+                                                            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control", type = "text", placeholder = "Kategori Adı" })
+                                                            @Html.ValidationMessageFor(x => x.CategoryName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        <div class="col-8 mt-3">
+                                                            <label for="inputEmail4">Durum</label>
+                                                            @Html.DropDownListFor(x => x.Status, new List<SelectListItem> {
+                                                                new SelectListItem { Text = "Aktif", Value = "Aktif"},
+                                                                new SelectListItem { Text = "Pasif", Value = "Pasif" } }, new { @class = "form-control populate" })
+                                                            @Html.ValidationMessageFor(x => x.Status, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        <div class="col-4 mt-3">
+                                                            <label for="inputEmail4">Sıra</label>
+                                                            @*<input type="email" class="form-control" id="inputEmail4" placeholder="Sıra">*@
+                                                            @Html.TextBoxFor(x => x.Order, new { @class = "form-control", type = "text", placeholder = "Sıra" })
+                                                            @Html.ValidationMessageFor(x => x.Order, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <footer class="card-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-right">
+                                                            <input type="submit" class="btn btn-primary" value="Kaydet" />
+                                                            <button class="btn btn-default modal-dismiss">İptal</button>
+                                                        </div>
+                                                    </div>
+                                                </footer>
+                                            </section>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;"></th>
+                                    <th width="8%">Sıra</th>
+                                    <th width="60%">Kategori Adı</th>
+                                    <th>Durum</th>
+                                    <th>Detay</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Category category in categories)
+                                {
+                                    <tr>
+                                        <td style="display: none;"></td>
+                                        <td class="pr-lg-5">@category.Order</td>
+                                        <td>@category.CategoryName</td>
+                                        <td>@category.Status</td>
+                                        <td><a href="/Admin/CategoryDetail/@category.Id">Detay</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <hr class="solid mt-5 opacity-4">
+                        <div class="datatable-footer">
+                            <div class="row align-items-center justify-content-between mt-3">
+                                <div class="col-md-auto order-1 mb-3 mb-lg-0 invisible">
+                                    <div class="d-flex align-items-stretch">
+                                        <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-auto text-center order-3 order-lg-2">
+                                    <div class="results-info-wrapper"></div>
+                                </div>
+                                <div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
+                                    <div class="pagination-wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -6,24 +6,27 @@
 
 <section role="main" class="content-body">
     <header class="page-header">
-        @if (Session["employee"] != null)
-        {
-            var company = Session["employee"] as Employee;
-            <h2>@company.CompanyName</h2>
+        @{
+            var user = Session["employee"] as Employee;
+            var admin = Session["employee"] as User;
+            if (admin != null)
+            {
+                <h2>ZEYNErP</h2>
+            }
+            else
+            {
+                <h2>@user.CompanyName</h2>
+            }
         }
-       <div class="right-wrapper text-right mr-3">
-           <ol class="breadcrumbs">
-               <li>
-                   <a href="/panel">
-                       <i class="fas fa-home"></i>
-                   </a>
-               </li>
-               @*<li><span>Layouts</span></li>
-               <li><span>Default</span></li>*@
-           </ol>
-
-           @*<a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>*@
-       </div>
+        <div class="right-wrapper text-right mr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+            </ol>
+        </div>
     </header>
 </section>
 

@@ -11,6 +11,5 @@ namespace zeynerp.Entities.ViewModels
         public string Company { get; set; }
         public string S_Central { get; set; }
         public string Position { get; set; }
-        public string Confirmation { get; set; }
     }
 }

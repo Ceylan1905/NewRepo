@@ -13,19 +13,19 @@ namespace zeynerp.BL
         private BL_Result<Employee> result_employee = new BL_Result<Employee>();
         public float? GetRemainder(Employee employee)
         {
-            if (employee.IsAdmin == true)
-            {
-                Repository<Remainder> repo = new Repository<Remainder>(employee.CompanyName);
+            //if (employee.IsAdmin == true)
+            //{
+            //    Repository<Remainder> repo = new Repository<Remainder>(employee.CompanyName);
 
-                if(repo.List().Count>0)
-                {
-                    float? remainder = repo.GetRemainder();
-                    return remainder;
-                }
+            //    if(repo.List().Count>0)
+            //    {
+            //        float? remainder = repo.GetRemainder();
+            //        return remainder;
+            //    }
                
               
               
-            }
+            //}
             return null;
         }
 

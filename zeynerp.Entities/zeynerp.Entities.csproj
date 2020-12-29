@@ -76,14 +76,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Category.cs" />
+<<<<<<< HEAD
+    <Compile Include="Admin\Log.cs" />
+    <Compile Include="Admin\Module.cs" />
+=======
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="CompanyAuthorized.cs" />
     <Compile Include="Definitions\CompanyGroup.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="GrupModule.cs" />
     <Compile Include="HumanResource\Personnel.cs" />
-    <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remainder.cs" />
     <Compile Include="User.cs" />
@@ -95,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserOperations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

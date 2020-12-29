@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using zeynerp.BL;
-using zeynerp.DAL.Repository;
+using zeynerp.BL.Result;
 using zeynerp.Entities;
 using zeynerp.Entities.HumanResource;
 using zeynerp.Entities.ViewModels;
@@ -39,29 +39,13 @@ namespace zeynerp.Controllers
                 if(bl_Result.Messages.Count > 0)
                 {
                     bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
+                    return View();
                 }
+                return RedirectToAction("SignIn");
             }
             return View();
         }
 
-        [HttpPost]
-
-        public JsonResult ChangePassword(string formData)
-        {
-            
-                var employee = Session["employee"] as Employee;
-                if(employee!=null)
-                {
-                if (formData != "")
-                {
-                    manager_employee.ManagePassword(employee, formData);
-                    return Json(new { status=true, message = "Şifreniz değiştirildi!",url="/panel" });
-                   
-                }
-             
-            }
-            return Json(new { status = false, message = "Hata var!" });
-        }
         public ActionResult Activation(Guid id)
         {
             ViewBag.Message = "Invalid Activation code.";
@@ -74,36 +58,44 @@ namespace zeynerp.Controllers
             return View();
         }
 
-      
         [Route("giris")]
         public ActionResult SignIn()
         {
+            Session["employee"] = null;
             return View();
         }
 
        
         [Route("giris")]
-        [HttpPost]
-      
+        [HttpPost]      
         public ActionResult SignIn(LoginViewModel loginViewModel)
         {
-
             if (ModelState.IsValid)
             {
-                BL_Result<Employee> bl_Result = manager_employee.Login(loginViewModel);
+                LoginResult loginResult = new LoginResult();
+                loginResult = manager_user.Login(loginViewModel);
 
-                if(bl_Result.Messages.Count > 0)
+                if (loginResult.Messages.Count > 0)
                 {
-                    bl_Result.Messages.ForEach(x => ModelState.AddModelError("", x));
+                    loginResult.Messages.ForEach(x => ModelState.AddModelError("", x));
                     return View();
+                }
+
+                if(loginResult.BL_ResultUser.Result != null)
+                {
+                    Session["employee"] = loginResult.BL_ResultUser.Result;
+                    return RedirectToAction("Dashboard");
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(bl_Result.Result.Name, false);
-                    Session["employee"] = bl_Result.Result;
-                    var remainder = payment.GetRemainder(bl_Result.Result);
+                    Session["employee"] = loginResult.BL_ResultEmployee.Result;
+
+                    /* Düzenlenecek (Auth ve Birden fazla session kullanımı engellenecek) */
+                    var remainder = payment.GetRemainder(loginResult.BL_ResultEmployee.Result);
+                    //FormsAuthentication.SetAuthCookie(bl_Result.Result.Name, false);
                     Session["remainder"] = remainder;
                     Session["password"] = loginViewModel.Password;
+
                     return RedirectToAction("Dashboard");
                 }
             }
@@ -111,18 +103,31 @@ namespace zeynerp.Controllers
         }
 
         [Route("panel")]
-        [Authorize]
+        //[Authorize]
         public ActionResult Dashboard()
         {
-            Employee employee = Session["employee"] as Employee;
-            if (employee != null)
-            {
-                return View();
-            }
-            return RedirectToAction("SignIn");
+            return View();
         }
 
-        [Authorize]
+        [HttpPost]
+
+        public JsonResult ChangePassword(string formData)
+        {
+
+            var employee = Session["employee"] as Employee;
+            if (employee != null)
+            {
+                if (formData != "")
+                {
+                    manager_employee.ManagePassword(employee, formData);
+                    return Json(new { status = true, message = "Şifreniz değiştirildi!", url = "/panel" });
+
+                }
+
+            }
+            return Json(new { status = false, message = "Hata var!" });
+        }
+
         public ActionResult Profile()
         {
             return View();
@@ -147,7 +152,6 @@ namespace zeynerp.Controllers
             return View();
         }
       
-        [Authorize]
         public ActionResult Authorization()
         {
             Employee employee = Session["employee"] as Employee;
@@ -160,37 +164,65 @@ namespace zeynerp.Controllers
             return RedirectToAction("SignIn");
         }
 
-        
+        [Authorize]
+        [HttpGet]
+        public ActionResult CompanyAdd()
+        {
+            return View();
+        }
 
         [HttpPost]
-        [Route("Home/guncelleBakiye")]
-        public ActionResult guncelleBakiye(float bakiye)
+        public ActionResult CompanyAdd(Company companyModel)
         {
             Employee employee = Session["employee"] as Employee;
-            int updateResult = payment.UpdateRemainder(employee, bakiye);
-            if (updateResult > 0)
-            {
 
-                //return bakiye;
-
-            }
-            //return 0;
-            return View() ;
+            int Id = companyProcess.CompanyAdd(employee, companyModel);
+            return RedirectToAction("CompanyDetail", new { Id });
         }
+
+        public ActionResult CompanyList()
+        {
+            Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            List<Company> companies = companyProcess.GetCompanyList(employee);
+            return View(companies);
+        }
+
+
+        public ActionResult CompanyDetail(int id)
+        {
+            Employee employee = Session["employee"] as Employee;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
+            CompanyViewModel companyviewModel = new CompanyViewModel();
+            companyviewModel.Companies = companyProcess.GetCompany(employee, id);
+            companyviewModel.CompanyAuthorizeds = companyProcess.GetCompanyAuthorizedList(employee, id);
+            List<CompanyAuthorized> authorized = companyProcess.GetCompanyAuthorizedList(employee, id);
+            return View(companyviewModel);
+        }
+
+        [HttpPost]
+        public ActionResult CompanyDetail(Company companyModel)
+        {
+            Employee employee = Session["employee"] as Employee;
+            Company comp = companyProcess.CompanyUpdate(employee, companyModel);
+            return View(comp);
+        }
+
         public ActionResult Logout()
         {
             Session.Clear();
             Session.RemoveAll();
             return View("SignIn");
-        }
-
-
-
-        [HttpPost]
-        
-        public ActionResult dene(string isim)
-        {
-            return View();
         }
     }
 }

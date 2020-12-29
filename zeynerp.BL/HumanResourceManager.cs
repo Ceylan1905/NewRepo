@@ -21,42 +21,34 @@ namespace zeynerp.BL
             result_personnel.Result = repo_personnel.Find(x => x.Id == id);
             return result_personnel;
         }
+        public List<Personnel> GetPersonnels(string db_name)
+        {
+            Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
+            List<Personnel> personnelList = repo_personnel.List();
+            return personnelList;
+        }
+
         public List<Personnel> GetPersonnels(string db_name, SelectViewModel selectViewModel)
         {
             Repository<Personnel> repo_personnel = new Repository<Personnel>(db_name);
+            List<Personnel> personnelList = new List<Personnel>();
 
-            if (selectViewModel.Company != null)
+            if (selectViewModel != null)
             {
-                if (selectViewModel.Company == "all")
+                if (selectViewModel.Company == "all" && selectViewModel.S_Central == "all" && selectViewModel.Position == "all")
                 {
-                    List<Personnel> personnelListAll = repo_personnel.List();
-                    return personnelListAll;
+                    personnelList = repo_personnel.List();
                 }
-                List<Personnel> personnelListFilter = repo_personnel.List(x => x.Company == selectViewModel.Company);
-                return personnelListFilter;
+                else
+                {
+                    personnelList = repo_personnel.List(x => x.Company == selectViewModel.Company || x.S_Central == selectViewModel.S_Central || x.Position == selectViewModel.Position);
+                }
             }
-            else if (selectViewModel.S_Central != null)
+            else
             {
-                if (selectViewModel.S_Central == "all")
-                {
-                    List<Personnel> personnelListAll = repo_personnel.List();
-                    return personnelListAll;
-                }
-                List<Personnel> personnelListFilter = repo_personnel.List(x => x.S_Central == selectViewModel.S_Central);
-                return personnelListFilter;
-            }
-            else if (selectViewModel.Position != null)
-            {
-                if (selectViewModel.Position == "all")
-                {
-                    List<Personnel> personnelListAll = repo_personnel.List();
-                    return personnelListAll;
-                }
-                List<Personnel> personnelListFilter = repo_personnel.List(x => x.Position == selectViewModel.Position);
-                return personnelListFilter;
+                personnelList = null;
             }
 
-            List<Personnel> personnelList = repo_personnel.List();
             return personnelList;
         }
         public BL_Result<Personnel> PersonnelAdd(string db_name, Personnel personnel)

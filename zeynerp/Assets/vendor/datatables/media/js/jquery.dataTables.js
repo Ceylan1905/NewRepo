@@ -11467,8 +11467,7 @@
 			 *      } );
 			 *    } );
 			 */
-
-			"sInfo": " ",
+			"sInfo": "_TOTAL_ kayıttan _START_ - _END_ arası kayıt gösteriliyor",
 	
 	
 			/**
@@ -11489,7 +11488,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": " ",
+			"sInfoEmpty": "0 kayıttan 0 - 0 arası kayıt gösteriliyor",
 	
 	
 			/**
