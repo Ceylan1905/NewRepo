@@ -44,7 +44,6 @@ namespace zeynerp.DAL.Repository
             return Save();
         }
 
-        // SİLİNECEK
         public float GetRemainder()
         {
             List<float> remainders = new List<float>();
@@ -56,7 +55,6 @@ namespace zeynerp.DAL.Repository
            
         }
 
-        // SİLİNECEK
         public int UpdatePassword(Employee employee, string newPass)
         {
             employee.Password = newPass;
@@ -81,7 +79,7 @@ namespace zeynerp.DAL.Repository
         }
        public  List<T> List(Expression<Func<T, bool>> where)
         {
-            return contextObj.Where(where).ToList();
+            return contextObj.ToList();
         }
 
         public List<CompanyAuthorized> GetAuthorized(int id)
@@ -116,6 +114,5 @@ namespace zeynerp.DAL.Repository
             int sonKayit=databaseContext.Companies.Max(x => x.Id);
             return sonKayit;
         }
-
     }
 }

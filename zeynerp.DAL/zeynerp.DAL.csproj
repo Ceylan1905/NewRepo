@@ -91,33 +91,6 @@
     <Compile Include="Migrations\202012031358272_MyMigration.designer.cs">
       <DependentUpon>202012031358272_MyMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012251157137_createCategoryTable.cs" />
-    <Compile Include="Migrations\202012251157137_createCategoryTable.designer.cs">
-      <DependentUpon>202012251157137_createCategoryTable.cs</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
-    <Compile Include="Migrations\202012272032104_createModulesTable.cs" />
-    <Compile Include="Migrations\202012272032104_createModulesTable.designer.cs">
-      <DependentUpon>202012272032104_createModulesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012280639142_changeModulesTableProperties.cs" />
-    <Compile Include="Migrations\202012280639142_changeModulesTableProperties.designer.cs">
-      <DependentUpon>202012280639142_changeModulesTableProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012280847206_addCommentColumnModulesTable.cs" />
-    <Compile Include="Migrations\202012280847206_addCommentColumnModulesTable.designer.cs">
-      <DependentUpon>202012280847206_addCommentColumnModulesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012281152098_createLogsTable.cs" />
-    <Compile Include="Migrations\202012281152098_createLogsTable.designer.cs">
-      <DependentUpon>202012281152098_createLogsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012281238449_changeLogsTableProperties.cs" />
-    <Compile Include="Migrations\202012281238449_changeLogsTableProperties.designer.cs">
-      <DependentUpon>202012281238449_changeLogsTableProperties.cs</DependentUpon>
-    </Compile>
-=======
->>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -143,27 +116,6 @@
     <EmbeddedResource Include="Migrations\202012031358272_MyMigration.resx">
       <DependentUpon>202012031358272_MyMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012251157137_createCategoryTable.resx">
-      <DependentUpon>202012251157137_createCategoryTable.cs</DependentUpon>
-    </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\202012272032104_createModulesTable.resx">
-      <DependentUpon>202012272032104_createModulesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012280639142_changeModulesTableProperties.resx">
-      <DependentUpon>202012280639142_changeModulesTableProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012280847206_addCommentColumnModulesTable.resx">
-      <DependentUpon>202012280847206_addCommentColumnModulesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012281152098_createLogsTable.resx">
-      <DependentUpon>202012281152098_createLogsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012281238449_changeLogsTableProperties.resx">
-      <DependentUpon>202012281238449_changeLogsTableProperties.cs</DependentUpon>
-    </EmbeddedResource>
-=======
->>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
