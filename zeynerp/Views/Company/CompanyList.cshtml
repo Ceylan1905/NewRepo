@@ -1,15 +1,13 @@
-﻿
-@using zeynerp.Entities
+﻿@using zeynerp.Entities
 @model IEnumerable<zeynerp.Entities.Company>
 @{
     ViewBag.Title = "CompanyList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2> Cari Listesi</h2>
+        <h2>Cari Listesi</h2>
         <div class="right-wrapper text-right pr-3">
             <ol class="breadcrumbs">
                 <li>
@@ -18,60 +16,37 @@
                     </a>
                 </li>
                 <li><span>Tanımlamalar</span></li>
-                <li><span>Cari Listesi</span></li>
+                <li><span>Cari</span></li>
             </ol>
         </div>
     </header>
     @using (Ajax.BeginForm("CompanyList", "Company", null, new AjaxOptions { HttpMethod = "GET" }, new { id = "myForm" }))
     {
-        <!-- start: page -->
         <div class="row">
             <div class="col">
+
                 <div class="card card-modern">
                     <div class="card-body">
                         <div class="datatables-header-footer-wrapper">
                             <div class="datatable-header">
-                                <div style="text-align:center"> <strong> Cari Listesi </strong></div>
+                                <div style="text-align:center"> <strong> Firma Grup Listesi </strong></div>
                                 <div class="row align-items-center mb-3">
-                                    <div class="col-8 col-lg-auto ml-auto mb-3 mb-lg-0">
-                                        <div class="d-flex align-items-lg-center flex-column flex-lg-row">
-                                            <label class="ws-nowrap mr-3 mb-0">Filter By:</label>
-                                            <select class="form-control select-style-1 filter-by" name="filter-by">
-                                                <option value="all" selected>All</option>
-                                                <option value="1">ID</option>
-                                                <option value="2">Company Name</option>
-                                                <option value="3">Slug</option>
-                                                <option value="4">Parent Category</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 col-lg-auto pl-lg-1 mb-3 mb-lg-0">
-                                        <div class="d-flex align-items-lg-center flex-column flex-lg-row">
-                                            <label class="ws-nowrap mr-3 mb-0">Show:</label>
-                                            <select class="form-control select-style-1 results-per-page" name="results-per-page">
-                                                <option value="12" selected>12</option>
-                                                <option value="24">24</option>
-                                                <option value="36">36</option>
-                                                <option value="100">100</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-auto pl-lg-1">
-                                        <div class="search search-style-1 search-style-1-lg mx-lg-auto">
-                                            <div class="input-group">
-                                                <input type="text" class="search-term form-control" name="search-term" id="search-term" placeholder="Search Category">
-                                                <span class="input-group-append">
-                                                    <button class="btn btn-default" type="submit"><i class="bx bx-search"></i></button>
-                                                </span>
+                                    @*<div class="col-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">*@
+                                    @*<div class="col-md-push-12 col-lg-4 col-xl-2 col-lg-auto mt-3 mt-lg-0 mb-3 mb-lg-0">
+                                            <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+                                                <label class="ws-nowrap mr-3 mb-0">Aktif:</label>
+                                                @Html.DropDownListFor(x => x, new List<SelectListItem> {
+                                                new SelectListItem { Text = "Tümü", Value = "all"},
+                                                new SelectListItem { Text = "Aktif", Value = "Aktif"},
+                                                new SelectListItem { Text = "Pasif", Value = "Pasif"}}, new { @class = "form-control select-style-1 filter-by", name = "filter-by", onchange = "myFormSubmit1()" })
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                                        <a href="@Url.Action("CompanyAdd", "Company")" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4"> Yeni </a>
+                                        </div>*@
+                                    <div class="col-12 col-lg-4 col-xl-1 mt-md-3 mt-xl-0 col-lg-auto ml-auto mb-3 mb-lg-0">
+                                        <a href="@Url.Action("CompanyAdd", "Company")" class="btn btn-primary w-100 btn-md font-weight-semibold btn-py-2 px-4"> Yeni </a>
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 550px;">
+                            <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
                                 <thead>
                                     <tr>
                                         <th width="8%"> No </th>
@@ -85,7 +60,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @{int totalNumberOfCompanies = 0;}
                                     @foreach (var item in Model)
                                     {
@@ -97,7 +71,7 @@
                                             <td> @item.Kind </td>
                                             <td> @item.Phone </td>
                                             <td> @item.Eposta </td>
-                                            @if (@item.Confirmation == YesNo.Onaysız)
+                                            @if (item.Confirmation == YesNo.Onaysız)
                                             {
                                                 <td style="color:red"> <strong> @item.Confirmation </strong> </td>
                                             }
@@ -105,7 +79,7 @@
                                             {
                                                 <td style="color:green"> <strong> @item.Confirmation </strong> </td>
                                             }
-                                            <td> <a href="@Url.Action("CompanyDetail", "Home", new { id = item.Id })"> Detay </a>  </td>
+                                            <td> <a href="@Url.Action("CompanyDetail", "Company", new { id = item.Id })"> Detay </a>  </td>
                                         </tr>
                                     }
                                 </tbody>
@@ -116,9 +90,18 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     }
-    <!-- end: page -->
 </section>
+
+<script>
+    function myFormSubmit1() {
+        document.getElementsByTagName("select")[1].value = "";
+        document.getElementsByTagName("select")[2].value = "";
+        document.getElementById("myForm").submit();
+    }
+
+</script>

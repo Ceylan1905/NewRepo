@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using zeynerp.BL;
 using zeynerp.Entities;
 using zeynerp.Entities.Definitions;
+using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
 {
@@ -45,12 +46,24 @@ namespace zeynerp.Controllers
 
         [Route("tanimlamalar/tedarikci-listesi")]
         [Authorize]
-        public ActionResult SupplierList()
+        public ActionResult SupplierList(SelectViewModel selectViewModel)
         {
             Employee employee = Session["employee"] as Employee;
-            List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
-            ViewData["compGroup"] = companyGroupModel;
+
+            if (employee == null)
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
+            List<CompanyGroup> companyGroups = supplierProcess.GetCompanyGroupList(employee.CompanyName, selectViewModel);
+            ViewData["compGroup"] = companyGroups;
+
             return View();
+
+            //Employee employee = Session["employee"] as Employee;
+            //List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
+            //ViewData["compGroup"] = companyGroupModel;
+            //return View();
         }
 
         [Route("tanimlamalar/tedarikci-detay/{id}")]

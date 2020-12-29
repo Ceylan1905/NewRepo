@@ -1,0 +1,293 @@
+﻿@using zeynerp.Entities
+@model zeynerp.Entities.ViewModels.CompanyViewModel
+
+@{
+    ViewBag.Title = "CompanyDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Tedarikçi Detay - @(Model.Companies.Name)</h2>
+
+        <div class="right-wrapper text-right pr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/panel">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span> Tanımlamalar </span></li>
+                <li><a href="/tanimlamalar/tedarikci-listesi"><span> Tedarikçi Listesi</span></a></li>
+                <li><span>Tedarikçi Detay</span></li>
+            </ol>
+        </div>
+    </header>
+
+    @* using (Html.BeginForm("CompanyDetail", "Company", new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))      @*using (Html.BeginForm("CompanyDetail", "Company", FormMethod.Post))*@
+    @using (Html.BeginForm("CompanyDetail", "Company", new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col">
+                <section class="card">
+                    <div class="card-body">
+                        <div style="text-align:center"> <strong> Firma Grup Tanım </strong> </div>
+                        <div class="form-group row align-items-center">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault"> Cari Türü </label>
+                            <div class="col-lg-6">
+                                @Html.HiddenFor(model => model.Companies.Kind, new { id = "CompanyKind" })
+                                Müşteri: @if (Model.Companies.Kind.Contains("Müşteri"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Müşteri" />}
+                                Tedarikçi: @if (Model.Companies.Kind.Contains("Tedarikçi"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Tedarikçi" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Tedarikçi" />}
+                                Taşeron: @if (Model.Companies.Kind.Contains("Taşeron"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Taşeron" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Taşeron" />}
+                                Resmi: @if (Model.Companies.Kind.Contains("Resmi"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Resmi" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Resmi" />}
+                                Banka: @if (Model.Companies.Kind.Contains("Banka"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Banka" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Banka" />}
+                                Personel: @if (Model.Companies.Kind.Contains("Personel"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Personel" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Personel" />}
+                                Personel: @if (Model.Companies.Kind.Contains("Personel"))
+                                {<input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" checked /> }
+                                else
+                                { <input type="checkbox" id="r" onchange="getSelected()" value="Ortaklar" />}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Adı </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.Name, new { @class = "form-control form-control-lg", name = "companyName", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Kısa Adı </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.ShortName, new { @class = "form-control form-control-lg", name = "companyShortName", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Telefonu </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.Phone, new { @class = "form-control form-control-lg", name = "companyPhone", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Fax </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.Fax, new { @class = "form-control form-control-lg", name = "companyFax", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari E-Posta </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.Fax, new { @class = "form-control form-control-lg", name = "companyFax", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Vergi Dairesi </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.TaxAdministration, new { @class = "form-control form-control-lg", name = "companyTaxAdministration", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Cari Vergi No </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.TaxNumber, new { @class = "form-control form-control-lg", name = "companyTaxNumber", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputMaritalStatus"> Fatura Adresi </label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.Companies.BillingAddress, new { @class = "form-control form-control-lg", name = "companyBillingAddress", type = "text" })
+                            </div>
+                        </div>
+
+                        <div class="mb-1 text-center">
+                            <div class="mb-3 ml-1 mr-1">
+                                @Html.ActionLink("Yeni", "CompanyAdd", "Company", new { @class = "btn btn-primary btn-lg mb-3 ml-1 mr-1" })
+                                <button type="submit" class="btn btn-primary btn-lg mb-3 ml-1 mr-1">Kaydet</button>
+                                @Html.ActionLink("Liste", "CompanyList", "Company", new { @class = "btn btn-primary btn-lg mb-3 ml-1 mr-1" })
+                            </div>
+                        </div>
+
+                        <section class="card">
+                            <header class="card-header" style="width:50%; margin-left:auto; margin-right:auto">
+
+                                <div class="card-actions">
+                                    @*<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>*@
+                                </div>
+
+                                <h2 class="card-title" style="text-align:center"> Cari Yetkilileri</h2>
+                            </header>
+                            <div class="card-body" style="width:50%; margin-left:auto; margin-right:auto">
+                                <table class="table table-responsive-md table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%"> No </th>
+                                            <th width="20%"> Adı Soyadı </th>
+                                            <th width="15%"> Telefon </th>
+                                            <th width="20%"> Cep Telefon </th>
+                                            <th width="15%"> Fax </th>
+                                            <th width="15%"> E-Posta </th>
+                                            <th width="15%"> Aktif </th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td colspan="7">
+                                            <table class="table table-responsive-md table-striped mb-0" id="tblSatirYetkili">
+                                                @{int totalNumberOfCompanies = 0; var bgcolor = "fff"; }
+                                                @foreach (var item in Model.CompanyAuthorizeds.ToList())
+                                                {
+                                                    if (bgcolor == "#fff") { bgcolor = "#E0E0E0"; } else { bgcolor = "#fff"; }
+                                                    totalNumberOfCompanies++;
+                                                    <tr id="yetkiliSatir@(totalNumberOfCompanies)" name="yetkiliSatir@(totalNumberOfCompanies)" no="@(totalNumberOfCompanies)" bgcolor="@bgcolor" style="background-color:@bgcolor">
+                                                        <td data-title="No" class="text-left " id="1">@totalNumberOfCompanies</td>
+                                                        <td data-title="Adı Soyadı" class="text-right "><input type="text" id="txtName1" class="form-control" value="@item.NameSurname"></td>
+                                                        <td data-title="Telefon" class="text-right "><input type="text" id="txtAge1" class="form-control" value="@item.Phone"></td>
+                                                        <td data-title="Cep Telefon" class="text-right  "><input type="text" id="txtGender1" class="form-control" value="@item.MobilePhone"></td>
+                                                        <td data-title="Fax" class="text-right "><input type="text" id="txtOccupation1" class="form-control" value="@item.Fax"></td>
+                                                        <td data-title="E-posta" class="text-right "><input type="text" id="txtdeneme1" class="form-control" value="@item.Email"></td>
+                                                        <td data-title="Aktif " style="width:10%;">
+                                                            <select id="secim1" class="form-control">
+                                                                @if (@item.IsActive == IsActive.Pasif)
+                                                                {
+                                                                    <option class="form-control" selected value="0">Pasif</option>
+                                                                    <option class="form-control" value="1">Aktif</option>
+                                                                }
+                                                                @if (@item.IsActive == IsActive.Aktif)
+                                                                {
+                                                                    <option class="form-control" value="0">Pasif</option>
+                                                                    <option class="form-control" selected value="1">Aktif</option>
+                                                                }
+
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+
+                                                }
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <input type="hidden" name="yetkiliSatirSayisi" id="yetkiliSatirSayisi" value="@totalNumberOfCompanies" />
+                                    <tr style="background-color:rgb(0, 0, 0, 0.05)">
+                                        <td colspan="7">
+                                            <table id="yetkilitbl" width="100%">
+                                                <tr style="background-color:rgb(234 234 234 / 5%)">
+                                                    <td align="left"> <button class="btn btn-primary btn-lg mb-3 ml-1 mr-1" type="button" style="white-space:nowrap" id="btnYeniYetkili"> Satır Ekle</button> </td>
+                                                    <td align="right"> <button type="button" id="yetkiliKaydet" class="btn btn-primary btn-lg mb-3 ml-1 mr-1"> Yetkilileri Kaydet</button> </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <header class="card-header" style="width:50%; margin-left:auto; margin-right:auto">
+
+                                <div class="card-actions">
+                                    @*<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>*@
+                                </div>
+                                <h2 class="card-title" style="text-align:center"> Teslimat Adresleri</h2>
+                            </header>
+                            <div class="card-body" style="width:50%; margin-left:auto; margin-right:auto">
+                                <table class="table table-responsive-md table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th width="2%"> No </th>
+                                            <th width="10%"> Başlık </th>
+                                            <th width="10%"> Adres </th>
+                                            <th width="10%"> İşlem </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="background-color:rgb(0, 0, 0, 0.05)">
+                                            <td colspan="7">
+                                                <table id="yetkilitbl" width="100%">
+                                                    <tr style="background-color:rgb(234 234 234 / 5%)">
+                                                        <td align="left"> <button class="btn btn-primary btn-lg mb-3 ml-1 mr-1" type="button" style="white-space:nowrap" id="xt"> Satır Ekle</button> </td>
+                                                        <td align="right"> <button type="submit" class="btn btn-primary btn-lg mb-3 ml-1 mr-1"> Adresleri Kaydet</button> </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    }
+
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#btnYeniYetkili').click(function () {
+            var No = parseFloat($("#yetkiliSatirSayisi").val());
+            var YeniNo = parseFloat(No + 1);
+
+            bgcolor = $("#yetkiliSatir"+No).attr("bgcolor");
+            if (bgcolor == "#fff") { bgcolor = "#E0E0E0"; } else { bgcolor = "#fff"; }
+
+            $("#tblSatirYetkili").append(
+                "<tr id='yetkiliSatir" + YeniNo + "' name='yetkiliSatir" + YeniNo + "' no='" + YeniNo + "' bgcolor='"+bgcolor+"' style='background-color:" + bgcolor+ "'>" +
+                "<td data-title='No' class='text-left' id='" +YeniNo+ "'> " + YeniNo + " </td>" +
+                "<td data-title='Adı Soyadı' class='text-right'> " + "<input type='text' id='txtName" + YeniNo + "' name='YetkiliAdi" + YeniNo + "' class='form-control' /> " + "</td>" +
+                "<td data-title='Telefon' class='text-right'> <input type='text' id='txtPhone" + YeniNo + "' name='YetkiliTelefonu" + YeniNo + "' class='form-control' /> </td>" +
+                "<td data-title='Cep Telefon' class='text-right'> <input type='text' id='txtMobilePhone" + YeniNo + "' name='YetkiliCepTelefonu" + YeniNo + "' class='form-control' /> </td>" +
+                "<td data-title='Fax' class='text-right'> <input type='text' id='txtFax" +YeniNo+ "' name='YetkiliFax" +YeniNo+ "' class='form-control' /> </td>" +
+                "<td data-title='E-posta' class='text-right'> <input type='text' id='txtEposta" + YeniNo + "' name='YetkiliEposta" +YeniNo+ "' class='form-control' /> </td>" +
+                "<td data-title='Aktif' style='width:10%'> <select id='secim" + YeniNo + "' class='form-control'> <option class='form-control' value='0'>Pasif</option> < option class='form-control' value='1'> Aktif</option > </select> "+
+                "</tr>"
+            );
+
+            $("#yetkiliSatirSayisi").val(YeniNo);
+        });
+    });
+
+    $('#yetkiliKaydet').click(function () {
+        var values = [];
+
+        $('#tblSatirYetkili>tr').each(function () {
+
+          $(this).find("input").each(function () {
+          values.push($(this).val());
+          });
+            alert(values);
+            values.push($(this).find('td:last > select').children('option:selected').val());
+        });
+
+    });
+</script>

@@ -1917,15 +1917,6 @@
     <Content Include="Assets\vendor\datatables\media\js\dataTables.bootstrap4.min.js" />
     <Content Include="Assets\vendor\datatables\media\js\jquery.dataTables.js" />
     <Content Include="Assets\vendor\datatables\media\js\jquery.dataTables.min.js" />
-    <Content Include="Assets\vendor\common\common.js" />
-    <Content Include="Assets\vendor\dropzone\basic.css" />
-    <Content Include="Assets\vendor\dropzone\dropzone-amd-module.js" />
-    <Content Include="Assets\vendor\dropzone\dropzone.css" />
-    <Content Include="Assets\vendor\dropzone\dropzone.js" />
-    <Content Include="Assets\vendor\dropzone\min\basic.min.css" />
-    <Content Include="Assets\vendor\dropzone\min\dropzone-amd-module.min.js" />
-    <Content Include="Assets\vendor\dropzone\min\dropzone.min.css" />
-    <Content Include="Assets\vendor\dropzone\min\dropzone.min.js" />
     <Content Include="Assets\vendor\elusive-icons\css\elusive-icons.css" />
     <Content Include="Assets\vendor\elusive-icons\css\elusive-icons.min.css" />
     <Content Include="Assets\vendor\elusive-icons\fonts\elusiveicons-webfont.svg" />
@@ -4079,56 +4070,6 @@
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.ttf" />
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff" />
     <Content Include="Assets\vendor\boxicons\fonts\boxicons.woff2" />
-    <Content Include="Assets\vendor\bootstrap-multiselect\less\bootstrap-multiselect.less" />
-    <Content Include="Assets\vendor\bootstrap-multiselect\scss\bootstrap-multiselect.scss" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css.map" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css.map" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\example-group.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\example.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples.json" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\Basics.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p02_Advanced_Examples.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p03_Colorpicker_Events.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p04_Colorpicker_Extensions.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p05_OlderVersions.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\examples\p06_SupportUs.hbs" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\LICENSE" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\README.md" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\augments.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\container.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\details.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\example.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\examples.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\exceptions.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\layout.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\mainpage.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\members.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\method.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\params.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\properties.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\returns.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\source.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\tutorial.tmpl" />
-    <Content Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\type.tmpl" />
-    <Content Include="Assets\vendor\dropzone\dropzone.js.map" />
-    <Content Include="Assets\vendor\codemirror\AUTHORS" />
-    <Content Include="Assets\vendor\codemirror\bin\source-highlight" />
-    <Content Include="Assets\vendor\codemirror\CHANGELOG.md" />
-    <Content Include="Assets\vendor\codemirror\CONTRIBUTING.md" />
-    <Content Include="Assets\vendor\codemirror\LICENSE" />
-    <Content Include="Assets\vendor\codemirror\package.json" />
-    <Content Include="Assets\vendor\codemirror\README.md" />
-    <Content Include="Assets\vendor\summernote\font\summernote.eot" />
-    <Content Include="Assets\vendor\summernote\font\summernote.ttf" />
-    <Content Include="Assets\vendor\summernote\font\summernote.woff" />
-    <Content Include="Assets\vendor\summernote\font\summernote.woff2" />
-    <Content Include="Assets\vendor\summernote\summernote-0.8.16-dist.zip" />
-    <Content Include="Assets\vendor\summernote\summernote-bs4.js.map" />
-    <Content Include="Assets\vendor\summernote\summernote-bs4.min.js.map" />
-    <Content Include="Assets\vendor\summernote\summernote-lite.js.map" />
-    <Content Include="Assets\vendor\summernote\summernote-lite.min.js.map" />
-    <Content Include="Assets\vendor\summernote\summernote.js.map" />
-    <Content Include="Assets\vendor\summernote\summernote.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4167,6 +4108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Company\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HumanResourceController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -4188,13 +4130,16 @@
     <Content Include="Views\Home\Authorization.cshtml" />
     <Content Include="Views\Home\CompanyAdd.cshtml" />
     <Content Include="Views\Home\CompanyList.cshtml" />
-    <Content Include="Views\Home\CompanyDetail.cshtml" />
+    <Content Include="Views\Home\CompanyDetai.cshtml" />
     <Content Include="Views\Supplier\SupplierList.cshtml" />
     <Content Include="Views\Supplier\SupplierAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
     <Content Include="Views\HumanResource\PersonnelAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
     <Content Include="Views\Supplier\SupplierDetail.cshtml" />
+    <Content Include="Views\Company\CompanyAdd.cshtml" />
+    <Content Include="Views\Company\CompanyList.cshtml" />
+    <Content Include="Views\Company\CompanyDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4204,6 +4149,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\vendor\bootstrap-colorpicker\css\" />
+    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\examples\" />
+    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\" />
+    <Folder Include="Assets\vendor\bootstrap-multiselect\less\" />
+    <Folder Include="Assets\vendor\bootstrap-multiselect\scss\" />
+    <Folder Include="Assets\vendor\codemirror\bin\" />
+    <Folder Include="Assets\vendor\common\" />
+    <Folder Include="Assets\vendor\summernote\font\" />
     <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
