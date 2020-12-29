@@ -4204,14 +4204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\css\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\examples\" />
-    <Folder Include="Assets\vendor\bootstrap-colorpicker\docs\jsdoc-template\tmpl\" />
-    <Folder Include="Assets\vendor\bootstrap-multiselect\less\" />
-    <Folder Include="Assets\vendor\bootstrap-multiselect\scss\" />
-    <Folder Include="Assets\vendor\codemirror\bin\" />
     <Folder Include="Assets\vendor\common\" />
-    <Folder Include="Assets\vendor\summernote\font\" />
     <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -4229,10 +4222,6 @@
     <ProjectReference Include="..\zeynerp.Common\zeynerp.Common.csproj">
       <Project>{6561d774-e21a-481b-a737-e3dd99e6b6f3}</Project>
       <Name>zeynerp.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\zeynerp.Entities\zeynerp.Entities.csproj">
-      <Project>{158500fd-e138-4083-bf92-15f4aebf4c5e}</Project>
-      <Name>zeynerp.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
