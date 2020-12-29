@@ -80,9 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL_Result.cs" />
-    <Compile Include="Company\CompanyProcess.cs" />
-    <Compile Include="AdminManager.cs" />
-    <Compile Include="Result\BL_Result.cs" />
     <Compile Include="CompanyProcess.cs" />
     <Compile Include="HumanResourceManager.cs" />
     <Compile Include="Manager.cs" />
