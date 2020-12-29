@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using zeynerp.BL;
 using zeynerp.Entities;
 using zeynerp.Entities.Definitions;
-using zeynerp.Entities.ViewModels;
 
 namespace zeynerp.Controllers
 {
@@ -48,15 +47,8 @@ namespace zeynerp.Controllers
         public ActionResult SupplierList()
         {
             Employee employee = Session["employee"] as Employee;
-
-            if (employee == null)
-            {
-                return RedirectToAction("SignIn", "Home");
-            }
-
-            List<CompanyGroup> companyGroups = supplierProcess.GetCompanyGroupList(employee.CompanyName, selectViewModel);
-            ViewData["compGroup"] = companyGroups;
-
+            List<CompanyGroup> companyGroupModel = supplierProcess.GetCompanyGroupList(employee);
+            ViewData["compGroup"] = companyGroupModel;
             return View();
         }
 

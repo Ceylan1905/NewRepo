@@ -1,6 +1,5 @@
 ﻿/* Add here all your JS customizations */
 
-
 function getSelected() {
     var sList = "";
     $('input[type=checkbox]').each(function () {
@@ -160,8 +159,6 @@ $('#yetkiliKaydet').click(function () {
    
    
 });
-
-
 
                
 
