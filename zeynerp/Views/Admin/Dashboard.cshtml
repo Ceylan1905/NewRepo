@@ -1,0 +1,25 @@
+﻿@using zeynerp.Entities
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section role="main" class="content-body">
+    <header class="page-header">
+        @{
+            var admin = Session["employee"] as User;
+            if (admin != null)
+            {
+                <h2>ZEYNErP</h2>
+            }
+        }
+        <div class="right-wrapper text-right mr-3">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="@Url.Content("Dashboard")">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </header>
+</section>

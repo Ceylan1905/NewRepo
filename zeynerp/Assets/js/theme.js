@@ -630,7 +630,7 @@ window.theme.fn = {
 
 		$.extend(true, $.fn.dataTable.defaults, {
 			oLanguage: {
-				sLengthMenu: '_MENU_ records per page',
+				sLengthMenu: '_MENU_ sayfa baþýna kayýt',
 				sProcessing: '<i class="fas fa-spinner fa-spin"></i> Loading',
 				sSearch: ''
 			},
@@ -650,7 +650,7 @@ window.theme.fn = {
 
 				$search
 					.attr({
-						placeholder: typeof options.searchPlaceholder !== 'undefined' ? options.searchPlaceholder : 'Search...'
+						placeholder: typeof options.searchPlaceholder !== 'undefined' ? options.searchPlaceholder : 'Ara'
 					})
 					.removeClass('form-control-sm').addClass('form-control pull-right');
 

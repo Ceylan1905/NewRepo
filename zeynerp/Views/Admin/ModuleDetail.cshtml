@@ -1,182 +1,112 @@
-﻿@using zeynerp.Entities
+﻿@using zeynerp.BL
+@using zeynerp.Entities.Admin
+@model BL_Result<Module>
 @{
-    ViewBag.Title = "ModuleAdd";
+    ViewBag.Title = "ModuleDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section role="main" class="content-body">
     <header class="page-header">
-        @{
-            var admin = Session["employee"] as User;
-            if (admin != null)
-            {
-                <h2>ZEYNErP</h2>
-            }
-        }
+        <h2>Modül Detay</h2>
+
         <div class="right-wrapper text-right mr-3">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="@Url.Content("Module")">
+                    <a href="/Admin/Dashboard">
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Content("Module")">
+                    <a href="/Admin/Category">
                         <span>Kategori</span>
                     </a>
                 </li>
                 <li>
-                    <span>Modül Ekle</span>
+                    <a href="/Admin/CategoryDetail/@Model.Result.CategoryId">
+                        <span>Modül</span>
+                    </a>
+                </li>
+                <li>
+                    <span>Düzenle</span>
                 </li>
             </ol>
         </div>
     </header>
-    @using (Ajax.BeginForm("PersonnelList", "HumanResource", null, new AjaxOptions { HttpMethod = "GET" }, new { id = "myForm" }))
+    @using (Html.BeginForm("ModuleDetail", "Admin", FormMethod.Post, new { @class = "action-buttons-fixed", enctype = "multipart/form-data" }))
     {
         <div class="row">
             <div class="col">
-                <div class="card card-modern">
+                <section class="card card-modern card-big-info">
                     <div class="card-body">
-                        <div class="datatables-header-footer-wrapper">
-                            <div class="datatable-header">
-                                <div class="row align-items-center justify-content-end mb-3">
-                                    <div class="col-12 col-lg-4 col-xl-3 col-lg-auto mr-auto">
-                                        <span><strong>İnsan Kaynakları</strong></span>
-                                    </div>
-                                    <div class="col-12 col-lg-4 col-xl-3 col-lg-auto mb-3 mb-lg-0">
-                                        <div class="search search-style-1 w-100 search-style-1-lg mx-lg-auto">
-                                            <label class="invisible">search</label>
-                                            <div class="input-group">
-                                                <input type="text" class="search-term form-control" name="search-term" id="search-term" placeholder="Modül Ara">
-                                                <span class="input-group-append">
-                                                    <button class="btn btn-default" type="submit"><i class="bx bx-search"></i></button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4 col-xl-2 mt-md-3 mt-xl-0 col-lg-auto">
-                                        <label>Durum</label>
-                                        <select class="form-control select-style-1 filter-by" name="filter-by">
-                                            <option value="all">Tümü</option>
-                                            <option value="Durum-Devam Eden" selected>Aktif</option>
-                                            <option value="Durum-Ayrılmış">Pasif</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 col-lg-2 col-xl-2 col-lg-auto">
-                                        <label class="invisible">ekle</label>
-                                        <a href="#modalModule" class="modal-basic btn btn-primary w-100 btn-md font-weight-semibold btn-py-2">+ Modül Ekle</a>
-                                        <div id="modalModule" class="modal-block mfp-hide">
-                                            <form action="/" method="post">
-                                                <section class="card">
-                                                    <header class="card-header">
-                                                        <h2 class="card-title">Modül Ekle</h2>
-                                                    </header>
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <label for="inputEmail4">Kategori</label>
-                                                                <select class="form-control">
-                                                                    <option value="" style="display: none"></option>
-                                                                    <option value="İnsan Kaynakları">İnsan Kaynakları</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-12 mt-3">
-                                                                <label for="inputEmail4">Modül Adı</label>
-                                                                <input type="email" class="form-control" id="inputEmail4" placeholder="Modül Adı">
-                                                            </div>
-                                                            <div class="col-8 col-md-8 mt-3">
-                                                                <label for="inputEmail4">Durum</label>
-                                                                <select class="form-control">
-                                                                    <option value="Aktif">Aktif</option>
-                                                                    <option value="Pasif">Pasif</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-4 mt-3">
-                                                                <label for="inputEmail4">Sıra</label>
-                                                                <input type="email" class="form-control" id="inputEmail4" placeholder="Sıra">
-                                                            </div>
-                                                            <div class="col-8 col-md-9 mt-3">
-                                                                <label for="inputEmail4">Fiyat</label>
-                                                                <input type="text" class="form-control" name="name" value="" />
-                                                            </div>
-                                                            <div class="col-4 col-md-3 mt-3">
-                                                                <label for="inputEmail4">Para Birimi</label>
-                                                                <select class="form-control">
-                                                                    <option value="₺">₺</option>
-                                                                    <option value="$">$</option>
-                                                                    <option value="€">€</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <footer class="card-footer">
-                                                        <div class="row">
-                                                            <div class="col-md-12 text-right">
-                                                                <button class="btn btn-primary modal-confirm">Kaydet</button>
-                                                                <button class="btn btn-default modal-dismiss">İptal</button>
-                                                            </div>
-                                                        </div>
-                                                    </footer>
-                                                </section>
-                                            </form>
-                                        </div>
-                                    </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-lg-2-5 col-xl-1-5">
+                                <div class="thumb-info mb-3">
+                                    <i class="card-big-info-icon bx bx-slider-alt"></i>
+                                    <h2 class="card-big-info-title">@Model.Result.ModuleName</h2>
                                 </div>
                             </div>
-                            <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
-                                <thead>
-                                    <tr>
-                                        <th style="display: none;"></th>
-                                        <th width="8%">Sıra</th>
-                                        <th width="50%">Modül Adı</th>
-                                        <th>Para Birimi</th>
-                                        <th>Fiyat</th>
-                                        <th>Durum</th>
-                                        <th>Detay</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                   
-                                    <tr>
-                                        <td style="display: none;"></td>
-                                        <td class="pr-lg-5"><input type="text" class="form-control" value="1" /></td>
-                                        <td><input type="text" class="form-control" name="name" value="Mesaiye Kalacak Personeller" /></td>
-                                        <td>
-                                            <select class="form-control">
-                                                <option value="₺">₺</option>
-                                                <option value="$">$</option>
-                                                <option value="€">€</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="text" class="form-control" name="name" value="2000" /></td>                                        
-                                        <td>
-                                            <select class="form-control">
-                                                <option value="Aktif">Aktif</option>
-                                                <option value="Pasif">Pasif</option>
-                                            </select>
-                                        </td>
-                                        <td><a href="@Url.Content("ModuleLog")">Detay</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <hr class="solid mt-5 opacity-4">
-                            <div class="datatable-footer">
-                                <div class="row align-items-center justify-content-between mt-3">
-                                    <div class="col-md-auto order-1 mb-3 mb-lg-0 invisible">
-                                        <div class="d-flex align-items-stretch">
-                                            <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
-                                        </div>
+                            <div class="col-lg-3-5 col-xl-4-5">
+                                @Html.HiddenFor(x => x.Result.Id)
+                                @Html.HiddenFor(x => x.Result.CategoryId)
+                                <div class="form-group row align-items-center">
+                                    <div class="col-lg-11 col-xl-10 mb-3 mb-lg-0 m-auto">
+                                        <label for="inputFirstName">Modül Adı</label>
+                                        @Html.TextBoxFor(x => x.Result.ModuleName, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.ModuleName, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-lg-auto text-center order-3 order-lg-2">
-                                        <div class="results-info-wrapper"></div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Sıra</label>
+                                        @Html.TextBoxFor(x => x.Result.Order, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.Order, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
-                                        <div class="pagination-wrapper"></div>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">Durum</label>
+                                        @Html.DropDownListFor(x => x.Result.Status, new List<SelectListItem> {
+                                            new SelectListItem { Text = "Aktif", Value = "Aktif"},
+                                            new SelectListItem { Text = "Pasif", Value = "Pasif" } }, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Result.Status, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
+                                        <label for="inputFirstName">Fiyat</label>
+                                        @Html.TextBoxFor(x => x.Result.Price, new { id = "inputFirstName", @class = "form-control", type = "text" })
+                                        @Html.ValidationMessageFor(x => x.Result.Price, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-6 col-xl-5 mr-auto">
+                                        <label for="inputLastName">Para Birimi</label>
+                                        @Html.DropDownListFor(x => x.Result.CurrencyUnit, new List<SelectListItem> {
+                                            new SelectListItem { Text = "₺", Value = "₺"},
+                                            new SelectListItem { Text = "$", Value = "$"},
+                                            new SelectListItem { Text = "€", Value = "€" } }, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Result.CurrencyUnit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center">
+                                    <div class="col-lg-12 col-xl-10 ml-auto mr-auto">
+                                        <label for="inputAddress">Açıklama</label>
+                                        @Html.TextAreaFor(x => x.Result.Comment, new { id = "inputAddress", @class = "form-control", rows = "5", maxlength = "140", required = "required" })
+                                        @Html.ValidationMessageFor(x => x.Result.Comment, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+            </div>
+        </div>
+        <div class="row action-buttons">
+            <div class="col-12 col-md-auto">
+                <button type="submit" class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
+                    <i class="bx bx-save text-4 mr-2"></i> Kaydet
+                </button>
+            </div>
+            <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
+                <a href="/Admin/CategoryDetail/@Model.Result.CategoryId" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">İptal</a>
             </div>
         </div>
     }

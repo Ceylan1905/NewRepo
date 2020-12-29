@@ -178,10 +178,12 @@
     <Content Include="Assets\img\widget-twitter-profile.jpg" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\examples\examples.dashboard.js" />
+    <Content Include="Assets\js\examples\examples.datatables.tabletools.js" />
     <Content Include="Assets\js\examples\examples.ecommerce.datatables.list.js" />
     <Content Include="Assets\js\examples\examples.ecommerce.form.js" />
     <Content Include="Assets\js\examples\examples.header.menu.js" />
     <Content Include="Assets\js\examples\examples.modals.js" />
+    <Content Include="Assets\js\examples\examples.notifications.js" />
     <Content Include="Assets\js\theme.admin.extension.js" />
     <Content Include="Assets\js\theme.init.js" />
     <Content Include="Assets\js\theme.js" />
@@ -3686,6 +3688,8 @@
     <Content Include="Assets\vendor\magnific-popup\jquery.magnific-popup.min.js" />
     <Content Include="Assets\vendor\magnific-popup\magnific-popup.css" />
     <Content Include="Assets\vendor\modernizr\modernizr.js" />
+    <Content Include="Assets\vendor\pnotify\pnotify.custom.css" />
+    <Content Include="Assets\vendor\pnotify\pnotify.custom.js" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.js" />
     <Content Include="Assets\vendor\popper\esm\popper-utils.min.js" />
     <Content Include="Assets\vendor\popper\esm\popper.js" />
@@ -4111,6 +4115,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HumanResourceController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\UserOperationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4135,9 +4140,13 @@
     <Content Include="Views\HumanResource\PersonnelList.cshtml" />
     <Content Include="Views\HumanResource\PersonnelAdd.cshtml" />
     <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
-    <Content Include="Views\Admin\Module.cshtml" />
-    <Content Include="Views\Admin\ModuleDetail.cshtml" />
     <Content Include="Views\Admin\ModuleLog.cshtml" />
+    <Content Include="Views\Supplier\SupplierDetail.cshtml" />
+    <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Admin\CategoryDetail.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\ModuleDetail.cshtml" />
+    <Content Include="Views\UserOperations\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

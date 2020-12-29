@@ -13,5 +13,7 @@ namespace zeynerp.Common.Messages
         UserNotActive   = 3,
         CompanyNotFound = 4,
         PasswordsDoNotMatch = 5,
+        RegisteredCategory = 6,
+        RegisteredModule = 7,
     }
 }
