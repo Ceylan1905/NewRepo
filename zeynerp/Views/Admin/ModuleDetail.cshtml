@@ -71,11 +71,59 @@
                                         @Html.ValidationMessageFor(x => x.Result.Status, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="form-group row align-items-center">
                                     <div class="col-lg-6 col-xl-5 mb-3 mb-lg-0 ml-auto">
                                         <label for="inputFirstName">Fiyat</label>
                                         @Html.TextBoxFor(x => x.Result.Price, new { id = "inputFirstName", @class = "form-control", type = "text" })
                                         @Html.ValidationMessageFor(x => x.Result.Price, "", new { @class = "text-danger" })
+=======
+                            </div>
+                            <table class="table table-ecommerce-simple table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 750px;">
+                                <thead>
+                                    <tr>
+                                        <th style="display: none;"></th>
+                                        <th width="8%">Sıra</th>
+                                        <th width="25%">Modül Adı</th>
+                                        <th>Para Birimi</th>
+                                        <th>Fiyat</th>
+                                        <th width="35%">Açıklama</th>
+                                        <th>Durum</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                   
+                                    <tr>
+                                        <td style="display: none;"></td>
+                                        <td class="pr-lg-5"><input type="text" class="form-control" value="1" /></td>
+                                        <td><input type="text" class="form-control" name="name" value="Mesaiye Kalacak Personeller" /></td>
+                                        <td>
+                                            <select class="form-control">
+                                                <option value="₺">₺</option>
+                                                <option value="$">$</option>
+                                                <option value="€">€</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" class="form-control" name="name" value="2000" /></td> 
+                                        <td><input type="text" class="form-control" value="Deneme" /></td>
+                                        <td>
+                                            <select class="form-control">
+                                                <option value="Aktif">Aktif</option>
+                                                <option value="Pasif">Pasif</option>
+                                            </select>
+                                        </td>
+                                        <td><a href="@Url.Content("ModuleLog")">Detay</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr class="solid mt-5 opacity-4">
+                            <div class="datatable-footer">
+                                <div class="row align-items-center justify-content-between mt-3">
+                                    <div class="col-md-auto order-1 mb-3 mb-lg-0 invisible">
+                                        <div class="d-flex align-items-stretch">
+                                            <a href="#" class="bulk-action-apply btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Apply</a>
+                                        </div>
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
                                     </div>
                                     <div class="col-lg-6 col-xl-5 mr-auto">
                                         <label for="inputLastName">Para Birimi</label>

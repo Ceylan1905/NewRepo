@@ -17,7 +17,10 @@ namespace zeynerp.DAL
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
+<<<<<<< HEAD
         public DbSet<Module> Modules { get; set; }
         public DbSet<Log> Logs { get; set; }
+=======
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     }
 }

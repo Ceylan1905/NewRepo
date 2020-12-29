@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using zeynerp.DAL.Repository;
+<<<<<<< HEAD
 using zeynerp.Entities;
+=======
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
 using zeynerp.Entities.Admin;
 
 namespace zeynerp.BL
@@ -12,12 +15,16 @@ namespace zeynerp.BL
     public class AdminManager<T> where T : class
     {
         private BL_Result<Category> result_category = new BL_Result<Category>();
+<<<<<<< HEAD
         private BL_Result<Module> result_module = new BL_Result<Module>();
 
         private UserRepository<Category> repo_category = new UserRepository<Category>();
         private UserRepository<Module> repo_module = new UserRepository<Module>();
         private UserRepository<Log> repo_log = new UserRepository<Log>();
 
+=======
+        private UserRepository<Category> repo_category = new UserRepository<Category>();
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
         public List<Category> GetCategories()
         {
             List<Category> listCategory = repo_category.List();
@@ -48,6 +55,7 @@ namespace zeynerp.BL
             }
             return result_category;
         }
+<<<<<<< HEAD
 
         public BL_Result<Module> GetModule(int id)
         {
@@ -127,5 +135,7 @@ namespace zeynerp.BL
             List<Log> listLog = repo_log.List(x => x.ModuleId == id);
             return listLog;
         }
+=======
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     }
 }

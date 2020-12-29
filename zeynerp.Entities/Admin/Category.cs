@@ -16,6 +16,7 @@ namespace zeynerp.Entities.Admin
         public string Status { get; set; }
         [Required(ErrorMessage = "Sıra alanı gereklidir.")]
         public int Order { get; set; }
+<<<<<<< HEAD
 
         public List<Module> Modules { get; set; }
 
@@ -23,5 +24,7 @@ namespace zeynerp.Entities.Admin
         {
             Modules = new List<Module>();
         }
+=======
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     }
 }

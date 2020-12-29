@@ -148,7 +148,6 @@
     <Content Include="Assets\img\!happy-face.png" />
     <Content Include="Assets\img\!logged-user.jpg" />
     <Content Include="Assets\img\!sample-user.jpg" />
-    <Content Include="Assets\img\logo.png" />
     <Content Include="Assets\img\apple-touch-icon-precomposed.png" />
     <Content Include="Assets\img\arrows-dark.png" />
     <Content Include="Assets\img\arrows.png" />
@@ -167,6 +166,7 @@
     <Content Include="Assets\img\logo-default.png" />
     <Content Include="Assets\img\logo-light.png" />
     <Content Include="Assets\img\logo-modern.png" />
+    <Content Include="Assets\img\logo.png" />
     <Content Include="Assets\img\logo1.png" />
     <Content Include="Assets\img\pencil-blue-line-2-dark.png" />
     <Content Include="Assets\img\pencil-blue-line-2.png" />
@@ -4142,11 +4142,15 @@
     <Content Include="Views\HumanResource\PersonnelDetail.cshtml" />
     <Content Include="Views\Admin\ModuleLog.cshtml" />
     <Content Include="Views\Supplier\SupplierDetail.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Admin\Category.cshtml" />
     <Content Include="Views\Admin\CategoryDetail.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Admin\ModuleDetail.cshtml" />
     <Content Include="Views\UserOperations\Index.cshtml" />
+=======
+    <Content Include="Views\Admin\ModuleAdd.cshtml" />
+>>>>>>> 3add85628d495cc3f28fe48654a30f16067554cc
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
